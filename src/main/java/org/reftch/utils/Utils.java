@@ -1,13 +1,10 @@
-package com.compart.utils;
+package org.reftch.utils;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Utils {
 
@@ -22,16 +19,21 @@ public class Utils {
         fileWriter.close();
     }
 
-    public static Set<File> getFiles(String directory) {
-        if (directory != null) {
+    public static void traverseDirectory(final String pattern, final String directory, Set<File> files) {
+        if (pattern != null && directory != null && files != null) {
             var dir = new File(directory);
             if (dir.exists()) {
-                return Stream.of(dir.listFiles())
-                        .filter(file -> !file.isDirectory())
-                        .collect(Collectors.toSet());
+                for (final File f : dir.listFiles()) {
+                    if (f.isDirectory()) {
+                        traverseDirectory(pattern, f.getAbsolutePath(), files);
+                    }
+                    if (f.isFile() && f.getName().matches(pattern)) {
+                        files.add(f);
+                    }
+                }
             }
         }
-        return null;
+
     }
 
 }

@@ -1,4 +1,4 @@
-package com.compart.parser;
+package org.reftch.parser;
 
 import static org.junit.Assert.assertEquals;
 
@@ -39,7 +39,7 @@ public class XmlHandlerTest {
         saxParser.parse(
                 new InputSource(new StringReader("<sect1 xml:id=\"create_application\"><title>Test</title></sect1>")),
                 xmlHandler);
-        assertEquals(xmlHandler.getMarkdown(), "### Test\n");
+        assertEquals(xmlHandler.getMarkdown(), "\n\n### Test\n");
     }
 
     @Test

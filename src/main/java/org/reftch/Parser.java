@@ -1,29 +1,30 @@
-package com.compart;
+package org.reftch;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.HashSet;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 
-import com.compart.parser.XmlHandler;
-import com.compart.utils.Utils;
-
+import org.reftch.parser.XmlHandler;
+import org.reftch.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
 /**
- * Parser for the XML documentation
- * 2022
+ *  Parser for the XML
+ *  Author: reftch
  */
 public class Parser {
 
     private static final Logger LOG = LoggerFactory.getLogger(Parser.class);
 
-    private static final String DIR = "xml/com.compart.documentation.dbpilot.wui.doc/src/main/resources/DOCBRIDGE-PILOT.WEBUI.USER.EN/";
+    private static final String PATTERN = ".*\\.xml";
+    private static final String DIR = "xml";
     private static final String OUTPUT_DIR = "target/markdown/";
 
     public static void main(String[] args) {
@@ -34,7 +35,9 @@ public class Parser {
             var output = new File(OUTPUT_DIR);
             output.mkdir();
 
-            var files = Utils.getFiles(DIR);
+            var files = new HashSet<File>();
+            Utils.traverseDirectory(PATTERN, DIR, files);
+
             for (var child : files) {
                 var input = child.getName();
                 LOG.info("Processing file: {}", input);

@@ -1,10 +1,10 @@
-package com.compart.parser;
+package org.reftch.parser;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class XmlHandler extends DefaultHandler {
 
@@ -97,7 +97,7 @@ public class XmlHandler extends DefaultHandler {
     }
 
     private String getTitle() {
-        return this.currentTag.equals(XmlTag.Sect1) ? "### " : "## ";
+        return this.currentTag.equals(XmlTag.Sect1) ? "\n\n### " : "## ";
     }
 
     private String getParagraph() {

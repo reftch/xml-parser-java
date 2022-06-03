@@ -1,4 +1,4 @@
-package com.compart.parser;
+package org.reftch.parser;
 
 import java.util.Arrays;
 import java.util.Optional;
