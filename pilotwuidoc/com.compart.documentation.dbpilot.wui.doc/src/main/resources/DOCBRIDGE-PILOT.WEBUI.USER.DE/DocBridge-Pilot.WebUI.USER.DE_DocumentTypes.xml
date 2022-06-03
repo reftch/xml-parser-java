@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_documentTypesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="de-DE">
+    <title>Umgang mit Dokumenttypen</title>
+    <para>Die folgenden Abschnitte beschreiben die Arbeit mit Dokumenttypen. Mit den Dokumenttypen
+        können Sie beschreiben, aus welchen Komponenten eine Sendung besteht. Sie können für jede
+        konfigurierte Verarbeitungseinheit ein oder mehrere Dokumenttypen definieren. In der Ansicht
+            <guilabel>Dokumenttypen</guilabel> können Sie die folgenden Aktionen ausführen:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_documentType"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_documentTypes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_documentTypeDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_documentType"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_documentTypes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_documentTypes"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_documentType">
+        <?dbhtml filename="SearchDocumentTypeView.html" ?>
+        <title>Dokumenttyp definieren</title>
+        <para>Sie können einen neuen Dokumenttyp definieren. Dabei können Sie die gewünschten
+            Eigenschaften in einem separaten Dialogfenster konfigurieren.</para>
+        <para>Gehen Sie wie folgt vor, um einen neuen Dokumenttyp zu erstellen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Dokumenttypen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Erstellen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Erstellen).</para>
+                <result>
+                    <para>Das Dialogfenster <guilabel>Dokumenttyp erstellen</guilabel> wird
+                        geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie im Dialogfenster <guilabel>Dokumenttyp erstellen</guilabel> die
+                    gewünschten Einstellungen für den neuen Dokumenttyp an.</para>
+            </step>
+            <step>
+                <para>Klicken Sie im Dialogfenster <guilabel>Dokumenttyp erstellen</guilabel> auf
+                        <guibutton>OK</guibutton>, um den Dokumenttyp mit den angegebenen
+                    Einstellungen zu erstellen.</para>
+                <result>
+                    <para>Das Dialogfenster wird geschlossen, der neue Dokumenttyp wird in der
+                        Übersicht der konfigurierten Dokumenttypen angezeigt.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_documentTypes">
+        <title>Dokumenttypen anzeigen</title>
+        <para>Sie können eine Übersicht der konfigurierten Dokumenttypen im Arbeitsbereich der
+            Ansicht <guilabel>Dokumenttypen</guilabel> anzeigen.</para>
+        <mediaobject>
+            <alt>Screenshot Ansicht Dokumenttypen</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_documentTypesView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>In der Übersichtstabelle werden für jeden konfigurierten Dokumenttyp standardmäßig die
+            folgenden Informationen angezeigt:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Der eindeutige Bezeichner des Dokumenttyps.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Druckmodus</guilabel></term>
+                <listitem>
+                    <para>Druckmodus. Gültige Werte sind:</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term>SIMPLEX</term>
+                            <listitem>
+                                <para>Einseitiger Druck</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>DUPLEX</term>
+                            <listitem>
+                                <para>Doppelseitiger Druck</para>
+                            </listitem>
+                        </varlistentry>
+                        <!--<varlistentry>
+                            <term>MIXPLEX</term>
+                            <listitem>
+                                <para>Ein- und beidseitiger Druck innerhalb eines Dokuments</para>
+                            </listitem>
+                        </varlistentry>-->
+                    </variablelist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Medium</guilabel></term>
+                <listitem>
+                    <para>Verweis auf das Medium (für weitere Informationen, siehe <xref
+                            linkend="db_pil_wui_mediaView"/>). Sie dient der Gewichtsberechnung des
+                        Dokuments</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Mindestanzahl</guilabel></term>
+                <listitem>
+                    <para>Mindestanzahl von Dokumenten dieser Art, die in einer Sendung vorkommen
+                        müssen.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Maximalanzahl</guilabel></term>
+                <listitem>
+                    <para>Höchstzahl von Dokumenten dieser Art, die in einer Sendung vorkommen
+                        dürfen.</para>
+                    <note>
+                        <para>Der Wert <guilabel>Minimale Anzahl</guilabel> muss immer kleiner sein
+                            als der Wert <guilabel>Maximale Anzahl</guilabel>.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Einzel erlauben</guilabel></term>
+                <listitem>
+                    <para>Gibt an, ob diese Dokumentart auch alleine versandt werden kann. Gültige
+                        Werte sind <userinput>true</userinput> (Standardwert) und
+                            <userinput>false</userinput>. Mit dem Wert <userinput>true</userinput>
+                        kann dieses Dokument alleine in einer Sendung enthalten sein.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Schacht</guilabel></term>
+                <listitem>
+                    <para>Bezeichnung des Ausgabeschachts.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Kanal</guilabel></term>
+                <listitem>
+                    <para>Bezeichnung des Ausgabekanals.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Typen</guilabel></term>
+                <listitem>
+                    <para>Unterstützte Dokumenttypen (Formate).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_documentTypeDetails">
+        <title>Dokumenttyp-Details anzeigen</title>
+        <para>Sie können die Detailinformationen zu einem Dokumenttyp im Detailbereich anzeigen
+            lassen. Im Vergleich zur Übersichtstabelle enthält der Detailbereich ausführlichere
+            Informationen.</para>
+        <mediaobject>
+            <alt>Ansicht Dokumenttyp mit Details</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_documentTypeViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Im Detailbereich sind aktuell die folgenden Informationen verfügbar:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Der eindeutige Bezeichner des Dokumenttyps.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Typ</guilabel></term>
+                <listitem>
+                    <para>Aktuell wird nur der Wert <code>directories</code> unterstützt.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Druckmodus</guilabel></term>
+                <listitem>
+                    <para>Druckmodus. Gültige Werte sind:</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term>SIMPLEX</term>
+                            <listitem>
+                                <para>Einseitiger Druck</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>DUPLEX</term>
+                            <listitem>
+                                <para>Doppelseitiger Druck</para>
+                            </listitem>
+                        </varlistentry>
+                        <!--<varlistentry>
+                            <term>MIXPLEX</term>
+                            <listitem>
+                                <para>Ein- und beidseitiger Druck innerhalb eines Dokuments</para>
+                            </listitem>
+                        </varlistentry>-->
+                    </variablelist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Medium</guilabel></term>
+                <listitem>
+                    <para>Verweis auf das Medium (für weitere Informationen, siehe <xref
+                            linkend="db_pil_wui_mediaView"/>). Sie dient der Gewichtsberechnung des
+                        Dokuments</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Mindestanzahl</guilabel></term>
+                <listitem>
+                    <para>Mindestanzahl von Dokumenten dieser Art, die in einer Sendung vorkommen
+                        müssen.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Maximalanzahl</guilabel></term>
+                <listitem>
+                    <para>Höchstzahl von Dokumenten dieser Art, die in einer Sendung vorkommen
+                        dürfen.</para>
+                    <note>
+                        <para>Der Wert <guilabel>Minimale Anzahl</guilabel> muss immer kleiner sein
+                            als der Wert <guilabel>Maximale Anzahl</guilabel>.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Einzel erlauben</guilabel></term>
+                <listitem>
+                    <para>Gibt an, ob diese Dokumentart auch alleine versandt werden kann. Gültige
+                        Werte sind <userinput>true</userinput> (Standardwert) und
+                            <userinput>false</userinput>. Mit dem Wert <userinput>true</userinput>
+                        kann dieses Dokument alleine in einer Sendung enthalten sein.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Schacht</guilabel></term>
+                <listitem>
+                    <para>Bezeichnung des Ausgabeschachts.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Kanal</guilabel></term>
+                <listitem>
+                    <para>Bezeichnung des Ausgabekanals.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Typen</guilabel></term>
+                <listitem>
+                    <para>Unterstützte Dokumenttypen (Formate).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="modify_documentType">
+        <title>Dokumenttyp bearbeiten</title>
+        <para>Sie können die Eigenschaften eines Dokumenttyps bearbeiten.</para>
+        <note>
+            <para>Bitte beachten Sie, dass Sie den Namen des Dokumenttyps mit dieser Aktion nicht
+                ändern können. Wenn Sie den Namen des Dokumenttyps ändern wollen, erstellen Sie
+                einen neuen Dokumenttyp mit dem gewünschten Namen (siehe <xref
+                    linkend="create_application"/>).</para>
+        </note>
+        <para>Gehen Sie wie folgt vor, um die Werte eines vorhandenen Dokumenttyps zu
+            bearbeiten:</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Dokumenttypen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Doppelklicken Sie in der Übersichtstablle auf den gewünschten Eintrag.</para>
+                <result>
+                    <para>Der Eintrag wechselt in den Editiermodus.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie die gewünschten neuen Werte ein und klicken Sie <inlinemediaobject>
+                        <alt>Speichern Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_save.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject>
+                    </inlinemediaobject>, um die neuen Werte zu speichern.</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_documentTypes">
+        <title>Mehrere Dokumenttypen bearbeiten</title>
+        <para>Mithilfe dieser Aktion können Sie ausgewählte Werte für mehrere Dokumenttypen in einem
+            Schritt bearbeiten.</para>
+        <note>
+            <para>Bitte beachten Sie, dass Sie mit dieser Funktion, die gleichen Werte für alle
+                ausgewählten Dokumenttypen definieren.</para>
+        </note>
+        <para>Gehen Sie wie folgt vor, um die Eigenschaften der ausgewählten Dokumenttypen zu
+            bearbeiten.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Dokumenttypen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens zwei Dokumenttypen aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Schaltfläche Bearbeiten</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Bearbeiten).</para>
+                <result>
+                    <para>Das Dialogfenster <guilabel>Bearbeiten</guilabel> wird geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <para>Setzen Sie ein Häkchen in die Checkbox vor jedem Wert, den Sie für alle
+                    ausgewählten Dokumenttypen ändern wollen.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Prozess</guilabel> den Prozess an, mit dem die
+                    ausgewählten Dokumenttypen verknüpft werden sollen.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Druckmodus</guilabel> an, ob der Dokumenttyp für
+                    einseitigen oder für doppelseitigen Druck ausgelegt sein soll.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Medien</guilabel> an, mit welchen konfigurierten
+                    Medien der Dokumenttyp verknüpft werden soll.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Mindestanzahl</guilabel> die Mindestanzahl von
+                    Dokumenten dieser Art an, die in einer Sendung vorkommen müssen.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Maximalanzahl</guilabel> die maximale Anzahl von
+                    Dokumenten dieser Art an, die in einer Sendung vorkommen dürfen.</para>
+                <note>
+                    <para>Der Wert <guilabel>Mindestanzahl</guilabel> muss immer kleiner sein als
+                        der Wert <guilabel>Maximalanzahl</guilabel>.</para>
+                </note>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Einzel erlauben</guilabel> an, ob diesr Dokumenttp
+                    auch alleine versandt werden kann. Gültige Werte sind
+                        <userinput>true</userinput> (Standardwert) und <userinput>false</userinput>.
+                    Mit dem Wert <userinput>true</userinput> kann dieses Dokument alleine in einer
+                    Sendung enthalten sein.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Schacht</guilabel> den gewünschten Ausgabeschacht
+                    an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Kanal</guilabel> den gewünschten Ausgabekanal
+                    an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Typ</guilabel> den gewünschten Dokumenttp (das
+                    Format) an.</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_documentTypes">
+        <title>Dokumenttypen löschen</title>
+        <para>Mithilfe dieser Aktion können Sie einen Dokumenttyp oder mehrere Dokumenttypen
+            löschen. Gehen Sie wie folgt vor, um einen oder mehrere  Dokumenttypen zu
+            löschen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Dokumenttypen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens einen Dokumenttyp aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Löschen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Löschen).</para>
+                <result>
+                    <para>Der Bestätigungsdialog <guilabel>Dokumenttypen löschen</guilabel> wird
+                        geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Dokumenttypen
+                                löschen</guilabel> auf <guibutton>Ok</guibutton>, um den
+                            ausgewählten Dokumenttyp (bzw. die ausgewählten Dokumenttypen) zu
+                            löschen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Dokumenttypen
+                                löschen</guilabel> auf <guibutton>Abbrechen</guibutton>, um das
+                            Dialogfenster zu schließen, <emphasis>ohne</emphasis> den ausgewählten
+                            Dokumenttyp (bzw. die ausgewählten Dokumenttypen) zu löschen.</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Wenn der Dokumenttyp (die Dokumenttypen) erfolgreich gelöscht wurde(n),
+                        wird eine Erfolgsmeldung ausgegeben.</para>
+                    <para>Wenn der Dokumenttyp (die Dokumenttypen) nicht gelöscht werden konnte(n)
+                        wird eine entsprechende Fehlermeldung ausgegeben.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

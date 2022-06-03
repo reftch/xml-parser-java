@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_fieldsView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des attributs des documents</title>
+    <indexterm><primary>attributs fonctionnels</primary><secondary>créer</secondary></indexterm>
+    <indexterm><primary>configuration</primary><secondary>attributs fonctionnels</secondary></indexterm>
+    <para>Vous pouvez définir des attributs de document (attributs fonctionnels) pour une unité de traitement. Les attributs fonctionnels sont utilisés pour enregistrer les métadonnées et les propriétés des documents dans la base de données (dans la table DOCATTR). Les attributs de document peuvent être utilisés pour configurer le traitement des données de sortie. Certains champs sont réservés par défaut dans la base de données pour les attributs de document. Lorsque vous créez un nouvel attribut de document, vous créez donc techniquement un mappage du nom de l&apos;attribut de document vers l&apos;une des colonnes existantes de la table (COL001 à COL050). Dans l&apos;affichage <guilabel>Attributs de document</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_field"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_fields"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_fieldDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_field"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_documentAttributes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_fields"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_fields"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_field"><?dbhtml filename="SearchFieldsView.html" ?><title>Définir un attribut de document</title>
+        <para>Vous pouvez définir un nouvel attribut de document (attribut fonctionnel) (affecter le nom de l&apos;attribut de document à l&apos;une des colonnes existantes de la table). Vous pouvez configurer les propriétés souhaitées dans une boîte de dialogue séparée.</para>
+        <para>Procédez comme suit pour définir un nouveau champ.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Attributs de document</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Créer</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Créer).</para>
+                <result>
+                    <para>Une nouvelle entrée avec des champs vides est créée dans la table d&apos;aperçu. Les champs <guilabel>ID</guilabel>, <guilabel>Nom d&apos;attribut</guilabel> et <guilabel>Taille des données</guilabel> sont obligatoires et donc mis en évidence en rouge (marqués comme incorrects) tant qu&apos;ils ne contiennent pas une entrée valide.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>ID</guilabel>, utilisez les touches fléchées pour sélectionner un numéro libre comme identificateur unique pour le nouvel attribut de document.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Nom d&apos;attribut</guilabel>, entrez l&apos;attribut de document souhaité.</para>
+                <para>Les noms d&apos;attributs suivants sont fixes et existent donc déjà en tant que colonnes dans la table <database>DOCATTR</database>. Par conséquent, vous ne pouvez pas utiliser les noms suivants comme noms d&apos;attribut pour un nouvel attribut de document :</para>
+                <itemizedlist>
+                    <listitem>
+                        <para><database>DOCID</database></para>
+                    </listitem>
+                    <listitem>
+                        <para><database>ZIP</database></para>
+                    </listitem>
+                    <listitem>
+                        <para><database>TOTALPAGES</database></para>
+                    </listitem>
+                    <listitem>
+                        <para><database>COUNTRY</database></para>
+                    </listitem>
+                    <listitem>
+                        <para><database>ISOCODE</database></para>
+                    </listitem>
+                    <listitem>
+                        <para><database>VARIOOPT</database></para>
+                    </listitem>
+                    <listitem>
+                        <para><database>PREMIUMKDNR</database></para>
+                    </listitem>
+                </itemizedlist>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Type de données</guilabel>, spécifiez le type de données du contenu du champ. Utilisez la valeur <userinput>C</userinput> pour les chaînes ou <code>N</code> pour les nombres. Si vous ne faites pas d&apos;autres spécifications, la valeur par défaut <code>C</code> est utilisée.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Taille des données</guilabel>, utilisez les touches fléchées pour sélectionner le nombre maximum de caractères que l&apos;attribut de document peut contenir. La valeur par défaut <code>255</code> est présélectionnée.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer le nouvel attribut de document et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et le nouvel attribut de document est affiché dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la création du nouvel attribut de document et quitter le mode d&apos;édition sans enregistrer le mappage de répertoire.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+        <note>
+            <para>Habituellement, les attributs fonctionnels sont configurés dans l&apos;interface de configuration de <productname>&dbwp;</productname> sous <menuchoice><guimenu>Configuration du processus</guimenu> <guisubmenu>Paramètres généraux</guisubmenu> <guisubmenu>Définitions</guisubmenu> <guisubmenu>Liste des noms du champ</guisubmenu></menuchoice>. Si vous configurez de nouveaux attributs de document ou apportez des modifications à des attributs de document existants via l&apos;interface web, veuillez noter que vous devez également effectuer ces modifications dans <productname>&dbwp;</productname>. Dans le cas contraire, vos modifications seront écrasées lors du prochain déploiement de l&apos;unité de traitement en question.</para>
+            <indexterm>
+                <primary>champs</primary>
+                <secondary>configuration dans DocBridge Workbench for Pilot</secondary>
+            </indexterm>
+        </note>
+    </sect1>
+    <sect1 xml:id="display_fields">
+        <title>Afficher les attributs du document</title>
+        <para>Vous pouvez afficher une vue globale des attributs de document configurés dans l&apos;espace de travail de l&apos;affichage <guilabel>Attributs de document</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Répertoires</alt><imageobject>
+                <imagedata fileref="images/scr_FieldsView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque attribut de document configuré :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Identificateur unique du nouvel attribut de document (numéro séquentiel).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Nom d&apos;attribut</guilabel></term>
+                <listitem>
+                    <para>Colonne de table à utiliser pour le nouvel attribut de document (attribut fonctionnel).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Type de données</guilabel></term>
+                <listitem>
+                    <para>Les valeurs valides sont <userinput>C</userinput> (pour les lettres) ou <userinput>N</userinput> (pour les chiffres)</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Taille des données</guilabel></term>
+                <listitem>
+                    <para>Le nombre maximum de caractères dans la colonne de la table (dans l&apos;attribut de document).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_fieldDetails">
+        <title>Afficher les détails de l&apos;attribut de document</title>
+        <para>Vous pouvez afficher les informations détaillées concernant un attribut de document dans le volet des détails. Actuellement, le volet des détails contient les mêmes informations que la table d&apos;aperçu.</para>
+        <mediaobject><alt>Affichage des champs avec le volet des détails</alt><imageobject>
+                <imagedata fileref="images/scr_FieldsViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="modify_field">
+        <title>Éditer l&apos;attribut du document</title>
+        <para>Vous pouvez éditer les propriétés d&apos;un attribut de document.</para>
+        <note>
+            <para>Veuillez noter que cette action ne vous permet pas d&apos;éditer l&apos;ID de l&apos;attribut du document. Si vous souhaitez modifier l&apos;ID, créez un nouvel attribut de document avec les valeurs souhaitées (voir <xref linkend="create_field"
+                />).</para>
+        </note>
+        <para>Procédez comme suit pour éditer les propriétés d&apos;un attribut de document existant :</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Attributs de document</guilabel>.</para>
+            </step>
+            <step>
+                <para>Double-cliquez sur l&apos;entrée souhaitée dans la table d&apos;aperçu.</para>
+                <result>
+                    <para>L&apos;entrée passe en mode d&apos;édition.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Nom d&apos;attribut</guilabel>, entrez l&apos;attribut fonctionnel souhaité.</para>
+                <para>Les noms d&apos;attributs suivants sont fixes et existent donc déjà en tant que colonnes dans la table <database>DOCATTR</database>. Par conséquent, vous ne pouvez pas utiliser les noms suivants comme noms d&apos;attribut pour un nouvel attribut de document :</para>
+                <itemizedlist>
+                    <listitem>
+                        <para><database>DOCID</database></para>
+                    </listitem>
+                    <listitem>
+                        <para><database>ZIP</database></para>
+                    </listitem>
+                    <listitem>
+                        <para><database>TOTALPAGES</database></para>
+                    </listitem>
+                    <listitem>
+                        <para><database>COUNTRY</database></para>
+                    </listitem>
+                    <listitem>
+                        <para><database>ISOCODE</database></para>
+                    </listitem>
+                    <listitem>
+                        <para><database>VARIOOPT</database></para>
+                    </listitem>
+                    <listitem>
+                        <para><database>PREMIUMKDNR</database></para>
+                    </listitem>
+                </itemizedlist>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Type de données</guilabel>, spécifiez le type de données du contenu du champ. Utilisez la valeur <userinput>C</userinput> pour les chaînes ou <code>N</code> pour les nombres.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Taille des données</guilabel>, utilisez les touches fléchées pour sélectionner le nombre maximum de caractères que l&apos;attribut de document peut contenir.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer les valeurs mises à jour de l&apos;attribut du document et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et l&apos;attribut du document est affiché avec les valeurs mises à jour dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la création du nouvel attribut de document et quitter le mode d&apos;édition sans enregistrer le mappage de répertoire.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_documentAttributes">
+        <title>Éditer plusieurs attributs de document</title>
+        <para>Cette action vous permet d&apos;éditer des valeurs sélectionnées pour plusieurs attributs de document en une seule étape.</para>
+        <note>
+            <para>Veuillez noter qu&apos;avec cette fonction, vous définissez les mêmes valeurs pour tous les attributs de document sélectionnés.</para>
+        </note>
+        <para>Procédez comme suit pour éditer les propriétés des attributs de document sélectionnés.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Attributs de document</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins deux attributs de document dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                        <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                            scalefit="1"/>
+                    </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Éditer</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cochez la case en face de chaque valeur que vous souhaitez modifier pour tous les attributs de document sélectionnés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Processus</guilabel>, entrez le processus auquel vous voulez lier les attributs de document sélectionnés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Nom d&apos;attribut</guilabel>, entrez si nécessaire un nouveau nom pour les attributs sélectionnés.</para>
+            </step>
+            
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <guibutton>Confirmer</guibutton> pour enregistrer les modifications affectant tous les attributs de document sélectionnés et fermer la boîte de dialogue.</para>
+                        <result>
+                            <para>Les paramètres modifiés sont affichés pour les attributs de document sélectionnés dans la table d&apos;aperçu et dans le volet des détails.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1> 
+    <sect1 xml:id="filter_fields">
+        <title>Filtrer les attributs du document</title>
+        <para>Utilisez cette action pour filtrer la vue globale des attributs de document existants.</para>
+        <para>Pour filtrer les attributs de document existants et ainsi réduire le nombre d&apos;attributs de document affichés, procédez comme suit.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Attributs de document</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, placez le curseur dans le champ de texte <guilabel>Filtre</guilabel>.</para>
+            </step>
+            <step>
+                <para>Vous pouvez filtrer les attributs de document existants par ID (filtre simple) ou par d&apos;autres paramètres (pour plus d&apos;informations sur les critères de filtrage, voir <xref linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_fields">
+        <title>Supprimer les attributs du document</title>
+        <para>Utilisez cette action pour supprimer un ou plusieurs attribut(s) de document. Procédez comme suit pour supprimer des attributs de document existants.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Attributs de document</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins un attribut de document dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Supprimer</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Supprimer).</para>
+                <result>
+                    <para>La boîte de dialogue de confirmation <guilabel>Supprimer des attributs de document</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des attributs de document</guilabel>, cliquez sur <guibutton>Ok</guibutton> pour supprimer le(s) attribut(s) de document sélectionné(s).</para>
+                    </step>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer un attribut de document</guilabel>, cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue <emphasis>sans</emphasis> supprimer le(s) attribut(s) sélectionné(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Si l&apos;attribut ou les attributs a/ont été supprimé(s), un message de confirmation est émis.</para>
+                    <para>Si l&apos;attribut ou les attributs n&apos;a/ont pas pu être supprimé(s), un message d&apos;erreur correspondant est émis.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_processActivitiesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des activités de processus</title>
+    <para>L&apos;affichage <guilabel>Activités de processus</guilabel> affiche les activités de processus pour un processus (ou une unité de traitement) sélectionné. La table d&apos;aperçu dans l&apos;affichage <guilabel>Activités de processus</guilabel> comprend toutes les activités pour le(s) processus sélectionné(s) dans l&apos;affichage <guilabel>Processus</guilabel>.<indexterm>
+            <primary>Activités de processus</primary>
+            <secondary>Processus</secondary>
+        </indexterm></para>
+    <para>Dans l&apos;affichage <guilabel>Activités de processus</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="display_processActivities"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_processActivity_details"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_processActivities"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="display_processActivities"><?dbhtml filename="SearchProcessActivitiesView.html" ?><title>Afficher les activités de processus</title>
+        <para>Si vous avez préalablement sélectionné au moins un processus dans l&apos;affichage <guilabel>Processus</guilabel> (voir <xref linkend="db_pil_wui_processesView"/>), vous pouvez afficher un aperçu des activités de processus existantes dans l&apos;affichage <guilabel>Activités de processus</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Activités de processus</alt><imageobject>
+                <imagedata fileref="images/scr_ProcessActivitiesViewGen.png" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque processus :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Identificateur unique de l&apos;activité de processus généré de façon automatique (numéro séquentiel).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Processus</guilabel></term>
+                <listitem>
+                    <para>Le nom du processus défini par l&apos;utilisateur auquel appartient l&apos;activité du processus.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Séquence</guilabel></term>
+                <listitem>
+                    <para>La séquence du processus auquel appartient l&apos;activité du processus.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Gestionnaire</guilabel></term>
+                <listitem>
+                    <para>Le gestionnaire auquel le processus est affecté.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Job</guilabel></term>
+                <listitem>
+                    <para>Identificateur unique d&apos;un job lié au processus (ou à l&apos;activité du processus).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>État</guilabel></term>
+                <listitem>
+                    <para>État de l&apos;activité du processus (par exemple <guilabel>STARTED</guilabel> ou <guilabel>FINISHED</guilabel>).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Sélecteur</guilabel></term>
+                <listitem>
+                    <para>Critère de sélection pour les jobs à traiter.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_processActivity_details">
+        <title>Afficher les détails des activités du processus</title>
+        <para>Vous pouvez afficher les informations détaillées concernant un processus spécifique dans le volet des détails. Le volet des détails contient actuellement les mêmes informations que la table d&apos;aperçu.</para>
+        <para>Cliquez sur une entrée de la table d&apos;aperçu afin d&apos;afficher les informations détaillées dans le volet des détails.</para>
+        <mediaobject><alt>Volet des détails</alt><imageobject>
+                <imagedata fileref="images/scr_ProcessActivitiesViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="filter_processActivities">
+        <title>Filtrer les activités du processus</title>
+        <para>Vous pouvez utiliser cette action pour filtrer l&apos;aperçu des activités du processus existantes à l&apos;aide des colonnes disponibles.</para>
+        <para>Pour filtrer les activités du processus existantes et réduire ainsi le nombre d&apos;activités du processus affichées, procédez comme suit.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Activités de processus</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur le bouton <guibutton>Filtres</guibutton>.</para>
+            </step>
+            <step>
+                <para>Vous pouvez filtrer les activités de processus existantes par ID (filtre simple) ou par d&apos;autres paramètres (pour plus d&apos;informations sur les critères de filtrage, voir <xref
+                        linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

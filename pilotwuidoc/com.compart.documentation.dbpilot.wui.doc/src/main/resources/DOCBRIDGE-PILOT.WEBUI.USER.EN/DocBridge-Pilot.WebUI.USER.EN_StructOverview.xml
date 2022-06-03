@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_structuralOverview" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Basics on Working With the Web Interface</title>
+    <sect1 xml:id="elements_webinterface">
+        <title>UI Elements</title>
+        <para>After the first login (see <xref linkend="login_server_db"/>), the <productname>&dbpi;</productname> web interface is initially empty. Once you have created (at least) the first desktop (see <xref linkend="createDesktop"/>), you can also open and manage views. The <productname>&dbpi;</productname> web interface consists of the following elements:</para>
+        <mediaobject><alt>Screenshot with desktop and Processes view</alt><imageobject>
+                <imagedata fileref="images/DBPilotWUI_Overview.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <variablelist>
+            <varlistentry>
+                <term><emphasis>Navigation Bar of the Web Interface</emphasis></term>
+                <listitem>
+                    <indexterm><primary>navigation</primary></indexterm>
+                    <para>The web interface provides navigation bars on two different levels. The navigation bar of the web interface contains different functional elements. In addition to the buttons for cross-view functions, the navigation bar also contains the tabs for the available desktops. Use the tabs to switch between the desktops. The currently active desktop is highlighted blue. The following buttons are currently available (seen from left to right):</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Add Desktop Button</alt><imageobject>
+                                        <imagedata fileref="images/addDesktop.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Add Desktop)</term>
+                            <listitem>
+                                <para>By clicking the button <guilabel>Add Desktop</guilabel>, you can create a new (empty) desktop (for more information, see <xref linkend="createDesktop"/>).</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Delete Desktop Button</alt><imageobject>
+                                        <imagedata fileref="images/btn_deleteDesktop.png"
+                                            align="left" scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Delete Desktop)</term>
+                            <listitem>
+                                <note>
+                                    <para>This button is only visible if at least one desktop is available.</para>
+                                </note>
+                                <para>Use the <guilabel>Delete Desktop</guilabel> button to delete the currently active desktop (for more information, see <xref linkend="deleteDesktop"/>).</para>
+                            </listitem>
+                        </varlistentry><!--<varlistentry>
+                            <term><inlinemediaobject>
+                                    <alt>Automatisch anordnen Schaltfläche</alt>
+                                    <imageobject>
+                                        <imagedata fileref="images/btn_arrangeViews.png"
+                                            align="left" scalefit="1" format="PNG"/>
+                                    </imageobject>
+                                </inlinemediaobject> (Fenster automatisch anordnen)</term>
+                            <listitem>
+                                <para>Mit der Schaltfläche <guilabel>Fenster auotmatisch
+                                        anordnen</guilabel> können Sie ein Gitterlayout verwenden,
+                                    um die geöffneten Fenster automatisch anordnen zu lassen (für
+                                    weitere Informationen, siehe <xref linkend="arrangeViews"
+                                    />).</para>
+                            </listitem>
+                        </varlistentry>--><varlistentry>
+                            <term><inlinemediaobject><alt>Close all Widgets</alt><imageobject>
+                                        <imagedata fileref="images/btn_closeAll.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Close all Widgets)</term>
+                            <listitem>
+                                <para>The <guilabel>Close all Widgets</guilabel> button allows you to close all widgets (windows) open on the current desktop in one step.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Toggle Full Screen Button</alt><imageobject>
+                                        <imagedata fileref="images/btn_toggleFullscreen.png"
+                                            align="left" scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Toggle Full Screen)</term>
+                            <listitem>
+                                <para>Use the <guilabel>Toggle Full Screen</guilabel> button to display the web interface in full screen. If the web interface is already displayed in full screen mode, you can use the same button to reduce the size.</para>
+                            </listitem>
+                        </varlistentry><!--<varlistentry>
+                            <term><inlinemediaobject>
+                                    <alt>Farbschema wechseln Schaltfläche</alt>
+                                    <imageobject>
+                                        <imagedata fileref="images/btn_switchMode.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject>
+                                </inlinemediaobject> (Farbschema wechseln)</term>
+                            <listitem>
+                                <para>Mit der Schaltfläche <guilabel>Farbschema wechseln</guilabel>
+                                    können Sie das Farbschema der Weboberfläche umzustellen (für
+                                    weitere Informationen, siehe <xref linkend="change_wui_contrast"
+                                    />)..</para>
+                            </listitem>
+                        </varlistentry>--><varlistentry>
+                            <term><inlinemediaobject><alt>Settings button</alt><imageobject>
+                                        <imagedata fileref="images/btn_settings.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Modify Settings)</term>
+                            <listitem>
+                                <para>The <guilabel>Settings</guilabel> button opens a separate dialog, in which you can change the display language and the log level (for more information, see <xref linkend="Systemsettings_WUI"/>).</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Info button</alt><imageobject>
+                                        <imagedata fileref="images/btn_info.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Display Information dialog)</term>
+                            <listitem>
+                                <para>The <guilabel>Info</guilabel> dialog shows information about <productname>&dbpi;</productname> in a separate dialog.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Display Help pages</alt><imageobject>
+                                        <imagedata fileref="images/btn_openHelp.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Display Help pages)</term>
+                            <listitem>
+                                <para>The element <guilabel>Display Help pages</guilabel> opens a separate dialog, in which the help pages for the web interface are displayed (for more information, see <xref linkend="displayHelp"/>).</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Logout</alt><imageobject>
+                                        <imagedata fileref="images/btn_logout.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Log Out)</term>
+                            <listitem>
+                                <para>The <guilabel>Logout</guilabel> element logs you off from the web interface. Use this button e.g. to change the user.</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis>Navigation Bar of the View</emphasis></term>
+                <listitem>
+                    <indexterm><primary>navigation</primary></indexterm>
+                    <para>The web interface provides navigation bars on two different levels. The navigation bar of the view contains buttons for the standard actions (<guibutton>Delete</guibutton>, and <guibutton>Refresh</guibutton>) as well as some other view-specific actions, as required. Use the buttons to perform actions on one or more (selected) entries in the table. Only the buttons for those actions are visible that are available for all selected entries in the table. If no buttons are visible above the table except for the <inlinemediaobject><alt>Update view button</alt><imageobject>
+                                <imagedata fileref="images/btn_refresh.png" align="left"
+                                    scalefit="1" format="PNG"/>
+                            </imageobject></inlinemediaobject> (Update view) there are either no actions that are applicable to all selected elements or you do not have the necessary permissions to perform any actions on the displayed elements.</para>
+                    <para>Additionally, the navigation bar of the view on the right side contains some functional elements (represented as icons). The following functional elements are currently available:</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Column selection button</alt><imageobject>
+                                        <imagedata fileref="images/btn_columns.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Select columns for display)</term>
+                            <listitem>
+                                <para>The <guilabel>Column Display Settings</guilabel> button opens a separate dialog , where you can select which columns are to be displayed in the respective view (for more information, see <xref
+                                        linkend="db_pil_wui_columnPreferences"/>).</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Display Help pages</alt><imageobject>
+                                        <imagedata fileref="images/btn_openHelp.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Display Help pages)</term>
+                            <listitem>
+                                <para>The <guilabel>Display Help Pages</guilabel> button opens a separate tab in your browser that displays the help pages for the current view (for more information, see <xref linkend="displayHelp"/>).</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis>Sidebar</emphasis></term>
+                <listitem>
+                    <para>The sidebar contains an entry with the corresponding icon for each view. By clicking on the icon of the desired view, you open the view in a separate window on the active desktop, for a complete overview of the available views, see <xref
+                            linkend="listOfViews"/></para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis>Workspace</emphasis></term>
+                <listitem>
+                    <para>The workspace serves as a container for the desktop and the views opened on the desktop. If you click one of the table rows in the overview table of a view, detailed information about the selected entry is displayed in the details pane on the right side.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis>Details Pane</emphasis></term>
+                <listitem>
+                    <para>The details pane provides additional information on the selected table entry. Typically, the scope of information in the details pane goes beyond the information in the overview table. The details pane is automatically displayed if at least one element is present in the overview table of the respective view. In some views, the available information is grouped within the details pane using different tabs.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="listOfViews">
+        <title>Overview of Available Views</title>
+        <para>The following list gives a brief overview of the available views.</para>
+        <variablelist>
+            <varlistentry>
+                <term>Processes View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_processesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Process Activities View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_processActivitiesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Jobs View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_jobsView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Job Activities View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_jobActivitiesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Mail Pieces View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_mailPiecesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Documents View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_documentsView"
+                    />.</para>
+                </listitem>
+            </varlistentry>            
+            <varlistentry>
+                <term>Mail Piece Tracking View</term>
+                <listitem>
+                    <para>For more information, see <xref
+                        linkend="db_pil_wui_mailPieceTrackingsView"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Applications View</term>
+                <listitem>
+                    <para>For more information, see <xref
+                            linkend="db_pil_wui_applicationsView"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Application Activity View</term>
+                <listitem>
+                    <para>For more information, see <xref
+                        linkend="db_pil_wui_applicationActivitiesView"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Commands View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_commandsView"
+                        />.</para>
+                </listitem>
+            </varlistentry>            
+            <varlistentry>
+                <term>Workflow Templates View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_workflowTemplatesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Workflow Instances View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_workflowInstancesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Workflow Activities View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_workflowActivitiesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Scheduler Activities View</term>
+                <listitem>
+                    <para>For more information, see <xref
+                            linkend="db_pil_wui_taskHistoryView"/>.</para>
+                </listitem>
+            </varlistentry>
+            
+            
+            
+            <varlistentry>
+                <term>Directories View</term>
+                <listitem>
+                    <para>For more information, see <xref
+                            linkend="db_pil_wui_directoriesView"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Document Attributes View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_fieldsView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+
+            <varlistentry>
+                <term>Hotfolders View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_hotfoldersView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Timers View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_timersView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Triggers View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_triggersView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Scheduler Activities View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_taskHistoryView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Envelopes View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_envelopesView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Media View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_mediaView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Paper Sizes View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_paperSizeView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Document Types View</term>
+                <listitem>
+                    <para>For more information, see <xref
+                            linkend="db_pil_wui_documentTypesView"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Print Jobs View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_printJobsView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Process Locks View</term>
+                <listitem>
+                    <para>For more information, see <xref
+                            linkend="db_pil_wui_processLocksView"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Clients View</term>
+                <listitem>
+                    <para>For more information, see <xref linkend="db_pil_wui_tenantsView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+</chapter>

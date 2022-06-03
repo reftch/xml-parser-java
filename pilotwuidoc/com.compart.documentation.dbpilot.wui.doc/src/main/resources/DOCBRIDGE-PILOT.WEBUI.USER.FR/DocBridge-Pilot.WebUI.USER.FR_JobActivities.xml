@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_jobActivitiesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des activités de jobs</title>
+    <para>L&apos;affichage <guilabel>Activités du job</guilabel> liste les activités de tous les jobs importés et traités par <productname>&dbpi;</productname>. Dans l&apos;affichage <guilabel>Activités du job</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="display_jobActivities"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_jobActivity_details"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_jobActivities"/></para>
+        </listitem>
+
+    </itemizedlist>
+    <sect1 xml:id="display_jobActivities"><?dbhtml filename="SearchJobActivitiesView.html" ?><title>Afficher les activités du job</title>
+        <para>Vous pouvez afficher une vue globale des activités pour les jobs importés ou traités dans l&apos;affichage <guilabel>Activités du job</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Activités du job</alt><imageobject>
+                <imagedata fileref="images/scr_JobActivitiesViewGen.png" width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque processus :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique de l&apos;activité du job généré de façon automatique (numéro séquentiel).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Processus</guilabel></term>
+                <listitem>
+                    <para>Le processus auquel le job, et donc l&apos;activité du job, est affecté.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Job source</guilabel></term>
+                <listitem>
+                    <para>Identificateur unique du job d&apos;origine (par exemple pour les actions de fusion et de fractionnement).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Job</guilabel></term>
+                <listitem>
+                    <para>Identificateur unique du job auquel l&apos;activité du job est liée.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Action</guilabel></term>
+                <listitem>
+                    <para>Nom de l&apos;action.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Créé</guilabel></term>
+                <listitem>
+                    <para>Horodatage (date et heure) du moment où l&apos;action a été enregistrée.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Contexte</guilabel></term>
+                <listitem>
+                    <para>ID de contexte unique (UUID).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_jobActivity_details">
+        <title>Afficher les détails des activités du job</title>
+        <para>Vous pouvez afficher les informations détaillées concernant chaque activité du job dans le volet des détails. Le volet des détails contient actuellement les mêmes informations que la table d&apos;aperçu.</para>
+        <mediaobject><alt>Volet des détails</alt><imageobject>
+                <imagedata fileref="images/scr_JobActivitiesViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="filter_jobs">
+        <title>Filtrer les activités du job</title>
+        <para>Utilisez cette action pour filtrer la vue globale des activités du job existantes à l&apos;aide des colonnes disponibles.</para>
+        <para>Procédez comme suit pour filtrer les activités du job existantes et réduire ainsi le nombre d&apos;activités du job affichées.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Activités du job</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur le bouton <guibutton>Filtres</guibutton>.</para>
+            </step>
+            <step>
+                <para>Vous pouvez filtrer les activités du job existantes par l&apos;ID (filtre simple) ou par d&apos;autres paramètres (pour plus d&apos;informations sur les critères de filtrage, voir <xref linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

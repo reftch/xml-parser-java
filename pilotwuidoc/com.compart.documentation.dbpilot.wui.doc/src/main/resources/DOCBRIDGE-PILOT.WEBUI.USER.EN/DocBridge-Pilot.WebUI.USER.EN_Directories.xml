@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_directoriesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Working with Directories</title>
+    <para>For processing jobs (for a process), you can define different directories from which input files are read or to which the generated output files are written (depending on the result of processing). Each symbolic directory name is mapped to a specific directory in the file system.</para>
+    <para>The <guilabel>Directories</guilabel> view shows the directory definitions configured for  use with <productname>&dbpi;</productname>. The following actions are supported in the <guilabel>Directories</guilabel> view:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_directory"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_directories"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_directoryDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_directory"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_directories"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_directories"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_directories"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_directory"><?dbhtml filename="SearchDirectoryView.html" ?><title>Creating a Directory</title>
+        <para>You can create a new directory. You can configure the desired properties directly in the overview table.</para>
+        <note>
+            <para>Please keep in mind that this action does not create a new directory. By specifying the path to an existing directory, you  map the directory to the specified symbolic name (ID).</para>
+        </note>
+        <note>
+            <para>If you want to define generally available directories for all processes (process units), you can create these directory definitions for the process (process unit <guilabel>) $SYSTEM</guilabel>.</para>
+        </note>
+        <note>
+            <para>Please note that the path specification in directory definitions has to comply to the path conventions of the respective server operating system.</para>
+        </note>
+        <para>Proceed as follows to create a new directory mapping.</para>
+        <procedure>
+            <step>
+                <para>Go to the <guilabel>Directories</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Create</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Create).</para>
+                <result>
+                    <para>A new entry with empty fields is created in the overview table. The <guilabel>Value</guilabel> field contains mandatory information and is therefore highlighted in red (marked as incorrect) while it does not contain a valid entry.</para>
+                </result>
+            </step>
+            <step>
+                <para>Enter a name for the new directory mapping in the <guilabel>ID</guilabel> field.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Value</guilabel> field, specify the path to the desired directory as an absolute path. When specifying the path, use the correct notation for your operating system. Relative paths are theoretically supported, but are hardly usable in practice. Relative paths refer to the current directory of the active web container process. However, this is generally not known or does not remain constant over the entire runtime.</para>
+                <note>
+                    <para>The specified directory path can contain variable and fixed elements.</para>
+                </note>
+                <indexterm>
+                    <primary>Directory</primary>
+                    <secondary>Path</secondary>
+                </indexterm>
+            </step>
+            <step>
+                <para>If required, specify a comment or a brief description of the desired directory in the <guilabel>Description</guilabel> field (e.g.&nbsp;e.g. to document the intended use or special features).</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the new directory mapping and to exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the new directory mapping is displayed in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel the creation of the directory mapping and exit the editing mode without saving the directory mapping.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+
+    </sect1>
+    <sect1 xml:id="display_directories">
+        <title>Listing Directories</title>
+        <para>You can display an overview of the configured directories in the overview table of the <guilabel>Directories</guilabel> view.</para>
+        <mediaobject><alt>Screenshot Directories view</alt><imageobject>
+                <imagedata fileref="images/scr_DirectoryView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>The overview table displays the following information for each configured directory by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The unique identifier of the directory.</para>
+                </listitem>
+            </varlistentry><!--<varlistentry>
+                <term><guilabel>Typ</guilabel></term>
+                <listitem>
+                    <para>Aktuell wird nur der Wert <guilabel>directories</guilabel>
+                        unterstützt.</para>
+                </listitem>
+            </varlistentry>--><varlistentry>
+                <term><guilabel>Value</guilabel></term>
+                <listitem>
+                    <para>Specifies the path to the desired directory as an absolute path. When specifying the path, use the correct notation for your operating system. Relative paths are theoretically supported, but are hardly usable in practice. Relative paths refer to the current directory of the active web container process. However, this is generally not known or does not remain constant over the entire runtime.</para>
+                    <note>
+                        <para>The specified directory path can contain variable and fixed elements.</para>
+                    </note>
+                    <indexterm>
+                        <primary>Directory</primary>
+                        <secondary>Path</secondary>
+                    </indexterm>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Description</guilabel></term>
+                <listitem>
+                    <para>Optional description of the directory. You can use the description to document special features or the intended use.</para>
+                    <indexterm>
+                        <primary>Directory</primary>
+                        <secondary>Description</secondary>
+                    </indexterm>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_directoryDetails">
+        <title>Displaying Directory Information</title>
+        <para>You can display the details for a specific directory in the details pane. Currently, the details pane contains the same scope of information as the overview table.</para>
+        <mediaobject><alt>Hidden and displayed sections for linked elements</alt><imageobject>
+                <imagedata fileref="images/scr_DirectoriesViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>        
+    </sect1>
+    <sect1 xml:id="modify_directory">
+        <title>Modifying a Directory</title>
+        <para>You can edit the properties of an envelope mapping.</para>
+        <note>
+            <para>Please keep in mind that you cannot use this action to modify the - envelope mapping ID (the name). To change the ID, create a new directory mapping with the desired ID (see <xref
+                    linkend="create_application"/>).</para>
+        </note>
+        <para>Proceed as follows to edit the values of an existing directory:</para>
+        <procedure>
+            <step>
+                <para>Go to the <guilabel>Directories</guilabel> view.</para>
+            </step>
+
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Edit</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Edit).</para>
+                <result>
+                    <para>The entry switches to editing mode.</para>
+                    <note>
+                        <para>Please keep in mind that this action cannot be used to modify the ID or type of the selected directory mapping. If you need a directory mapping with a different ID, create a new directory mapping (see <xref linkend="create_directory"
+                            />).</para>
+                    </note>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Value</guilabel> field, specify the desired new directory path.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Description</guilabel> field, enter a comment or a brief description of the selected directory as required.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the directory mapping with the new values and to exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the directory mapping is displayed with the new values in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel editing the directory mapping and exit the editing mode without saving the changes.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_directories">
+        <title>Modifying Multiple Directories</title>
+        <para>You can edit selected values for multiple directories in one step.</para>
+        <note>
+            <para>Please keep in mind that with this function, you define the same values for all selected directories.</para>
+        </note>
+        <para>Proceed as follows to edit the properties of the selected directories.</para>
+        <procedure>
+            <step>
+                <para>Go to the <guilabel>Directories</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least two directories from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the web interface, click <inlinemediaobject><alt>Icon Edit</alt><imageobject>
+                        <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                            scalefit="1"/>
+                    </imageobject></inlinemediaobject> (Edit).</para>
+                <result>
+                    <para>The <guilabel>Edit</guilabel> dialog opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>Tick the checkbox in front of each value you want to change for all selected directories.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Value</guilabel> field, specify the desired new directory path.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Description</guilabel> field, enter a comment or a brief description of the selected directory as required.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <guibutton>OK</guibutton> to save the changed settings for all selected directories and close the dialog.</para>
+                        <result>
+                            <para>The changed settings for the selected directories are displayed in the overview table and in the details pane.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <guibutton>Cancel</guibutton> to close the dialog without changing the settings.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="filter_directories">
+        <title>Filtering Directories</title>
+        <para>Use this action to filter the overview of existing directories.</para>
+        <para>Proceed as follows to filter the existing directory mappings and thus reduce the number of displayed directories.</para>
+        <procedure>
+            <step>
+                <para>Go to the <guilabel>Directories</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, place the cursor in the text field <guilabel>Filter</guilabel>.</para>
+            </step>
+            <step>
+                <para>You can filter the existing directories by ID (simple filter) or by other parameters (for more information about filter criteria, see <xref linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_directories">
+        <title>Deleting Directories</title>
+        <para>Use this action to delete a single directory or multiple directories. Proceed as follows to delete existing directories.</para>
+        <note>
+            <para>Please note that this action does not delete the physical directory in your file system, but the link between the directory and the logical name.</para>
+        </note>
+        <procedure>
+            <step>
+                <para>Go to the <guilabel>Directories</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one directory from the overview table.</para><!--<note>
+                    <para>Bitte beachten Sie, dass die (standardmäßig erstellten) Verzeichnisse für
+                        den Standardprozess <guilabel>$SYSTEM</guilabel> nicht gelöscht werden
+                        können.</para>
+                </note>--></step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Delete</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Delete).</para>
+                <result>
+                    <para>The confirmation dialog <guilabel>Delete Directories</guilabel> opens.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Directories</guilabel>, click <guibutton>OK</guibutton> to delete the selected directory (or directories).</para>
+                    </step>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Directories</guilabel>, click <guibutton>Cancel</guibutton> to close the dialog <emphasis>without</emphasis> deleting the selected directory (or directories).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>If the directories have been successfully deleted, a success message is displayed.</para>
+                    <para>If the directories could not be deleted, a corresponding error message is displayed.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

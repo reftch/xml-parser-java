@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_taskHistoryView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des activités de l&apos;ordonnanceur</title>
+    <para>Les sections suivantes décrivent le travail avec des ordonnanceurs. Vous pouvez utiliser les actions décrites dans les sections suivantes pour suivre l&apos;exécution des tâches du scheduler Quartz. Dans l&apos;affichage <guilabel>Activités de l&apos;ordonnanceur</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="display_scheduler_activities"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_scheduler_activity_details"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_scheduler_activities"/></para>
+        </listitem>        
+    </itemizedlist>
+    <sect1 xml:id="display_scheduler_activities">
+        <title>Afficher des activités de l&apos;ordonnanceur</title>
+        <para>La table d&apos;aperçu de l&apos;affichage <guilabel>Activités de l&apos;ordonnanceur</guilabel> montre l&apos;exécution des tâches de l&apos;ordonnanceur Quartz.</para>
+        <mediaobject><alt>Capture d’écran Affichage Activités de l&apos;ordonnanceur</alt><imageobject>
+                <imagedata fileref="images/scr_schedulerActivitiesView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche les informations suivantes pour chaque activité de l&apos;ordonnanceur :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique de l&apos;activité de l&apos;ordonnanceur (numéro séquentiel).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Groupe</guilabel></term>
+                <listitem>
+                    <para>Nom du groupe de tâches Quartz.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Nom</guilabel></term>
+                <listitem>
+                    <para>Nom de l&apos;activité de l&apos;ordonnanceur.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>État</guilabel></term>
+                <listitem>
+                    <para>Indication d&apos;état. Les valeurs valables dépendent du type. Les valeurs suivantes sont actuellement prises en charge pour les types <guilabel>maintask</guilabel> et <guilabel>importtask</guilabel> :</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>STARTED</para>
+                        </listitem>
+                        <listitem>
+                            <para>FINISHED</para>
+                        </listitem>
+                        <listitem>
+                            <para>FAILED</para>
+                        </listitem>
+                        <listitem>
+                            <para>INTERRUPTED</para>
+                        </listitem>
+                    </itemizedlist>
+                    <para>Les valeurs suivantes sont actuellement prises en charge pour le type <guilabel>applicationtask</guilabel> :</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para><guilabel>SHUTDOWN</guilabel></para>
+                        </listitem>
+                        <listitem>
+                            <para><guilabel>STARTUP</guilabel></para>
+                        </listitem>
+                    </itemizedlist>
+                    <para>Les valeurs suivantes sont actuellement prises en charge pour le type <guilabel>timertask</guilabel> :</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para><guilabel>ACTIVATED</guilabel></para>
+                        </listitem>
+                        <listitem>
+                            <para><guilabel>DEACTIVATED</guilabel></para>
+                        </listitem>
+                    </itemizedlist>
+                </listitem>
+            </varlistentry>
+
+            <varlistentry>
+                <term><guilabel>Type</guilabel></term>
+                <listitem>
+                    <para>Les valeurs suivantes sont actuellement prises en charge :</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para><guilabel>maintask</guilabel></para>
+                        </listitem>
+                        <listitem>
+                            <para><guilabel>applicationtask</guilabel></para>
+                        </listitem>
+                        <listitem>
+                            <para><guilabel>importtask</guilabel></para>
+                        </listitem>
+                        <listitem>
+                            <para><guilabel>timertask</guilabel></para>
+                        </listitem>
+                    </itemizedlist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Tâche</guilabel></term>
+                <listitem>
+                    <para>Nom de la tâche Quartz à laquelle l&apos;activité de l&apos;ordonnanceur est liée.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Créé</guilabel></term>
+                <listitem>
+                    <para>Spécifie la date et l&apos;heure (horodatage) à laquelle l&apos;activité de l&apos;ordonnanceur a été créée.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_scheduler_activity_details">
+        <title>Afficher des informations concernant une activité de l&apos;ordonnanceur</title>
+        <para>Vous pouvez afficher les informations détaillées concernant chaque activité de l&apos;ordonnanceur dans le volet des détails. Par rapport à la table d&apos;aperçu, le volet des détails contient des informations supplémentaires (contexte).</para>
+        <mediaobject><alt>Affichage Activités de l&apos;ordonnanceur avec les détails</alt><imageobject>
+                <imagedata fileref="images/scr_schedulerActivitiesViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Les informations suivantes sont disponibles dans le volet des détails :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique de l&apos;activité de l&apos;ordonnanceur (numéro séquentiel).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Groupe</guilabel></term>
+                <listitem>
+                    <para>Nom du groupe de tâches Quartz.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Nom</guilabel></term>
+                <listitem>
+                    <para>Nom de l&apos;activité de l&apos;ordonnanceur.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>État</guilabel></term>
+                <listitem>
+                    <para>Indication d&apos;état. Les valeurs valables dépendent du type. Les valeurs suivantes sont actuellement prises en charge pour les types <guilabel>maintask</guilabel> et <guilabel>importtask</guilabel> :</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>STARTED</para>
+                        </listitem>
+                        <listitem>
+                            <para>FINISHED</para>
+                        </listitem>
+                        <listitem>
+                            <para>FAILED</para>
+                        </listitem>
+                        <listitem>
+                            <para>INTERRUPTED</para>
+                        </listitem>
+                    </itemizedlist>
+                    <para>Les valeurs suivantes sont actuellement prises en charge pour le type <guilabel>applicationtask</guilabel> :</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para><guilabel>SHUTDOWN</guilabel></para>
+                        </listitem>
+                        <listitem>
+                            <para><guilabel>STARTUP</guilabel></para>
+                        </listitem>
+                    </itemizedlist>
+                    <para>Les valeurs suivantes sont actuellement prises en charge pour le type <guilabel>timertask</guilabel> :</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para><guilabel>ACTIVATED</guilabel></para>
+                        </listitem>
+                        <listitem>
+                            <para><guilabel>DEACTIVATED</guilabel></para>
+                        </listitem>
+                    </itemizedlist>
+                </listitem>
+            </varlistentry>
+
+            <varlistentry>
+                <term><guilabel>Type</guilabel></term>
+                <listitem>
+                    <para>Les valeurs suivantes sont actuellement prises en charge :</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para><guilabel>maintask</guilabel></para>
+                        </listitem>
+                        <listitem>
+                            <para><guilabel>applicationtask</guilabel></para>
+                        </listitem>
+                        <listitem>
+                            <para><guilabel>importtask</guilabel></para>
+                        </listitem>
+                        <listitem>
+                            <para><guilabel>timertask</guilabel></para>
+                        </listitem>
+                    </itemizedlist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Tâche</guilabel></term>
+                <listitem>
+                    <para>Nom de la tâche Quartz à laquelle l&apos;activité de l&apos;ordonnanceur est liée.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Contexte</guilabel></term>
+                <listitem>
+                    <para>Clé de Varpool. Identificateur unique de l&apos;activité de processus à laquelle l&apos;activité de l&apos;ordonnanceur est liée (pour plus d&apos;informations, voir <xref linkend="db_pil_wui_processesView"/>).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Créé</guilabel></term>
+                <listitem>
+                    <para>Spécifie la date et l&apos;heure (horodatage) à laquelle l&apos;activité de l&apos;ordonnanceur a été créée.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="filter_scheduler_activities">
+        <title>Filtrer les activités de l&apos;ordonnanceur</title>
+        <para>Vous pouvez filtrer les activités existantes de l&apos;ordonnanceur par ID (filtre simple) ou par d&apos;autres paramètres (pour plus d&apos;informations sur les critères de filtrage <xref
+                linkend="db_pil_wui_filterSettings"/>). Une description détaillée de la fonction de filtrage simple se trouve dans le fichier <xref linkend="basic_filter"/>. Pour une description complète des étapes des configurations de filtres avancées, voir <xref
+                linkend="advanced_filter"/>.</para>
+    </sect1>
+</chapter>

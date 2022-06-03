@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_mediaView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des médias</title>
+    <para>Les sections suivantes décrivent le travail avec les paramètres pertinents pour les médias de sortie pour <productname>&dbpi;</productname>. Dans l&apos;affichage <guilabel>Médias</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_medium"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_media"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_mediumDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_medium"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_medium"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_media"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_medium"><?dbhtml filename="SearchMediaView.html" ?><title>Définir un média</title>
+        <para>Vous pouvez définir un nouveau média. Vous pouvez configurer les propriétés souhaitées directement dans la table d&apos;aperçu.</para>
+        <para>Procédez comme suit pour créer un nouveau média.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Médias</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Créer</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Créer).</para>
+                <result>
+                    <para>Une nouvelle entrée avec des champs vides est créée dans la table d&apos;aperçu. Les champs <guilabel>ID</guilabel>, <guilabel>Poids</guilabel> et <guilabel>Épaisseur</guilabel> sont obligatoires et donc surlignés en rouge (marqués comme incorrects) tant qu&apos;ils ne contiennent pas de valeurs valides.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>ID</guilabel>, saisissez le nom souhaité pour le nouveau média.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Nom</guilabel>, entrez si nécessaire un nom significatif pour le média.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Poids</guilabel>, utilisez les touches fléchées pour sélectionner le poids maximum d&apos;un feuillet (en milligrammes) ou entrez la valeur appropriée directement dans le champ de texte.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Épaisseur</guilabel>, utilisez les touches fléchées pour spécifier le nombre maximum de fois qu&apos;un seul feuillet peut être plié (nombre de couches).</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer le nouveau média et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et le nouveau média est affiché dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la création du média et quitter le mode d&apos;édition sans enregistrer le média.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_media">
+        <title>Afficher les médias</title>
+        <para>Vous pouvez afficher une vue globale des médias configurés dans l&apos;espace de travail de l&apos;affichage <guilabel>Médias</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Médias</alt><imageobject>
+                <imagedata fileref="images/scr_MediaView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque média configuré :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique du média (ID du type de papier défini par l&apos;utilisateur).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Nom</guilabel></term>
+                <listitem>
+                    <para>Description détaillée de la définition du type de papier.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Poids</guilabel></term>
+                <listitem>
+                    <para>Poids d&apos;un feuillet (en milligrammes). Le poids du papier est évalué lors du calcul du poids d&apos;envoi.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Taille</guilabel></term>
+                <listitem>
+                    <para>Taille du feuillet. Cette information n&apos;est pas analysée actuellement.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Épaisseur</guilabel></term>
+                <listitem>
+                    <para>Épaisseur du feuillet. Cette information est utilisée, par&nbsp;exemple, pour l&apos;optimisation postale.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_mediumDetails">
+        <title>Afficher les détails du média</title>
+        <para>Vous pouvez afficher les informations détaillées concernant chaque média dans le volet des détails. Par rapport à la table d&apos;aperçu, le volet des détails contient des informations plus détaillées.</para>
+        <mediaobject><alt>Affichage des médias avec le volet des détails</alt><imageobject>
+                <imagedata fileref="images/scr_MediaViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Les informations suivantes sont actuellement disponibles dans le volet des détails des médias.</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique du média (ID du type de papier défini par l&apos;utilisateur).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Type</guilabel></term>
+                <listitem>
+                    <para>Actuellement, seule la valeur <code>media</code> est prise en charge.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Poids</guilabel></term>
+                <listitem>
+                    <para>Poids d&apos;un feuillet (en milligrammes). Le poids du papier est évalué lors du calcul du poids d&apos;envoi.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Taille</guilabel></term>
+                <listitem>
+                    <para>Taille du feuillet. Cette information n&apos;est pas analysée actuellement.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Épaisseur</guilabel></term>
+                <listitem>
+                    <para>Épaisseur du feuillet. Cette information est utilisée, par&nbsp;exemple, pour l&apos;optimisation postale.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="modify_medium">
+        <title>Éditer un média</title>
+        <para>Vous pouvez éditer les propriétés d&apos;un média.</para>
+        <note>
+            <para>Veuillez noter que vous ne pouvez pas changer l&apos;identificateur unique (l&apos;ID) du média avec cette action. Si vous souhaitez modifier l&apos;ID d&apos;un média, créez un nouveau média avec l&apos;ID souhaité (voir <xref
+                    linkend="create_medium"/>).</para>
+        </note>
+        <para>Procédez comme suit pour éditer les valeurs d&apos;un média existant :</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Médias</guilabel>.</para>
+            </step>
+            <step>
+                <para>Double-cliquez sur l&apos;entrée souhaitée dans la table d&apos;aperçu.</para>
+                <result>
+                    <para>L&apos;entrée passe en mode d&apos;édition.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Nom</guilabel>, saisissez le nouveau nom souhaité pour le média.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Poids</guilabel>, utilisez les touches fléchées pour sélectionner le poids maximum d&apos;un feuillet (en milligrammes) ou entrez la valeur appropriée directement dans le champ de texte.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Épaisseur</guilabel>, utilisez les touches fléchées pour spécifier le nombre maximum de fois qu&apos;un seul feuillet peut être plié (nombre de couches).</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer le média avec les nouvelles valeurs et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et le média est affiché avec les nouvelles valeurs dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la création du média et quitter le mode d&apos;édition sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_medium">
+        <title>Éditer plusieurs médias</title>
+        <para>Cette action vous permet d&apos;éditer des valeurs sélectionnées pour plusieurs médias en une seule étape.</para>
+        <note>
+            <para>Veuillez noter qu&apos;avec cette fonction, vous définissez les mêmes valeurs pour tous les médias sélectionnés.</para>
+        </note>
+        <para>Procédez comme suit pour éditer les propriétés des médias sélectionnés.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Médias</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins deux entrées de média dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Éditer</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cochez la case en face de chaque valeur que vous souhaitez modifier pour tous les médias sélectionnés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Processus</guilabel>, indiquez le processus auquel tous les médias sélectionnés doivent être liés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Nom</guilabel>, saisissez le nom souhaité pour tous les médias sélectionnés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Poids</guilabel>, sélectionnez le poids maximal d&apos;un feuillet (en milligrammes).</para>
+            </step>
+            <step>
+                <para>Sélectionnez la taille d&apos;un feuillet dans le champ <guilabel>Taille</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Épaisseur</guilabel>, entrez le nombre maximum de fois qu&apos;un seul feuillet peut être plié (nombre de couches).</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <guibutton>Confirmer</guibutton> pour enregistrer les modifications affectant tous les médias sélectionnés et fermer la boîte de dialogue.</para>
+                        <result>
+                            <para>Les paramètres modifiés sont affichés pour les médias sélectionnés dans la table d&apos;aperçu et dans le volet des détails.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+
+    <sect1 xml:id="delete_media">
+        <title>Supprimer des médias</title>
+        <para>Utilisez cette action pour supprimer un ou plusieurs média(s). Procédez comme suit pour supprimer des médias existants.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Médias</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins un média dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Supprimer</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Supprimer).</para>
+                <result>
+                    <para>La boîte de dialogue de confirmation <guilabel>Supprimer un média</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer un média</guilabel>, cliquez sur <guibutton>Ok</guibutton> pour supprimer le(s) média(s) sélectionné(s).</para>
+                    </step>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer un média</guilabel>, cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue <emphasis>sans</emphasis> supprimer le(s) média(s) sélectionné(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Si le(s) média(s) a/ont été supprimé(s), un message de confirmation est émis.</para>
+                    <para>Si le(s) média(s) n&apos;a/ont pas pu être supprimé(s), un message d&apos;erreur correspondant est émis.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

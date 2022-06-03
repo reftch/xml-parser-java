@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_documentsView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="de-DE">
+    <title>Umgang mit Dokumenten</title>
+    <para>Für die Job-Konfiguration können Sie unterschiedliche Eingabe- und Ausgabedokumente
+        konfigurieren. Die Ansicht <guilabel>Dokumente</guilabel> zeigt die konfigurierten
+        Dokumente. In der Ansicht <guilabel>Dokumente</guilabel> können Sie die folgenden Aktionen
+        ausführen:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="display_documents"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_document_details"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_document_previews"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_documents"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="display_documents">
+        <?dbhtml filename="SearchDocumentsView.html" ?>
+        <title>Dokumente anzeigen</title>
+        <para>Sie können eine Übersicht der vorhandenen Dokumente in der Ansicht Dokumente
+            anzeigen.</para>
+        <mediaobject>
+            <alt>Screenshot Ansicht Dokumente</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_DocumentsViewGen.png" width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>In der Übersichtstabelle werden für jedes Dokument standardmäßig die folgenden
+            Informationen angezeigt:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Die ID besteht aus einer laufenden Nummer, die dem Dokument beim Import
+                        zugeordnet wird. Zusammengehörige Dokumente erhalten die gleiche ID und
+                        werden immer der gleichen Sendung zugeordnet.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Typ</guilabel></term>
+                <listitem>
+                    <para>Der Dokumenttyp gibt physische Eigenschaften (z.&nbsp;B. den Druckmodus)
+                        des Dokuments an. Gültige Werte sind z.&nbsp;B. <guilabel>SIMPLEX</guilabel>
+                        oder <guilabel>DUPLEX</guilabel>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Klasse</guilabel></term>
+                <listitem>
+                    <para>Die Dokumentklasse gibt projektspezifische Eigenschaften (z.&nbsp;B.
+                            <quote>Anschreiben</quote> oder <quote>Rechnung</quote>) des Dokuments
+                        an. Im Gegensatz zum Dokumenttyp enthält die Dokumentklasse keine
+                        physischen, sondern fachliche Informationen.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Erstellt</guilabel></term>
+                <listitem>
+                    <para>Datum und Uhrzeit(Zeitstempel) des Dokumentimports.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Sendung</guilabel></term>
+                <listitem>
+                    <para>Sendung, der das Dokument zugeordnet ist.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Status</guilabel></term>
+                <listitem>
+                    <para>Status des Dokuments. Die folgenden Statusangaben sind aktuell
+                        gültig:</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term><guilabel>OK</guilabel></term>
+                            <listitem>
+                                <para>Das Dokument wurde erfolgreich importiert.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>STAMPED</guilabel></term>
+                            <listitem>
+                                <para>Dieser Wert wird aktuell nicht verwendet.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>PRINTED</guilabel></term>
+                            <listitem>
+                                <para>Dieser Wert wird aktuell nicht verwendet.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>ERROR</guilabel></term>
+                            <listitem>
+                                <para>Wenn während des Dokumentimports die Länderprüfung und/oder
+                                    PLZ-Prüfung aktiviert ist und eine fehlerhafte PLZ bzw. eine
+                                    ungültige Länderangabe gefunden wird, wird der Dokumentstatus
+                                    auf ERROR gesetzt.</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Verwendung</guilabel></term>
+                <listitem>
+                    <para>Verwendungsart des Dokuments. Die folgenden Werte sind aktuell
+                        gültig:</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term><guilabel>Document</guilabel></term>
+                            <listitem>
+                                <para>Reguläres Dokument</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>EnclosureByFeeder</guilabel></term>
+                            <listitem>
+                                <para>Beilage. Wird über eine Beilagenstation zugesteuert.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>EnclosureElectronic</guilabel></term>
+                            <listitem>
+                                <para>Elektronische Beilage</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>CoverSheet</guilabel></term>
+                            <listitem>
+                                <para>Reguläres Deckblatt</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>CoverSheet1stEnv</guilabel></term>
+                            <listitem>
+                                <para>Deckblatt für die Zwischenkuvertierung (erstes Kuvert)</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>CoverSheetFollowEnv</guilabel></term>
+                            <listitem>
+                                <para>Deckblatt für die Zwischenkuvertierung (Folgekuverts)</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Priorität</guilabel></term>
+                <listitem>
+                    <para>Reihenfolge des Dokuments in der Sendung. Je niedriger dieser Wert ist,
+                        desto weiter vorne ist das Dokument in der Sendung. Ein Dokument mit dem
+                        Wert 0 hat die höchste Priorität.</para>
+                    <para>Name des Prozesses, dem das Dokument zugeordnet ist.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Reihenfolge in Sendung</guilabel></term>
+                <listitem>
+                    <para>Reihenfolge der Verwendungsarten in der Sendung. Standardmäßig wird
+                        Dokumenten mit der Verwendungsart <guilabel>CoverSheet</guilabel> der Wert
+                            <guilabel>0</guilabel> zugewiesen (das Dokument ist damit das erste
+                        Dokument in der Sendung). Dokumenten mit allen anderen Verwendungsarten wird
+                        standardmäßig der Wert <guilabel>50</guilabel> zugewiesen. Sie können diese
+                        Standardwerte anpassen, um so beispielsweise, Beilagen, die über eine
+                        Beilagenstation zugesteuert werden, innerhalb der Sendung weiter hinten
+                        einzuordnen.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Link-ID</guilabel></term>
+                <listitem>
+                    <para>Laufende Nummer, die dem Dokument beim Import zugeordnet wird (siehe
+                        Beschreibung für Feld <quote>ID</quote>). Gleiche Werte bezeichnen
+                        zusammengehörige Dokumente, die nicht getrennt werden dürfen und daher immer
+                        einer Sendung zugeordnet werden müssen.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+        <note>
+            <para>Mithilfe des Textfelds <guilabel>Attribute</guilabel> können Sie nach
+                Dokumentattributen (z.&nbsp;B. benutzerdefinierten Spalten in der Tabelle DOCATTR
+                oder Binary-Dateien) suchen. Geben Sie die gewünschte Zeichenkette im Textfeld an, um eine Volltextsuche auszuführen.</para>
+        </note>
+    </sect1>
+    <sect1 xml:id="display_document_details">
+        <title>Informationen zu einem Dokument anzeigen</title>
+        <para>Sie können die Detailinformationen zu einem spezifischen Dokument im Detailbereich
+            anzeigen lassen. Im Vergleich zur Übersichtstabelle, enthält der Detailbereich
+            zusätzliche Informationen zum ausgewählten Dokument.</para>
+        <mediaobject>
+            <alt>Detailbereich</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_DocumentsViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Die im Detailbereich verfügbaren Informationen lassen sich in die Kategorien
+                <guilabel>Metadaten</guilabel> und <guilabel>Attribute</guilabel> einteilen.</para>
+        <para>Die folgenden Informationen sind in der Kategorie <guilabel>Metadaten</guilabel>
+            verfügbar:</para>
+        <variablelist>
+            <varlistentry>
+                <term>Verzeichnis</term>
+                <listitem>
+                    <para>Verzeichnis-ID.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Datei</term>
+                <listitem>
+                    <para>Dateiname des Dokuments.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Spool</term>
+                <listitem>
+                    <para>Ausgabedatei</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Seiten</term>
+                <listitem>
+                    <para>Anzahl der Seiten im Dokument.</para>
+                    <note>
+                        <para>Wenn Sie diesen Wert für den CSV-Import eines Mixplex-Dokuments nicht
+                            setzen, wird er anhand der Binärsequenz in der Spalte
+                                <guilabel>Mixplex</guilabel> berechnet.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Blätter</term>
+                <listitem>
+                    <para>Anzahl der Blätter im Dokument. Anzahl der Blätter des Dokuments unter
+                        Berücksichtigung der Mixplex-Informationen.</para>
+                    <note>
+                        <para>Wenn Sie diesen Wert für den CSV-Import eines Mixplex-Dokuments nicht
+                            setzen, wird er anhand der Binärsequenz in der Spalte
+                                <guilabel>Mixplex</guilabel> berechnet.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Kopien</term>
+                <listitem>
+                    <para>Anzahl der Kopien für dieses Dokument. Der hier angezeigte Wert gilt nur
+                        für die Anzahl der Kopien eines Dokuments innerhalb einer Sendung. Der Wert
+                        gilt <emphasis>nicht</emphasis> für zusätzliche Ausgabekanäle (wenn das
+                        Dokument beispielsweise zusätzlich zum Druckversand in weitere
+                        Ausgabekanäle, wie ein Archiv, umgeleitet werden soll.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>CSV-Datei</term>
+                <listitem>
+                    <para>Name der CSV-Datei, aus der die Dokumentinformation beim Import gelesen
+                        wird.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>CSV-Datensatz</term>
+                <listitem>
+                    <para>Zeilennummer (beginnend mit 1) in der CSV-Datei, aus der die
+                        Dokumentinformation beim Import gelesen wird.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Seite von</term>
+                <listitem>
+                    <para>Startseite des Dokuments in der Datei.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Seite bis</term>
+                <listitem>
+                    <para>Letzte Seite des Dokuments in der Datei.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>MFF-Filterprofil</term>
+                <listitem>
+                    <para>Pfad zum MFF-Filterprofil (Dateiendung <filename>*.pro</filename>) für den
+                        Import.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Spool-Seite von</term>
+                <listitem>
+                    <para>Startseite des Dokuments in der Ausgabedatei.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Spool-Seite bis</term>
+                <listitem>
+                    <para>Letzte Seite des Dokuments in der Ausgabedatei.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Spool MFF Profil</term>
+                <listitem>
+                    <para>Pfad zum MFF-Filterprofil für die Ausgabe.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Mixplex</term>
+                <listitem>
+                    <para>Information, ob eine Seite eine Vorder- oder Rückseite ist. Das folgende
+                        Beispiel zeigt eine Binärsequenz mit den entsprechenden Angaben für die
+                        einzelnen Seiten.</para>
+                    <programlisting>11100110</programlisting>
+                    <note>
+                        <para>Die Binärsequenz muss immer eine gerade Anzahl Stellen enthalten, da
+                            jedes Zahlenpaar für eine einzelne Seite (Vorder- und Rückseite)
+                            steht.</para>
+                    </note>
+                    <para>Die einzelnen Stellen der Binärsequenz enthalten die folgenden
+                        Informationen.</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Die ersten beiden Ziffern 11 zeigen, dass das Blatt eine Vorder-
+                                und Rückseite hat.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Die nächsten beiden Ziffern 10 zeigen, dass das Blatt eine Vorder-
+                                aber keine Rückseite hat.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Die nächsten beiden Ziffern 01 zeigen, dass das Blatt keine
+                                Vorder- aber eine Rückseite hat.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Die letzten beiden Ziffern 10 zeigen, dass das Blatt eine Vorder-
+                                aber keine Rückseite hat.</para>
+                        </listitem>
+                    </itemizedlist>
+                    <para>Wenn Sie diesen Wert für den CSV-Import eines Mixplex-Dokuments nicht
+                        setzen (und die Spalten <guilabel>Seiten</guilabel> und
+                            <guilabel>Blätter</guilabel> ebenfalls nicht gefüllt sind) greift ein
+                        Fallback-Mechanismus, der den Wert anhand des angegebenen Druckmodus
+                        berechnet.</para>
+                    <note>
+                        <para>Für sehr große Dokumente (wenn die Länge der Binärsequenz 4000 Zeichen
+                            überschreitet) wird die Binärsequenz komprimiert, um sie effizienter zu
+                            speichern. Die Kodierung und Dekodierung werden von
+                                <productname>&dbpi;</productname> automatisch durchgeführt. Wenn die
+                            Binärsequenz nach der Kompression immer noch die Maximallänge von 4000
+                            Bytes überschreitet, wird der CSV-Import mit einer Fehlermeldung
+                            abgebrochen.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+        <para>Die folgenden Informationen sind in der Kategorie <guilabel>Attribute</guilabel>
+            verfügbar:</para>
+        <variablelist>
+            <varlistentry>
+                <term>ZIP</term>
+                <listitem>
+                    <para>Postleitzahl der Adresse</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Land</term>
+                <listitem>
+                    <para>Länderbezeichnung. Diese Information ist nur für die DV-Freimachung
+                        International relevant.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Adresszeile 3</term>
+                <listitem>
+                    <para>Benutzerdefinierte Zeile mit Adressinformationen (hier die Postleitzahl
+                        und Stadt)</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Adresszeile 2</term>
+                <listitem>
+                    <para>Benutzerdefinierte Zeile mit Adressinformationen (hier die Straße und
+                        Hausnummer)</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Adresszeile 1</term>
+                <listitem>
+                    <para>Benutzerdefinierte Zeile mit Adressinformationen (hier der Name des
+                        Empfängers)</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Bündelung</term>
+
+                <listitem>
+                    <para>Bündelungsnummer</para>
+
+                </listitem>
+            </varlistentry>
+        </variablelist>
+        <para>Neben den Metadaten und Attributen können jeweils in einem separaten Reiter eine
+            Vorschau des Eingabe- und des Ausgabedokuments anzeigen lassen.</para>
+        <mediaobject>
+            <alt>Detail-Ansicht mit Vorschau</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_DocumentsViewPreview.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="display_document_previews">
+        <title>Eingabe- und Ausgabevorschau anzeigen</title>
+        <para>Wenn Sie einen Eintrag aus der Übersichtstabelle ausgewählt haben, können Sie neben
+            den Metadaten und Attributen auch jeweils eine Eingabe- und eine Ausgabevorschau
+            anzeigen lassen.</para>
+        <para>Um die Eingabevorschau anzuzeigen, klicken Sie im Detailbereich des ausgewählten
+            Dokuments auf den Reiter <guilabel>Eingabevorschau</guilabel>.</para>
+        <para>Um die Ausgabevorschau anzuzeigen, klicken Sie im Detailbereich des ausgewählten
+            Dokuments auf den Reiter <guilabel>Ausgabevorschau</guilabel>.</para>
+        <mediaobject>
+            <alt>Ansicht Dokumente mit Vorschau</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_DocumentsViewPreviews.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="filter_documents">
+        <title>Dokumente filtern</title>
+        <para>Mithilfe dieser Aktion können Sie die Übersicht der vorhandenen Dokumente anhand der
+            ID filtern.</para>
+        <para>Gehen Sie wie folgt vor, um die vorhandenen Dokumente zu filtern und damit die Anzahl
+            der angezeigten Dokumente zu reduzieren.</para>
+        <para>Gehen Sie wie folgt vor, um die vorhandenen Dokumente zu filtern:</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Dokumente</guilabel>.</para>
+            </step>
+            <step>
+                <para>Setzen Sie in der Navigationsleiste der Ansicht den Cursor in das Textfeld
+                        <guilabel>Filter</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sie können die vorhandenen Dokumente anhand der ID (einfacher Filter) oder
+                    anhand anderer Parameter filtern (für weitere Informationen zu Filterkriterien, siehe
+                        <xref linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_setupSteps" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Getting Started</title>
+    <para>The following sections describe how to integrate <productname>&dbpw;</productname> into an existing <productname>&dbpi;</productname> installation.</para>
+    <para><productname>&dbpw;</productname> is provided as WAR file and can be easily integrated into an existing <productname>&dbpi;</productname> installation.</para>
+    <procedure>
+        <step>
+            <para>Make sure that <productname>&dbpi;</productname> is running.</para>
+        </step>
+        <step>
+            <para>Copy the WAR file for <productname>&dbpw;</productname> (<filename>DocBridgePilotUI.war</filename>) within the <productname>&dbpi;</productname> installation into the directory <filename>[PILOT_INSTALL_DIR]/tomcat/webapps</filename>.</para>
+        </step>
+        <result>
+            <para><productname>&dbpw;</productname> is directly available without a restart. In the address bar of your browser, enter  <code>http://localhost:8080/DocBridgePilotUI/</code> to access the web interface.</para>
+        </result>
+    </procedure>
+</chapter>

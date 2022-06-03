@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_timersView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des minuteries</title>
+    <para>Les sections suivantes décrivent le travail avec des processus déclenchés sur intervalle de temps (minuteries). Les minuteries sont exécutées par l&apos;ordonnanceur interne. Dans l&apos;affichage <guilabel>Minuterie</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_timer"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_timers"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_timerDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_timer"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_timers"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_timers"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_timer"><?dbhtml filename="SearchTimersView.html" ?><title>Définir une minuterie</title>
+        <para>Vous pouvez définir une nouvelle minuterie. Vous pouvez configurer les propriétés souhaitées directement dans la table d&apos;aperçu.</para>
+        <para>Procédez comme suit pour créer une nouvelle minuterie.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Minuterie</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Créer</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Créer).</para>
+                <result>
+                    <para>Une nouvelle entrée avec des champs vides est créée dans la table d&apos;aperçu. Le champ <guilabel>ID</guilabel> est un champ obligatoire et est donc surligné en rouge (marqué comme incorrect) tant qu&apos;il ne contient pas une entrée valide.</para>
+                </result>
+            </step>
+            <step>
+                <para>Saisissez les paramètres souhaités pour la nouvelle minuterie dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer la nouvelle minuterie et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et la nouvelle minuterie est affichée dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la création de la minuterie et quitter le mode d&apos;édition sans enregistrer la minuterie.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_timers">
+        <title>Afficher une minuterie</title>
+        <para>Vous pouvez afficher une vue globale des minuteries configurées dans l&apos;espace de travail de l&apos;affichage <guilabel>Minuterie</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Minuterie</alt><imageobject>
+                <imagedata fileref="images/scr_TimersView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque minuterie configurée :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Nom de la minuterie défini par l&apos;utilisateur.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Configuration</guilabel></term>
+                <listitem>
+                    <para>Contient des informations sur les valeurs supplémentaires qui sont données à l&apos;application dans la tâche. Entrée facultative.</para>
+                </listitem>
+            </varlistentry><!--<varlistentry>
+                <term><guilabel>Name</guilabel></term>
+                <listitem>
+                    <para>Automatisch generierter Name des Timers. Der Name folgt dem folgenden
+                        Schema: [TYPE]#[CONFIGID].</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Gruppe</guilabel></term>
+                <listitem>
+                    <para>Eindeutiger Name, der den Timer-Task im Scheduler bezeichnet. Der Name
+                        folgt dem folgenden Schema: [TIMERID]#[PROCESSID].</para>
+                </listitem>
+            </varlistentry>--><varlistentry>
+                <term><guilabel>Application</guilabel></term>
+                <listitem>
+                    <para>Application externe qui est appelée lorsque la tâche minuterie est démarrée.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Déclencheur</guilabel></term>
+                <listitem>
+                    <para>Référence au déclencheur auquel la minuterie est jointe (pour plus d&apos;informations, voir <xref linkend="db_pil_wui_triggersView"/>). Le déclencheur détermine quand et combien de fois la tâche minuterie est démarrée.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Actif</guilabel></term>
+                <listitem>
+                    <para>Indique si la minuterie est active. Les valeurs valides sont <guilabel>true</guilabel> (valeur par défaut) et <guilabel>false</guilabel>. Lorsque la valeur est <guilabel>true</guilabel>, la tâche minuterie est lancée immédiatement après la création. La valeur <guilabel>false</guilabel> ne fait que créer l&apos;entrée dans la table.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_timerDetails">
+        <title>Afficher les détails de la minuterie</title>
+        <para>Vous pouvez afficher les informations détaillées concernant chaque minuterie dans le volet des détails. Actuellement, le volet des détails contient les mêmes informations que la table d&apos;aperçu.</para>
+        <mediaobject><alt>Affichage des minuteries avec le volet de détails</alt><imageobject>
+                <imagedata fileref="images/scr_TimerViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="modify_timer">
+        <title>Éditer une minuterie</title>
+        <para>Vous pouvez éditer les propriétés d&apos;une minuterie.</para>
+        <note>
+            <para>Veuillez noter que cette action ne vous permet pas d&apos;éditer le nom de la minuterie (ID). Si vous souhaitez modifier le nom de la minuterie (ID), créez une nouvelle minuterie avec le nom souhaité (voir <xref linkend="create_timer"/>).</para>
+        </note>
+        <para>Procédez comme suit pour éditer les propriétés d&apos;une minuterie existante :</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Minuterie</guilabel>.</para>
+            </step>
+            <step>
+                <para>Double-cliquez sur l&apos;entrée souhaitée dans la table d&apos;aperçu.</para>
+                <result>
+                    <para>L&apos;entrée passe en mode d&apos;édition.</para>
+                </result>
+            </step>
+            <step>
+                <para>Spécifiez les nouvelles valeurs souhaitées pour la minuterie sélectionnée.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer la minuterie avec les valeurs mises à jour et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et la minuterie s&apos;affiche avec les valeurs actualisées dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la mise à jour de la minuterie et quitter le mode d&apos;édition sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_timers">
+        <title>Éditer plusieurs minuteries</title>
+        <para>Cette action vous permet d&apos;éditer des valeurs sélectionnées pour plusieurs minuteries en une seule étape.</para>
+        <note>
+            <para>Veuillez noter qu&apos;avec cette fonction, vous définissez les mêmes valeurs pour toutes les minuteries sélectionnées.</para>
+        </note>
+        <para>Procédez comme suit pour éditer les propriétés des minuteries sélectionnées.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Minuterie</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins deux minuteries dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Éditer</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cochez la case en face de chaque valeur que vous souhaitez modifier pour toutes les minuteries sélectionnées.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Actif</guilabel>, indiquez si le minuteur doit être enregistré comme actif (valeur <userinput>true</userinput>) ou inactif (valeur <userinput>false</userinput>).</para>
+                <note>
+                    <para>Ce champ vous permet d&apos;activer ou de désactiver toutes les minuteries sélectionnées en une seule étape.</para>
+                </note>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Configuration</guilabel>, spécifiez le nom de la configuration.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Application</guilabel>, spécifiez le nom de l&apos;application.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Déclencheur</guilabel>, saisissez le nom du déclencheur lié à la minuterie.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <guibutton>Confirmer</guibutton> pour enregistrer les modifications affectant tous les répertoires sélectionnés et fermer la boîte de dialogue.</para>
+                        <result>
+                            <para>Les paramètres modifiés sont affichés pour les répertoires sélectionnés dans la table d&apos;aperçu et dans le volet des détails.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_timers">
+        <title>Supprimer une minuterie</title>
+        <para>Utilisez cette action pour supprimer une ou plusieurs minuterie(s). Procédez comme suit pour supprimer une minuterie existante.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Minuterie</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins une minuterie dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Supprimer</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Supprimer).</para>
+                <result>
+                    <para>La boîte de dialogue de confirmation <guilabel>Supprimer une minuterie</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer une minuterie</guilabel>, cliquez sur <guibutton>Ok</guibutton> pour supprimer la/les minuterie(s) sélectionnée(s).</para>
+                    </step>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer une minuterie</guilabel>, cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue <emphasis>sans</emphasis> supprimer la/les minuterie(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Si la/les minuterie(s) a/ont été supprimée(s), un message de confirmation est émis.</para>
+                    <para>Si la ou les minuterie(s) n&apos;a/ont pas pu être supprimée(s), un message d&apos;erreur correspondant est émis.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

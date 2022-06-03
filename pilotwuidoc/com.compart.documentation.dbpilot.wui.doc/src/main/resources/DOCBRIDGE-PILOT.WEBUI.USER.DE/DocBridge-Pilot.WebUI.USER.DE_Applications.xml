@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_applicationsView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="de-DE">
+    <title>Umgang mit Anwendungen</title>
+    <para>In der Ansicht <guilabel>Anwendungen</guilabel> können Sie vorhandene Anwendungs- und
+        Skriptdefinitionen einsehen und neue Skripte und Anwendungen definieren.</para>
+    <note>
+        <para>Beachten Sie, dass Sie zunächst alle untergeordneten Objekte (externe Programme,
+            Skripts, Java-Klassen) erstellen müsssen, bevor Sie die Anwendung definieren (für
+            weitere Informationen, siehe <xref linkend="db_pil_wui_commandsView"/>).</para>
+    </note>
+    <para>Sie können Anwendungen für unterschiedliche Einsatzzwecke erstellen, wie z.&nbsp;B. für
+        die Eingabeverarbeitung (Import), die Ausgabedateierstellung oder die Nachbearbeitung. </para>
+    <para>Eine Anwendung besteht aus bis zu vier Befehlen. Jeder dieser Befehle kann ein externes
+        Programm, ein JavaScript oder ein Java-Befehl sein. Abgearbeitet werden die Befehle in der
+        folgenden Reihenfolge:</para>
+    <itemizedlist>
+        <listitem>
+            <para>Vor-Befehl</para>
+            <indexterm>
+                <primary>Anwendung</primary>
+                <secondary>BEFORE</secondary>
+            </indexterm>
+            <indexterm>
+                <primary>BEFORE</primary>
+                <secondary>Anwendung</secondary>
+            </indexterm>
+        </listitem>
+        <listitem>
+            <para>Hauptbefehl </para>
+        </listitem>
+        <listitem>
+            <para>Befehl AFTER</para>
+            <indexterm>
+                <primary>Anwendung</primary>
+                <secondary>AFTER</secondary>
+            </indexterm>
+            <indexterm>
+                <primary>AFTER</primary>
+                <secondary>Anwendung</secondary>
+            </indexterm>
+        </listitem>
+    </itemizedlist>
+    <note>
+        <para>Der Fehler-Befehl wird im Fehlerfall nach der Verarbeitung des Hauptbefehls
+            ausgeführt.</para>
+    </note>
+    <para>Sie können externe Programme, Java-Klassen, Skriptbefehle und Anwendungen in der
+        Konfigurationsoberfläche <productname>&dbwp;</productname> unter <menuchoice>
+            <guimenu>Prozesskonfiguration</guimenu>
+            <guisubmenu>Allgemeine Einstellungen</guisubmenu>
+            <guisubmenu>Definitionen</guisubmenu>
+        </menuchoice> definieren (für weitere Informationen, siehe <xref
+            linkend="DocBridge-Workbench-for-Pilot.USER_t" xrefstyle="select:title select:nopage"
+        />).</para>
+    <note>
+        <para>Wenn Sie in der Weboberfläche Änderungen an den Definitionen vornehmen, beachten Sie
+            bitte, dass Sie diese Änderungen auch in <productname>&dbwp;</productname> vornehmen
+            müssen. Andernfalls werden Ihre Änderungen beim nächsten Deployment der jeweiligen
+            Verarbeitungseinheit überschrieben.</para>
+    </note>
+    <para>In der Ansicht <guilabel>Anwendungen</guilabel> können Sie die folgenden Aktionen
+        ausführen:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_application"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_applications"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_applicationsDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_application"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_applications"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="start_application"/></para>
+            <para/>
+        </listitem>
+        <listitem>
+            <para><xref linkend="stop_application"/></para>
+            <para/>
+        </listitem>
+        <listitem>
+            <para><xref linkend="manage_parameters"/></para>
+            <para/>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_application"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_application">
+        <?dbhtml filename="SearchApplicationsView.html" ?>
+        <title>Anwendung erstellen</title>
+        <para>Sie können in der Weboberfläche eine neue Anwendung definieren, um so eine externe
+            Anwendung zu starten oder einen Java-Befehl auszuführen (für weitere Informationen,
+            siehe auch <xref linkend="db_pil_wui_commandsView"/>).</para>
+        <para>Gehen Sie wie folgt vor, um eine neue Anwendung zu erstellen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Anwendungen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Erstellen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Erstellen).</para>
+                <result>
+                    <para>In der Übersichtstabelle wird ein neuer Eintrag mit leeren Feldern
+                        erstellt. Die Felder <guilabel>ID</guilabel> und
+                            <guilabel>Hauptbefehl</guilabel> sind Pflichtangaben und daher rot
+                        hinterlegt (als fehlerhaft markiert), solange sie keine gültigen Einträge
+                        enthalten.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>ID</guilabel> den gewünschten Namen für die neue
+                    Anwendung an.</para>
+            </step>
+            <step>
+                <para>Wählen Sie im Feld <guilabel>Hauptbefehl</guilabel> den aufgerufenen Befehl
+                    oder die externe Anwendung aus der Aufklappliste.</para>
+            </step>
+            <step>
+                <para>Wählen Sie im Feld <guilabel>Vor-Befehl</guilabel> den Befehl oder die
+                    Anwendung, der (oder die) vor dem Hauptbefehl ausgeführt wird, aus der
+                    Aufklappliste.</para>
+            </step>
+            <step>
+                <para>Wählen Sie im Feld <guilabel>Nach-Befehl</guilabel> den Befehl oder die
+                    Anwendung, der (oder die) nach dem Hauptbefehl ausgeführt wird, aus der
+                    Aufklappliste.</para>
+            </step>
+            <step>
+                <para>Wählen Sie im Feld <guilabel>Fehler-Befehl</guilabel> den Befehl oder die
+                    Anwendung, der (oder die) im Fehlerfall ausgeführt werden soll, aus der
+                    Aufklappliste.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um die neue Anwendung zu speichern und
+                            den Editiermodus zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und die neue Anwendung wird in der
+                                Übersichtstabelle angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um das Erstellen der Anwendung
+                            abzubrechen und den Editiermodus zu beenden ohne die Anwendung zu
+                            speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_applications">
+        <title>Anwendungen anzeigen</title>
+        <para>Sie können eine Übersicht der konfigurierten Anwendungen im Arbeitsbereich der Ansicht
+                <guilabel>Anwendungen</guilabel> anzeigen.</para>
+        <mediaobject>
+            <alt>Screenshot Ansicht Anwendungen</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_ApplicationsView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>In der Übersichtstabelle werden für jede konfigurierte Anwendung standardmäßig die
+            folgenden Informationen angezeigt:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Der eindeutige Bezeichner der Anwendung.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Status</guilabel></term>
+                <listitem>
+                    <para>Status der Anwendung. Gültige Werte sind:</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>QUEUED</para>
+                        </listitem>
+                        <listitem>
+                            <para>RUNNING</para>
+                        </listitem>
+                        <listitem>
+                            <para>STARTED</para>
+                        </listitem>
+                        <listitem>
+                            <para>FINISHED</para>
+                        </listitem>
+                        <listitem>
+                            <para>FAILED</para>
+                        </listitem>
+                        <listitem>
+                            <para>INTERRUPTED</para>
+                        </listitem>
+                    </itemizedlist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Hauptbefehl</guilabel></term>
+                <listitem>
+                    <para>Der aufgerufene Befehl oder die externe Anwendung.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Vor-Befehl</guilabel></term>
+                <listitem>
+                    <para>Befehl oder Anwendung, der (oder die) vor dem Hauptbefehl ausgeführt wird. </para>
+                    <note>
+                        <para>Wenn beim Ausführen des Vor-Befehls ein Fehler auftritt wird der
+                            Hauptbefehl möglicherweise nicht ausgeführt oder endet ebenfalls mit
+                            einem Fehler.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Nach-Befehl</guilabel></term>
+                <listitem>
+                    <para>Befehl oder Anwendung, der (oder die) nach dem Hauptbefehl ausgeführt
+                        wird.</para>
+                    <note>
+                        <para>Wenn beim Ausführen des Hauptbefehls ein Fehler auftritt wird der
+                            Nach-Befehl mölicherweise nicht ausgeführt oder endet ebenfalls mit
+                            einem Fehler.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Fehler-Befehl</guilabel></term>
+                <listitem>
+                    <para>Befehl oder Anwendung, der (oder die) im Fehlerfall ausgeführt werden
+                        soll. Der angegebene Befehl wird ausgeführt, wenn beim Ausführen des
+                        Hauptbefehls mindestens ein Fehler auftritt.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_applicationsDetails">
+        <title>Anwendungsdetails anzeigen</title>
+        <para>Sie können die Detailinformationen zu einer Anwendung im Detailbereich anzeigen
+            lassen. Aktuell enthält der Detailbereich eine zusätzliche Information (Typ), die in der
+            Übersichtstabelle nicht verfügbar ist.</para>
+        <mediaobject>
+            <alt>Ansicht Anwendungen mit Details</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_ApplicationsViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="set_applicationParameters">
+        <title>Parameter angeben</title>
+        <para>Wenn Sie einen Eintrag aus der Übersichtstabelle ausgewählt haben, können Sie im
+            Detailbereich im Reiter <guilabel>Parameter</guilabel> Ausführungsparameter für die
+            Anwendung anzeigen lassen oder definieren. Wenn Sie beispielsweise
+                <productname>cpmcopy</productname> aufrufen, können Sie z.&nbsp;B. Parameter wie
+                <code>infile</code> (Angabe des Eingabedateinamens) oder <code>logdir</code> (Angabe
+            des Log-Verzeichnisses) setzen.</para>
+        <mediaobject>
+            <alt>Ansicht Anwendungen mit Parameter</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_ApplicationsViewParam.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Die verfügbaren Parameter sind abhängig von der ausgeführten Anwendung bzw. dem
+            Skript. Standardmäßig ist die Liste der definierten Ausführungsparameter leer. Gehen Sie
+            wie folgt vor, um neue Parameter zu definieren:</para>
+        <procedure>
+            <step>
+                <para>Wählen Sie in der Ansicht <guilabel>Anwendungen</guilabel> die gewünschte
+                    Anwendung aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie im Detailbereich für die ausgewählte Anwendung auf den Reiter
+                        <guilabel>Parameter</guilabel>.</para>
+                <result>
+                    <para>Die leere Parameter-Liste wird im Detailbereich angezeigt.</para>
+                </result>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste des Detailbereichs auf <inlinemediaobject>
+                        <alt>Schaltfläche Bearbeiten</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject>
+                    </inlinemediaobject> (<guilabel>Bearbeiten</guilabel>).</para>
+                <result>
+                    <para>Die Eingabemaske für Parameter wird im Detailbereich geöffnet.</para>
+                    <mediaobject>
+                        <alt>Ansicht Anwendungen mit Parameter-Eintrag</alt>
+                        <imageobject>
+                            <imagedata fileref="images/scr_ApplicationsNoParam.png" align="left"
+                                width="15cm" format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                    <para>In der Eingabemaske können Sie für jeden Eintrag die folgenden Aktionen
+                        ausführen.</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term><guilabel>Bearbeiten</guilabel></term>
+                            <listitem>
+                                <para>Sie können den Parameternamen und -wert jedes Eintrags
+                                    bearbeiten.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>Löschen</term>
+                            <listitem>
+                                <para>Sie können jeden einzelnen Eintrag durch einen Klick auf <inlinemediaobject>
+                                        <alt>Schaltfläche Löschen</alt>
+                                        <imageobject>
+                                            <imagedata fileref="images/btn_delete.png" align="left"
+                                                scalefit="1" format="PNG"/>
+                                        </imageobject>
+                                    </inlinemediaobject> (<guilabel>Löschen</guilabel>)
+                                    entfernen.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>Eintrag hinzufügen</term>
+                            <listitem>
+                                <para>Durch einen Klick auf <inlinemediaobject>
+                                        <alt>Schaltfläche Hinzufügen</alt>
+                                        <imageobject>
+                                            <imagedata fileref="images/btn_add.png" align="left"
+                                                scalefit="1" format="PNG"/>
+                                        </imageobject>
+                                    </inlinemediaobject> (<guilabel>Hinzufügen</guilabel>) neben dem
+                                    jeweils letzten Eintrag, können Sie einen neuen Parametereintrag
+                                    hinzufügen.</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie im ersten Textfeld den Parameternamen an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im zweiten Textfeld den Parameterwert an.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie in der Navigationsleiste des Detailbereichs auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        scalefit="1" format="PNG"/>
+                                </imageobject>
+                            </inlinemediaobject> (<guilabel>Speichern</guilabel>), um die Änderungen
+                            zu speichern und den Editiermodus für alle Parametereinträge zu
+                            beenden.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie in der Navigationsleiste des Detailbereichs auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        scalefit="1" format="PNG"/>
+                                </imageobject>
+                            </inlinemediaobject> (<guilabel>Abbrechen</guilabel>) um, den
+                            Editiermodus zu verlassen, ohne die Änderungen zu speichern.</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Der Editiermodus für alle Parametereinträge wird beendet.</para>
+                    <para>Durch einen erneuten Klick auf <inlinemediaobject>
+                            <alt>Schaltfläche Bearbeiten</alt>
+                            <imageobject>
+                                <imagedata fileref="images/btn_edit.png" align="left" scalefit="1"
+                                    format="PNG"/>
+                            </imageobject>
+                    </inlinemediaobject> (<guilabel>Bearbeiten</guilabel>) können Sie den Parameterbereich ernuet im
+                        Editiermodus öffnen.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="modify_application">
+        <title>Anwendung bearbeiten</title>
+        <para>Sie können die Eigenschaften einer Anwendung bearbeiten.</para>
+        <note>
+            <para>Bitte beachten Sie, dass Sie den Namen der Anwendung mit dieser Aktion nicht
+                ändern können. Wenn Sie den Anwendungsnamen ändern wollen, erstellen Sie eine neue
+                Anwendung mit dem gewünschten Namen (siehe <xref linkend="create_application"
+                />).</para>
+        </note>
+        <para>Gehen Sie wie folgt vor, um die Werte einer vorhandenen Anwendung zu
+            bearbeiten:</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Anwendungen</guilabel>.</para>
+            </step>
+
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Bearbeiten Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Bearbeiten).</para>
+                <result>
+                    <para>Der Eintrag wechselt in den Editiermodus.</para>
+                    <note>
+                        <para>Bitte beachten Sie, dass Sie die ID und den Status der ausgewählten
+                            Anwendung nicht ändern können.</para>
+                    </note>
+                </result>
+            </step>
+            <step>
+                <para>Wählen Sie im Feld <guilabel>Hauptbefehl</guilabel> den aufgerufenen Befehl
+                    oder die externe Anwendung aus der Aufklappliste.</para>
+            </step>
+            <step>
+                <para>Wählen Sie im Feld <guilabel>Vor-Befehl</guilabel> den Befehl oder die
+                    Anwendung, der (oder die) vor dem Hauptbefehl ausgeführt wird, aus der
+                    Aufklappliste.</para>
+            </step>
+            <step>
+                <para>Wählen Sie im Feld <guilabel>Nach-Befehl</guilabel> den Befehl oder die
+                    Anwendung, der (oder die) nach dem Hauptbefehl ausgeführt wird, aus der
+                    Aufklappliste.</para>
+            </step>
+            <step>
+                <para>Wählen Sie im Feld <guilabel>Fehler-Befehl</guilabel> den Befehl oder die
+                    Anwendung, der (oder die) im Fehlerfall ausgeführt werden soll, aus der
+                    Aufklappliste.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um die Anwendung mit den neuen Werten
+                            zu speichern und den Editiermodus zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und die Anwendung wird mit den neuen
+                                Werten in der Übersichtstabelle angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um das Bearbeiten der Anwendung
+                            abzubrechen und den Editiermodus zu beenden ohne die Änderungen zu
+                            speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+        <para>Neben dem Bearbeiten der Eigenschaften können Sie zusätzlich neue Parameter für die
+            Anwendungsausführung definieren oder vorhandene Parameter anpassen (für weitere
+            Informationen, siehe <xref linkend="manage_parameters"/>).</para>
+    </sect1>
+    <sect1 xml:id="multi_edit_applications">
+        <title>Mehrere Anwendungen bearbeiten</title>
+        <para>Mithilfe dieser Aktion können Sie ausgewählte Werte für mehrere Anwendungen in einem Schritt
+            bearbeiten.</para>
+        <note>
+            <para>Bitte beachten Sie, dass Sie mit dieser Funktion, die gleichen Werte für alle
+                ausgewählten Anwendungen definieren.</para>
+        </note>
+        <para>Gehen Sie wie folgt vor, um die Eigenschaften der ausgewählten Anwendungen zu
+            bearbeiten.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Anwendungen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens zwei Anwendungen aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                    <alt>Schaltfläche Bearbeiten</alt>
+                    <imageobject>
+                        <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                            scalefit="1"/>
+                    </imageobject>
+                </inlinemediaobject> (Bearbeiten).</para>
+                <result>
+                    <para>Das Dialogfenster <guilabel>Bearbeiten</guilabel> wird geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <para>Setzen Sie ein Häkchen in die Checkbox vor jedem Wert, den Sie für alle
+                    ausgewählten Anwendungen ändern wollen.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Hauptbefehl</guilabel> den aufgerufenen Befehl
+                    oder die externe Anwendung für alle ausgewählten Anwendungen an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Vor-Befehl</guilabel> den Befehl oder die
+                    Anwendung, der (oder die) vor dem Hauptbefehl ausgeführt wird, für alle
+                    ausgewählten Anwendungen an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Nach-Befehl</guilabel> den Befehl oder die
+                    Anwendung, der (oder die) nach dem Hauptbefehl ausgeführt wird, für alle
+                    ausgewählten Anwendungen an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Fehler-Befehl</guilabel> den Befehl oder die
+                    Anwendung, der (oder die) im Fehlerfall ausgeführt werden soll, für alle
+                    ausgewählten Anwendungen an.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <guibutton>Bestätigen</guibutton>, um die Änderungen
+                            für die ausgewählten Anwendungen zu speichern und das
+                            Dialogfenster zu schließen.</para>
+                        <result>
+                            <para>Die geänderten Einstellungen werden für die ausgewählten Anwendungen in
+                                der Übersichtstabelle und im Detailbereich angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <guibutton>Abbrechen</guibutton>, um das Dialogfenster
+                            zu schließen ohne die Änderungen zu speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+        <para>Neben dem Bearbeiten der Eigenschaften können Sie zusätzlich neue Parameter für die
+            Anwendungsausführung definieren oder vorhandene Parameter anpassen (für weitere
+            Informationen, siehe <xref linkend="manage_parameters"/>).</para>
+    </sect1>
+    
+    <sect1 xml:id="start_application">
+        <title>Anwendung starten</title>
+        <para>Sie können in der Weboberfläche eine konfigurierte Anwendung starten, um so eine
+            externe Anwendung zu starten oder einen Java-Befehl auszuführen (für weitere
+            Informationen, siehe auch <xref linkend="db_pil_wui_commandsView"/>).</para>
+        <para>Gehen Sie wie folgt vor, um eine Anwendung zu starten.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Anwendungen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Starten Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_start.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Ausführen).</para>
+                <result>
+                    <para>Die konfigurierte Anwendung wird gestartet.</para>
+                    <note>
+                        <para>Falls beim Versuch die Anwendung zu starten ein Fehler auftritt,
+                            prüfen Sie die Log-Datei auf weitere Informationen. </para>
+                    </note>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="stop_application">
+        <title>Anwendung stoppen</title>
+        <para>Sie können in der Weboberfläche eine aktuell ausgeführte Anwendung (externe Anwendung
+            oder Java-Befehl) stoppen (für weitere Informationen, siehe auch <xref
+                linkend="db_pil_wui_commandsView"/>).</para>
+        <para>Gehen Sie wie folgt vor, um eine Anwendung zu stoppen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Anwendungen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Stoppen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_stop.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Stoppen).</para>
+                <result>
+                    <para>Das Ausführen der konfiguirierten Anwendung wird gestoppt.</para>
+                    <note>
+                        <para>Falls beim Versuch die Anwendung zu stoppen ein Fehler auftritt,
+                            prüfen Sie die Log-Datei auf weitere Informationen. </para>
+                    </note>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="manage_parameters">
+        <title>Ausführungsparameter für Anwendung verwalten</title>
+        <para>Neben dem Bearbeiten der Eigenschaften (siehe <xref linkend="modify_application"/>)
+            können Sie zusätzlich neue Parameter für die Anwendungsausführung definieren oder
+            vorhandene Parameter anpassen bzw. löschen. Gehen Sie wie folgt vor, um die Parameter
+            einer Anwendung zu bearbeiten:</para>
+        <procedure>
+            <title>Parameter definieren</title>
+            <step>
+                <para>Klicken Sie in der Übersichtstablle der Ansicht
+                        <guilabel>Anwendungen</guilabel> auf den gewünschten Eintrag.</para>
+                <result>
+                    <para>Der Eintrag wird markiert.</para>
+                </result>
+            </step>
+            <step>
+                <para>Klicken Sie im Detailbereich des Eintrags auf den Reiter
+                        <guilabel>Parameter</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie auf <inlinemediaobject>
+                        <alt>Bearbeiten Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject>
+                    </inlinemediaobject> (Bearbeiten), um einen neuen Eintrag zu erstellen.</para>
+                <result>
+                    <para>Ein neuer Parameter-Eintrag wird erstellt.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie im ersten Eingabefeld den gewünschten Parameter-Namen an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im zweiten Eingabefeld den gewünschten Wert des neuen Parameters
+                    an.</para>
+            </step>
+            <step>
+                <para>Klicken Sie auf <inlinemediaobject>
+                        <alt>Speichern Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_save.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject>
+                    </inlinemediaobject> (Speichern), um den neuen Parameter-Eintrag zu
+                    speichern.</para>
+                <note>
+                    <para>Wenn Sie mehrere Parameter in einem Schritt erstellen, werden alle neuen
+                        Parameter gespeichert.</para>
+                </note>
+            </step>
+        </procedure>
+        <para>Neben dem Erstellen neuer Parameter, können Sie auch die Eigenschaften vorhandener
+            Parameter bearbeiten. Gehen Sie wie folgt vor, um einen vorhandenen Parameter zu
+            editieren:</para>
+        <procedure>
+            <title>Parameter bearbeiten</title>
+            <step>
+                <para>Klicken Sie in der Übersichtstablle der Ansicht
+                        <guilabel>Anwendungen</guilabel> auf den gewünschten Eintrag.</para>
+                <result>
+                    <para>Der Eintrag wird markiert.</para>
+                </result>
+            </step>
+            <step>
+                <para>Klicken Sie im Detailbereich des Eintrags auf den Reiter
+                        <guilabel>Parameter</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie auf <inlinemediaobject>
+                        <alt>Bearbeiten Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject>
+                    </inlinemediaobject> (Bearbeiten).</para>
+                <result>
+                    <para>Alle vorhandenen Parameter werden zum Bearbeiten geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie die gewünschten neuen Werte bzw. Parameter-Namen ein.</para>
+            </step>
+            <step>
+                <para>Klicken Sie auf <inlinemediaobject>
+                        <alt>Speichern Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_save.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject>
+                    </inlinemediaobject> (Speichern), um den/die geänderten Parameter zu
+                    speichern.</para>
+                <note>
+                    <para>Wenn Sie mehrere Parameter in einem Schritt bearbeitet haben, werden alle
+                        Änderungen gespeichert.</para>
+                </note>
+            </step>
+        </procedure>
+        <para>Neben dem Erstellen und Bearbeiten von Parametern haben Sie im Detailbereich auch die
+            Möglichkeit, Parameter zu löschen. Gehen Sie wie folgt vor, um vorhandenen Parameter zu
+            löschen:</para>
+        <procedure>
+            <title>Parameter löschen</title>
+            <step>
+                <para>Klicken Sie in der Übersichtstablle der Ansicht
+                        <guilabel>Anwendungen</guilabel> auf den gewünschten Eintrag.</para>
+                <result>
+                    <para>Der Eintrag wird markiert.</para>
+                </result>
+            </step>
+            <step>
+                <para>Klicken Sie im Detailbereich des Eintrags auf den Reiter
+                        <guilabel>Parameter</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie auf <inlinemediaobject>
+                        <alt>Bearbeiten Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject>
+                    </inlinemediaobject> (Bearbeiten).</para>
+                <result>
+                    <para>Alle vorhandenen Parameter werden zum Bearbeiten geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <para>Klicken Sie neben dem Parameter, den Sie löschen wollen, auf <inlinemediaobject>
+                        <alt>Löschen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_delete.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject>
+                    </inlinemediaobject> (Löschen).</para>
+                <result>
+                    <para>Der Parameter wird aus der Übersicht entfernt.</para>
+                </result>
+            </step>
+            <step>
+                <para>Klicken Sie auf <inlinemediaobject>
+                        <alt>Speichern Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_save.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject>
+                    </inlinemediaobject> (Speichern), um die Änderungen zu speichern.</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_application">
+        <title>Anwendungen löschen</title>
+        <para>Mithilfe dieser Aktion können Sie eine Anwendung oder mehrere Anwendungen löschen.
+            Gehen Sie wie folgt vor, um vorhandene Anwendungen zu löschen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Anwendungen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens eine Anwendung aus der Übersichtstabelle.</para>
+                <note>
+                    <para>Um einen Eintrag auszuwählen, setzen Sie ein Häkchen in die Checkbox neben
+                        dem gewünschten Eintrag</para>
+                </note>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Löschen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Löschen).</para>
+                <result>
+                    <para>Der Bestätigungsdialog <guilabel>Anwendungen löschen</guilabel> wird
+                        geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Anwendungen
+                                löschen</guilabel> auf <guibutton>Ok</guibutton>, um die ausgewählte
+                            Anwendung (bzw. die ausgewählten Anwendungen) zu löschen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Anwendungen
+                                löschen</guilabel> auf <guibutton>Abbrechen</guibutton>, um das
+                            Dialogfenster zu schließen, <emphasis>ohne</emphasis> die ausgewählte
+                            Anwendung (bzw. die ausgewählten Anwendungen) zu löschen.</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Wenn die Anwendung(en) erfolgreich gelöscht wurde(n), wird eine
+                        Erfolgsmeldung in einem separaten Dialogfenster ausgegeben.</para>
+                    <para>Wenn die Anwendung(en) nicht gelöscht werden konnte(n) wird die
+                        entsprechende Fehlermeldung in einem separaten Dialogfenster
+                        angezeigt.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

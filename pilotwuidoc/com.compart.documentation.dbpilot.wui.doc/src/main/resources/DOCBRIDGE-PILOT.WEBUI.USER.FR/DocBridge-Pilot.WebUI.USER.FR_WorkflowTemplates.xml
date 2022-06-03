@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_workflowTemplatesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des modèles de workflow</title>
+    <para>Lors de l&apos;utilisation des workflows, on fait la distinction entre les modèles de workflow, les instances de workflow et les activités de workflow. On désigne par le terme modèles de workflow les objets JSON qui définissent la structure générale d&apos;un flux de traitement. Il est possible de créer autant d&apos;instances de workflow (exécutables) que souhaité sur la base d&apos;un modèle de workflow. Chaque activité de workflow est liée à une instance de workflow (pour plus d&apos;informations sur les instances de workflow, voir <xref linkend="db_pil_wui_workflowInstancesView"/>, pour plus d&apos;informations sur les activités de workflow, voir <xref
+            linkend="db_pil_wui_workflowActivitiesView"/>).</para>
+    <para>Dans l&apos;affichage <guilabel>Modèles de workflow</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_workflowTemplate"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_workflowTemplates"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_workflowTemplateDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_workflowTemplates"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_workflowTemplate"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_workflowTemplates"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_workflowTemplates"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_workflowTemplate"><?dbhtml filename="SearchWorkflowTemplatesView.html" ?><title>Charger un modèle de workflow</title>
+        <para>Vous pouvez charger un modèle de workflow prédéfini sous forme de fichier JSON. Le fichier JSON chargé peut contenir un ou plusieurs modèles.</para>
+        <para>Procédez comme suit pour charger un modèle de workflow sous forme de fichier JSON sur le serveur et l&apos;afficher dans l&apos;interface web.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Modèles de workflow</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Créer</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Créer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Charger des modèles de workflow</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cliquez sur le bouton <guibutton>Sélectionner un fichier</guibutton> à côté du champ <guilabel>Fichier JSON</guilabel>.</para>
+                <result>
+                    <para>La boîte de dialogue de sélection de fichiers s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Sélectionnez le fichier JSON souhaité dans l&apos;arborescence de répertoires.</para>
+            </step>
+            <step>
+                <para>Dans la boîte de dialogue de sélection de fichiers, cliquez sur <guibutton>Ouvrir</guibutton> pour confirmer la sélection.</para>
+                <result>
+                    <para>La boîte de dialogue de sélection de fichiers se ferme et le nom du fichier sélectionné est repris dans le champ Fichier JSON.</para>
+                    <mediaobject><alt>Boîte de dialogue Charger un fichier JSON</alt><imageobject>
+                            <imagedata fileref="images/dia_uploadJSONWorkflowTemplate.png"
+                                align="left" format="PNG" width="12cm"/>
+                        </imageobject>
+                    </mediaobject>
+                </result>
+            </step>
+            <step>
+                <para>Dans la boîte de dialogue <guilabel>Charger des modèles de workflow</guilabel>, cliquez sur le bouton <guibutton>Confirmer</guibutton> pour charger le fichier JSON sélectionné sur le serveur.</para>
+            </step>
+            <result>
+                <para>Le modèle de workflow défini dans le fichier JSON est affiché (ou plusieurs modèles de workflow sont affichés) dans l&apos;affichage <guilabel>Modèles de workflow</guilabel>.</para>
+            </result>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_workflowTemplates">
+        <title>Afficher les modèles de workflow</title>
+        <para>Vous pouvez afficher un aperçu des modèles de workflow chargés sur le serveur dans l&apos;espace de travail de l&apos;affichage <guilabel>Modèles de workflow</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Modèles de workflow</alt><imageobject>
+                <imagedata fileref="images/scr_WorkflowTemplatesView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque modèle de workflow existant :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique du modèle de workflow (numéro séquentiel).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Processus</guilabel></term>
+                <listitem>
+                    <para>Le nom défini par l&apos;utilisateur du processus auquel le modèle de workflow est lié.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Nom</guilabel></term>
+                <listitem>
+                    <para>Le nom défini par l&apos;utilisateur du modèle de workflow.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Automatique</guilabel></term>
+                <listitem>
+                    <para>La valeur indique si le traitement au sein des workflows (générés à partir du modèle) doit être automatisé ou géré manuellement. Avec la valeur par défaut <code>true</code>, les différentes étapes de traitement sont démarrées automatiquement. Avec la valeur <code>false</code>, les différentes étapes doivent être démarrées manuellement.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Priorité</guilabel></term>
+                <listitem>
+                    <para>Priorité des workflows (générés à partir du modèle) dans l&apos;ordre de traitement.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Description</guilabel></term>
+                <listitem>
+                    <para>Description facultative du modèle de workflow afin d&apos;attirer l&apos;attention sur les particularités et les caractéristiques distinctives.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_workflowTemplateDetails">
+        <title>Afficher les détails des modèles de workflow</title>
+        <para>Lorsque vous sélectionnez un modèle de workflow dans la table d&apos;aperçu, les informations relatives au modèle de workflow sélectionné s&apos;affichent dans le volet des détails. Le volet des détails contient actuellement les mêmes informations que la table d&apos;aperçu.</para>
+        <mediaobject><alt>Affichage des commandes avec le volet des détails</alt><imageobject>
+                <imagedata fileref="images/scr_WorkflowTemaplatesViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="filter_workflowTemplates">
+        <title>Filtrer les modèles de workflow</title>
+        <para>Vous pouvez utiliser cette action pour filtrer la vue globale des modèles de workflow existants à l&apos;aide des colonnes disponibles.</para>
+        <para>Pour filtrer les modèles de workflow existants et réduire ainsi le nombre de modèles de workflow affichés, procédez comme suit.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Modèles de workflow</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur le bouton <guibutton>Filtres</guibutton>.</para>
+            </step>
+            <step>
+                <para>Vous pouvez filtrer les modèles de workflow existants par ID (filtre simple) ou par d&apos;autres paramètres (pour plus d&apos;informations sur les critères de filtrage, voir <xref
+                        linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="modify_workflowTemplate">
+        <title>Éditer un modèle de workflow</title>
+        <para>Vous pouvez éditer les attributs d&apos;un modèle de workflow.</para>
+
+        <para>Procédez comme suit pour éditer les valeurs d&apos;un modèle de workflow existant :</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Modèles de workflow</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez ensuite l&apos;entrée de votre choix dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>L&apos;entrée passe en mode d&apos;édition.</para>
+                </result>
+            </step>            
+            <step>
+                <para>Saisissez les nouvelles valeurs souhaitées dans les différents champs ou choisissez l&apos;une des valeurs disponibles dans les listes déroulantes.</para>
+            </step>            
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer le modèle de workflow modifié et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le système quitte le mode d&apos;édition et le modèle de workflow est affiché avec les nouvelles valeurs dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler l&apos;édition du modèle de workflow et quitter le mode d&apos;édition sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_workflowTemplates">
+        <title>Éditer plusieurs modèles de workflow</title>
+        <para>Cette action vous permet d&apos;éditer des valeurs sélectionnées pour plusieurs modèles de workflow en une seule étape.</para>
+        <note>
+            <para>Veuillez noter qu&apos;avec cette fonction, vous définissez les mêmes valeurs pour tous les modèles de workflow sélectionnés.</para>
+        </note>
+        <para>Procédez comme suit pour éditer les attributs des commandes sélectionnées.</para>
+        <procedure>
+            <step>
+                <para>Sélectionnez au moins deux modèles de workflow dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                        <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                            scalefit="1"/>
+                    </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Éditer</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cochez la case en face de chaque valeur que vous souhaitez modifier pour tous les modèles de workflow sélectionnés.</para>
+            </step>
+            <step>
+                <para>Dans les champs sélectionnés, indiquez la nouvelle valeur souhaitée pour tous les modèles de workflow sélectionnés</para>
+            </step>            
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <guibutton>Confirmer</guibutton> pour enregistrer les modifications affectant les modèles de workflow sélectionnés et fermer la boîte de dialogue.</para>
+                        <result>
+                            <para>Les paramètres modifiés sont affichés pour les modèles de workflow sélectionnés dans la table d&apos;aperçu et dans le volet des détails.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>           
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_workflowTemplates">
+        <title>Supprimer des modèles de workflow</title>
+        <para>Cette action vous permet de supprimer un ou plusieurs modèle(s) de workflow. Procédez comme suit pour supprimer des modèles de workflow existants.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Modèles de workflow</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins un modèle de workflow dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Supprimer</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Supprimer).</para>
+                <result>
+                    <para>La boîte de dialogue de confirmation <guilabel>Supprimer des modèles de workflow</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des modèles de workflow</guilabel>, cliquez sur <guibutton>Ok</guibutton> pour supprimer le(s) modèle(s) de workflow sélectionné(s).</para>
+                    </step>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des modèles de workflow</guilabel>, cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue <emphasis>sans</emphasis> supprimer le(s) modèle(s) de workflow sélectionné(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Si le(s) modèle(s) de workflow a/ont été supprimé(s) correctement, un message de confirmation est émis.</para>
+                    <para>Si le(s) modèle(s) de workflow n&apos;a/ont pas pu être supprimé(s), un message d&apos;erreur correspondant est émis.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

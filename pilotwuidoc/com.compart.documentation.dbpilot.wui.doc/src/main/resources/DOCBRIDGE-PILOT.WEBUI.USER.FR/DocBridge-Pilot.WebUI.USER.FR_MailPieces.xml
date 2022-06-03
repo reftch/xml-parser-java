@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_mailPiecesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des envois</title>
+    <para>Les sections suivantes décrivent le travail avec des envois. Vous pouvez émettre une liste des envois. Dans l&apos;affichage <guilabel>Envois</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="display_mailPieces"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_mailPieces"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="reprint_mailPieces"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="display_mailPieces"><?dbhtml filename="SearchMediaView.html" ?><title>Afficher des envois</title>
+        <para>Vous pouvez afficher une vue globale des envois configurés dans l&apos;espace de travail de l&apos;affichage <guilabel>Envois</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Envois</alt><imageobject>
+                <imagedata fileref="images/scr_mailPieceView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque envoi :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique de l&apos;envoi (numéro séquentiel).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Enveloppe</guilabel></term>
+                <listitem>
+                    <para>La configuration d&apos;enveloppe affectée à l&apos;envoi.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Classe produit</guilabel></term>
+                <listitem>
+                    <para>Spécification de la classe de produits (définie par l&apos;utilisateur) à laquelle l&apos;envoi est affecté.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Séquence</guilabel></term>
+                <listitem>
+                    <para>ID de séquence</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Poids</guilabel></term>
+                <listitem>
+                    <para>Poids de l&apos;envoi.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Feuillets</guilabel></term>
+                <listitem>
+                    <para>Nombre de feuillets dans l&apos;envoi.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="filter_mailPieces">
+        <title>Filtrer Envois</title>
+        <para>Utilisez cette action pour filtrer la vue globale des envois existants.</para>
+        <para>Procédez comme suit pour filtrer les documents existants et ainsi réduire le nombre de documents affichés.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Envois</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, placez le curseur dans le champ de texte <guilabel>Filtre</guilabel>.</para>
+            </step>
+            <step>
+                <para>Vous pouvez filtrer les envois existants par ID (filtre simple) ou par d&apos;autres paramètres (pour plus d&apos;informations sur les critères de filtrage, voir <xref linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="reprint_mailPieces">
+        <title>Réimprimer des envois</title>
+        <para>Vous pouvez utiliser cette action pour déclencher manuellement la réimpression d&apos;un ou plusieurs envoi(s).</para>
+        <para>Procédez comme suit pour imprimer de nouveau des envois sélectionnés.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Envois</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins un envoi dans la table d&apos;aperçu.</para>
+                <para>Cochez la case située devant l&apos;entrée souhaitée pour sélectionner l&apos;entrée.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Réimpression</alt><imageobject>
+                            <imagedata fileref="images/btn_reprint.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> pour lancer la réimpression pour l&apos;envoi sélectionné.</para>
+            </step>
+            <result><para>La réimpression est démarrée.</para></result>
+        </procedure>
+    </sect1><!-- Scanner-Eingabe konfigurieren --><xi:include href="../../../../../../scannersettings/com.compart.documentation.scanner.settings/resources/fr-FR/scanner-settings.xml"/> 
+</chapter>

@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_workflowInstancesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Working with Workflow Instances</title>
+    <para>When working with workflows, a distinction is made between workflow templates, workflow instances and workflow activities. Workflow templates are JSON objects that specify the general structure of a workflow. Based on a workflow template, any number of (executable) workflow instances can be created. Workflow activities are linked to a specific workflow instance (for more information on workflow templates, see <xref linkend="db_pil_wui_workflowTemplatesView"/>, for more information on workflow activities, see <xref
+            linkend="db_pil_wui_workflowActivitiesView"/>).</para>
+    <para>The following actions are supported for the <guilabel>Workflow Instances</guilabel> view:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_workflowInstance"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_workflowInstances"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_workflowInstanceDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_workflowInstanceRoutes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="startManualActions_workflowInstance"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_workflowInstances"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="pause_workflowInstances"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="interrupt_workflowInstances"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_workflowInstance"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_workflowInstance"><?dbhtml filename="SearchWorkflowinstanceView.html" ?><title>Defining a Workflow Instance</title>
+        <para>You can define a new workflow instance. You can configure the desired properties directly in the overview table.</para>
+        <para>Proceed as follows to create a new workflow instance.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Workflow Instances</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the web interface, click <inlinemediaobject><alt>Create Button</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Create).</para>
+                <result>
+                    <para>A new entry with empty fields is created in the overview table. The <guilabel>ID</guilabel> field is filled automatically and therefor not editable.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Process</guilabel> field, make sure that the process selected in the <guilabel>Processes</guilabel> view was copied to the field.</para>
+            </step>
+
+            <step>
+                <para>In the <guilabel>Template</guilabel> field, select the workflow template based on which the new workflow instance is to be created.</para>
+            </step>
+            <step>
+                <para>Make sure that the <guilabel>Jobs</guilabel> field contains the unique identifiers of the jobs selected in the <guilabel>Jobs</guilabel> view.</para>
+                <note>
+                    <para>The jobs are only automatically copied to the field and displayed if they are linked to the process selected (in the <guilabel>Processes</guilabel> view). So, if necessary, check your selection in both the <guilabel>Processes</guilabel> and <guilabel>Jobs</guilabel> views.</para>
+                </note>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save), to save the changed workflow Instance and exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the new workflow instance is displayed in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel the creation of the workflow instance and exit the edit mode without saving the workflow instance.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_workflowInstances">
+        <title>Listing Workflow Instances</title>
+        <para>You can display an overview of the configured workflow instances in the workspace of the <guilabel>Workflow Instances</guilabel> view.</para>
+        <mediaobject><alt>Screenshot Workflow Instances view</alt><imageobject>
+                <imagedata fileref="images/scr_WorkflowInstancesView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>The overview table displays the following information for each workflow instance by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The automatically generated unique identifier of the workflow instance.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Process</guilabel></term>
+                <listitem>
+                    <para>The process to which the workflow instance is linked.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>State</guilabel></term>
+                <listitem>
+                    <para>Processing status of the workflow instance.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Last action</guilabel></term>
+                <listitem>
+                    <para>Number of the last action that was completed.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Template</guilabel></term>
+                <listitem>
+                    <para>Name of the  workflowt emplate based on which the workflow instance was created.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Jobs</guilabel></term>
+                <listitem>
+                    <para>Job or jobs to which the workflow instance is linked.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_workflowInstanceDetails">
+        <title>Displaying Workflow Instance Details</title>
+        <para>If you select a workflow instance in the overview table, the information about the selected workflow instance is displayed in the details pane. The details pane contains the same scope of information as the overview table.</para>
+        <mediaobject><alt>Workflow instances view with details</alt><imageobject>
+                <imagedata fileref="images/scr_WorkflowInstancesViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="display_workflowInstanceRoutes">
+        <title>Displaying Workflow Instance Routes</title>
+        <para>You can display the routes (connections) between the individual workflow steps for a workflow instance in a separate dialog.</para>
+
+        <para>Proceed as follows to display the detailed information for an existing workflow instance:</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Workflow Instances</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Display routes</alt><imageobject>
+                            <imagedata fileref="images/btn_routes.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Display routes).</para>
+                <result>
+                    <para>The <guilabel>Execute Route</guilabel> dialog opens. The routes between the individual steps of the workflow are visualized.</para>
+                    <mediaobject><alt>Execute Route dialog</alt><imageobject>
+                            <imagedata fileref="images/dia_routes.png" width="12cm"/>
+                        </imageobject>
+                    </mediaobject>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Execute Route</guilabel> dialog, click <guilabel>Close</guilabel> to close the dialog.</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="startManualActions_workflowInstance">
+        <title>Interacting With Workflow Steps</title>
+        <para>If you have created a workflow instance based on a template for manual processing (for more information, see <xref
+                linkend="display_workflowTemplates"/>), the individual steps must be started manually. In this case you can use the <productname>&dbpi;</productname> web interface to start the desired next step.</para>
+        <para>Proceed as follows to display the steps for a workflow instance and manually start the next step:</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Workflow Templates</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Make sure that you have selected a template for a manual workflow in the <guilabel>Workflow Templates</guilabel> view (the <guilabel>Automatic</guilabel> column does not contain a value).</para>
+                <result>
+                    <para>The <guilabel>Workflow Instances</guilabel> view now displays only instances that were created based on the selected template.</para>
+                </result>
+            </step>
+            <step>
+                <para>Switch to the <guilabel>Workflow Instances</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select one of the displayed manual workflow instances from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Display routes</alt><imageobject>
+                            <imagedata fileref="images/btn_routes.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Display routes).</para>
+                <result>
+                    <para>The <guilabel>Execute Route</guilabel> dialog opens. The routes between the individual steps of the workflow are visualized.</para>
+                    <mediaobject><alt>Execute Route dialog</alt><imageobject>
+                            <imagedata fileref="images/dia_routesAction.png" width="12cm"/>
+                        </imageobject>
+                    </mediaobject>
+                </result>
+            </step>
+            <step>
+                <para>Click one of the available actions (<guilabel>Split</guilabel> or <guilabel>End</guilabel> in the example above) to start the corresponding step.</para>
+                <result>
+                    <para>The selected step will be executed. The view of available steps in the <guilabel>Execute Routes</guilabel> dialog is updated.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Execute Route</guilabel> dialog, click <guilabel>Close</guilabel> to close the dialog.</para>
+                <result>
+                    <para>The selected workflow instance is displayed in the overview table with an updated status, if applicable.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="filter_workflowInstances">
+        <title>Filtering Workflow Instances</title>
+        <para>Use this action to filter the overview of available workflow instances based on the available columns.</para>
+        <para>Proceed as follows to filter the existing workflow instances and thus reduce the number of displayed workflow instances.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Workflow Instances</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <guibutton>Filter</guibutton>.</para>
+            </step>
+            <step>
+                <para>You can filter the existing workflow instances by ID (simple filter) or by other parameters (for more information about filter criteria, see <xref linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="pause_workflowInstances">
+        <title>Pausing a Workflow Instance</title>
+        <para>You can use this action to pause processing of a workflow instance. After each action, the system will check for new requests, so if a pause request is found after the current action, a check is made to  determine whether pausing is possible.</para>
+        <para>Proceed as follows to pause a selected workflow instance.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Workflow Instances</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one workflow instance in a valid initial state from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Pause</alt><imageobject>
+                            <imagedata fileref="images/btn_pause.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Pause Workflow Instance).</para>
+                <result>
+                    <para>If processing of the selected workflow instance was paused successfully, a success message is displayed.</para>
+                    <para>If processing of the selected workflow instance could not be paused (for example, because it is no longer running), an error message is displayed.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="interrupt_workflowInstances">
+        <title>Interrupting a Workflow Instance</title>
+        <para>You can use this action to interrupt processing of a workflow instance. After each action, the system will check for new requests, so if an interrupt request is found after the current action, a check is made to  determine whether interrupting is possible.</para>
+        <para>Proceed as follows to interrupt a selected workflow instance.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Workflow Instances</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one workflow instance in a valid initial state from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Interrupt</alt><imageobject>
+                            <imagedata fileref="images/btn_interrupt.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Interrupt Workflow Instance).</para>
+                <result>
+                    <para>If processing of the selected workflow instance was interrupted successfully, a success message is displayed.</para>
+                    <para>If the processing of the selected workflow instance could not be interrupted (for example, because it is no longer running), an error message is displayed.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1><!--<sect1 xml:id="modify_workflowInstance">
+        <title>Workflow-Instanz bearbeiten</title>
+        <para>Sie können die Eigenschaften einer Workflow-Instanz bearbeiten.</para>
+
+        <para>Gehen Sie wie folgt vor, um die Werte einer vorhandenen Workflow-Instanz zu
+            bearbeiten:</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Workflow-Instanzen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie den gewünschten Eintrag aus der Übersichtstablle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Bearbeiten Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Bearbeiten).</para>
+                <result>
+                    <para>Der Eintrag wechselt in den Editiermodus.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie in den einzelnen Feldern die gewünschten neuen Werte ein bzw. wählen
+                    Sie einen der verfügbaren Werte aus den Aufklapplisten aus.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um die geänderte Workflow-Instanz zu
+                            speichern und den Editiermodus zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und die Workflwo-Instanz wird mit
+                                den neuen Werten in der Übersichtstabelle angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um das Bearbeiten der Workflow-Instanz
+                            abzubrechen und den Editiermodus zu beenden ohne die Änderungen zu
+                            speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>--><sect1 xml:id="delete_workflowInstance">
+        <title>Deleting Workflow Instances</title>
+        <para>Use this action to delete a workflow Instance or multiple workflow instances in a valid initial state.</para>
+        <note>
+            <para>You can only delete a process (linked to at least one workflow instance) if you have previously deleted all linked workflow instances (manually or by housekeeping). Similarly, you can update a workflow template only after deleting the linked workflow instances.</para>
+        </note>
+        <para>The following initial states are currently available:</para>
+        <itemizedlist>
+            <listitem>
+                <para><guilabel>FINISHED</guilabel></para>
+            </listitem>
+            <listitem>
+                <para><guilabel>FAILED</guilabel></para>
+            </listitem>
+            <listitem>
+                <para><guilabel>INTERRUPTED</guilabel></para>
+            </listitem>
+        </itemizedlist>
+        <para>Proceed as follows to delete existing workflow instances:</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Workflow Instances</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one workflow instance in a valid initial state from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Delete</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Delete).</para>
+                <result>
+                    <para>The confirmation dialog <guilabel>Delete Workflow Instances</guilabel> opens.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Workflow Instances</guilabel>, click <guibutton>OK</guibutton> to delete the selected workflow instances.</para>
+                    </step>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Workflow Instances</guilabel>, click <guibutton>Cancel</guibutton> to close the dialog <emphasis>without</emphasis> deleting the selected workflow instance(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>If the workflow instance has been successfully deleted, a success message is displayed.</para>
+                    <para>If the workflow instance could not be deleted, the corresponding error message is displayed.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

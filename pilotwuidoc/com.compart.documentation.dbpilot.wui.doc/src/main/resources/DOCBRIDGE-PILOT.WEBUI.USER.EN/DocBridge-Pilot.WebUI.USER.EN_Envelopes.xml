@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_envelopesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Working With Envelope Definitions</title>
+    <para>The following sections describe how to create and manage envelope definitions. The Envelope definition is used as reference for bundling mail piece components in the output channels. The weight of the envelope is used to determine the weight used for calculating the postage, for example. The following actions are supported in the <guilabel>Envelopes</guilabel> view:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_envelope"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_envelopes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_envelopeDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_envelope"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_envelopes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_envelopes"/></para>
+        </listitem>
+    </itemizedlist>
+
+    <sect1 xml:id="create_envelope"><?dbhtml filename="SearchEnvelopesView.html" ?><title>Creating an Envelope Definition</title>
+        <para>You can create a new envelope definition. You can configure the desired properties directly in the overview table.</para>
+        <para>Proceed as follows to create a new envelope definition.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Envelopes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Create</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Create).</para>
+                <result>
+                    <para>A new entry with empty fields is created in the overview table. The <guilabel>ID</guilabel> field contains mandatory information and is therefore highlighted in red (marked as incorrect) while it does not contain a valid entry.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>ID</guilabel> field, enter a unique identifier for the new envelope definition that can be used to later reference the envelope definition.</para>
+            </step>
+            <step>
+                <para>Use the arrow keys to select the maximum allowable envelope weight or enter the desired value directly in the <guilabel>Weight</guilabel> field (specified as an integer in milligrams).</para>
+            </step>
+            <step>
+                <para>Use the arrow keys to select the maximum thickness of the envelope or enter the desired value directly in the <guilabel>Thickness</guilabel> field (specified as an integer).</para>
+            </step>
+            <step>
+                <para>Specify the desired envelope format in the <guilabel>Format</guilabel> field. Use size specifications according to ISO standard sizes.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the new envelope definition and exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the new envelope definition is displayed in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel the creation of the envelope definition and exit the editing mode without saving the envelope definition.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_envelopes">
+        <title>Displaying Envelope Definitions</title>
+        <para>You can display an overview of the configured envelope definitions in the workspace of the <guilabel>Envelopes</guilabel> view.</para>
+        <mediaobject><alt>Screenshot Envelopes view</alt><imageobject>
+                <imagedata fileref="images/scr_EnvelopesView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>The overview table displays the following information for each configured envelope by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The (user defined) unique identifier of the envelope.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Weight</guilabel></term>
+                <listitem>
+                    <para>Weight of the envelope (integer value in mg).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Size</guilabel></term>
+                <listitem>
+                    <note>
+                        <para>This field is deprecated and will be ignored. It is still available for compatibility reasons.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Capacity</guilabel></term>
+                <listitem>
+                    <note>
+                        <para>This field is deprecated and will be ignored. It is still available for compatibility reasons.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Thickness</guilabel></term>
+                <listitem>
+                    <para>Thickness of the envelope. This information is e.g. used for postage optimization.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Format</guilabel></term>
+                <listitem>
+                    <para>Envelope format The format specifications are ISO standard sizes such as C4 or A4. This information is e.g. used for postage optimization.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_envelopeDetails">
+        <title>Displaying Envelope Details</title>
+        <para>You can display the details for a specific envelope in the details pane. Compared to the overview table the details pane contains more information.</para>
+        <mediaobject><alt>Envelopes view with details pane</alt><imageobject>
+                <imagedata fileref="images/scr_EnvelopesViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>The following information is currently available in the details view:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The unique (user-defined) name of the envelope.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Type</guilabel></term>
+                <listitem>
+                    <para>Currently, only the value <guilabel>envelopes</guilabel>  is supported.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Weight</guilabel></term>
+                <listitem>
+                    <para>Weight of the envelope (integer value in mg).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Size</guilabel></term>
+                <listitem>
+                    <note>
+                        <para>This field is deprecated and will be ignored. It is still available for compatibility reasons.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Capacity</guilabel></term>
+                <listitem>
+                    <note>
+                        <para>This field is deprecated and will be ignored. It is still available for compatibility reasons.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Length</guilabel></term>
+                <listitem>
+                    <para>Length of the envelope (integer value in cm). This information is e.g. used for postage optimization.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Width</guilabel></term>
+                <listitem>
+                    <para>Width of the envelope (integer value in cm). This information is e.g. used for postage optimization.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Thickness</guilabel></term>
+                <listitem>
+                    <para>Maximum thickness of the envelope. This information is e.g. used for postage optimization.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Format</guilabel></term>
+                <listitem>
+                    <para>Envelope format The format specifications are ISO standard sizes such as C4 or A4. This information is e.g. used for postage optimization.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Folding</guilabel></term>
+                <listitem>
+                    <para>Number of times the sheets in the envelope are folded for calculating the thickness. If you set the value <userinput>-1</userinput>, the number of foldings is not restricted. This information is e.g. used for postage optimization.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="modify_envelope">
+        <title>Modifying An Envelope Definition</title>
+        <para>You can edit the envelope definition properties.</para>
+        <note>
+            <para>Please keep in mind that you cannot use this action to modify the unique identifier of the envelope definition. To modify the envelope definition ID, create a new envelope definition with the desired ID (see <xref linkend="create_envelope"/>).</para>
+        </note>
+        <para>Proceed as follows to edit the values of an existing envelope definition:</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Envelopes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Double-click the desired row in the overview table.</para>
+                <result>
+                    <para>The entry switches to editing mode.</para>
+                </result>
+            </step>
+            <step>
+                <para>Use the arrow keys to select the maximum allowable envelope weight or enter the desired value directly in the <guilabel>Weight</guilabel> field (specified as an integer in milligrams).</para>
+            </step>
+            <step>
+                <para>Use the arrow keys to select the maximum thickness of the envelope or enter the desired value directly in the <guilabel>Thickness</guilabel> field (specified as an integer).</para>
+            </step>
+            <step>
+                <para>Specify the desired envelope format in the <guilabel>Format</guilabel> field. Use size specifications according to ISO standard sizes.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the envelope definition with the new values and exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the envelope definition is displayed with the new values in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel the creation of the envelope definition and exit the editing mode without saving the changes.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_envelopes">
+        <title>Modifying Multiple Envelope Definitions</title>
+        <para>You can edit selected values for multiple envelope definitions in one step.</para>
+        <note>
+            <para>Please keep in mind that with this function, you define the same values for all selected envelope definitions.</para>
+        </note>
+        <para>Proceed as follows to edit the properties of the selected envelope definitions.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Envelopes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least two envelope definitions from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the web interface, click <inlinemediaobject><alt>Icon Edit</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Edit).</para>
+                <result>
+                    <para>The <guilabel>Edit</guilabel> dialog opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>Tick the checkbox in front of each value you want to change for all selected envelope definitions.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Process</guilabel> field, specify the process to which the selected envelope definitions should be linked.</para>
+                <note>
+                    <para>This field allows you to change the process mapping for all selected envelope definitions in one step.</para>
+                </note>
+            </step>
+            <step>
+                <para>In the <guilabel>Weight</guilabel> field, specify the maximum weight of the envelope (specified as an integer in milligrams).</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Size</guilabel> field, enter the envelope size.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Capacity</guilabel> field, specify the envelope&apos;s holding capacity (number of sheets).</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Thickness</guilabel> field, specify the maximum thickness of the envelope (specified as an integer).</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Format</guilabel> field, enter the desired envelope format. Use size specifications according to ISO standard sizes.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <guibutton>OK</guibutton> to save the changed settings for all selected envelope definitions and close the dialog.</para>
+                        <result>
+                            <para>The changed settings for the selected envelope definitions are displayed in the overview table and in the details pane.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <guibutton>Cancel</guibutton> to close the dialog without changing the settings.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+
+    <sect1 xml:id="delete_envelopes">
+        <title>Deleting Envelope Definitions</title>
+        <para>Use this action to delete a single envelope definition or multiple envelope definitions. Proceed as follows to delete existing envelope definitions.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Envelopes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one envelope definition from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Delete</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Delete).</para>
+                <result>
+                    <para>The confirmation dialog <guilabel>Delete Envelope Definitions</guilabel> opens.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Envelope Definitions</guilabel>, click <guibutton>OK</guibutton> to delete the selected envelope definition (or envelope definitions).</para>
+                    </step>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Envelope Definitions</guilabel>, click <guibutton>Cancel</guibutton> to close the dialog <emphasis>without</emphasis> deleting the selected envelope definition(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>If the envelope definitions have been successfully deleted, a success message is displayed.</para>
+                    <para>If the envelope definitions could not be deleted, the corresponding error message is displayed.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

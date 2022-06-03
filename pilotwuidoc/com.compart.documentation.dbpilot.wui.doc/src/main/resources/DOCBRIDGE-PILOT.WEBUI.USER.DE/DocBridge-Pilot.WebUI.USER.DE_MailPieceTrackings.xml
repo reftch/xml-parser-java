@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_mailPieceTrackingsView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="de-DE">
+    <title>Umgang mit Sendungsverfolgungen</title>
+    <para>Die folgenden Abschnitte beschreiben die Arbeit mit den für
+            <productname>&dbpi;</productname> relevanten Parametern für Ausgabemedien. In der
+        Ansicht <guilabel>Sendungsnachverfolgungen</guilabel> können Sie die folgenden Aktionen
+        ausführen:</para>
+    <itemizedlist>
+        <!--<listitem>
+            <para><xref linkend="create_mailPieceTracking"/></para>
+        </listitem>-->
+        <listitem>
+            <para><xref linkend="upload_mailPieceTrackings"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_mailPieceTrackings"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_mailPieceTrackingDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="edit_mailPieceTrackingDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_mailPieceTrackings"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_mailPieceTracking"/></para>
+        </listitem>
+    </itemizedlist>
+    <!--<sect1 xml:id="create_mailPieceTracking">
+        <?dbhtml filename="SearchMailPieceView.html" ?>
+        <title>Sendungsverfolgung definieren</title>
+        <para>Sie können einen neue Sendungsverfolgung definieren. Dabei können Sie die gewünschten
+            Eigenschaften für den neuen Eintrag direkt in der Übersichtstabelle
+            konfigurieren.</para>
+        <para>Gehen Sie wie folgt vor, um eine neue Sendungskonfiguration zu erstellen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Sendungsverfolgungen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Erstellen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Erstellen).</para>
+                <result>
+                    <para>In der Übersichtstabelle wird ein neuer Eintrag mit leeren Feldern
+                        erstellt. Das Feld <guilabel>ID</guilabel> wird automatisch gefüllt und kann
+                        nicht editiert werden.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Sendungs-ID</guilabel> die ID der Sendung an, für
+                    die die Sendungsverfolgung konfiguriert ist.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Senquenz-ID</guilabel> die gewünschte Sequenz-ID
+                    an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Tracking-Typ</guilabel> den gewünschten Wert
+                    an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Status</guilabel> den gewünschten Anfangsstatus
+                    für die Sendungsverfolgung an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Informationen</guilabel> bei Bedarf Bemerkungen
+                    oder eine kurze Beschreibung zur Sendungsverfolgung an.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um die neue Sendungsverfolgung zu
+                            speichern und den Editiermodus zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und die neue Sendungsverfolgung wird
+                                in der Übersichtstabelle angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um das Erstellen der
+                            Sendungsverfolgung abzubrechen und den Editiermodus zu beenden ohne die
+                            Sendungsverfolgung zu speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    --><sect1 xml:id="upload_mailPieceTrackings">
+        <title>Sendungsverfolgungen importieren</title>
+        <para>Wenn Sie in einem Schritt mehrere Sendungsverfolgungen erstellen wollen, können Sie
+            die gewünschten Werte in Form einer CSV-Datei hochladen.</para>
+        <para>Gehen Sie wie folgt vor, um mehrere Sendungsverfolgungen in einem Schritt zu
+            erstellen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Sendungsverfolgungen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Hochladen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_deploy.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Hochladen).</para>
+                <result>
+                    <para>Das Dialogfenster <guilabel>Öffnen</guilabel> wird geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <para>Wählen Sie die gewünschte CSV-Datei aus dem Verzeichnisbaum.</para>
+            </step>
+            <step>
+                <para>Klicken Sie auf <guibutton>Öffnen</guibutton>, um die ausgewählte CSV-Datei
+                    auf den Server hochzuladen (zu importieren).</para>
+                <result>
+                    <para>Die Einträge in der CSV-Datei werden in die Übersichtstabelle der
+                        konfigurierten Sendungsverfolgungen importiert.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_mailPieceTrackings">
+        <title>Sendungsverfolgungen anzeigen</title>
+        <para>Sie können eine Übersicht der konfigurierten Sendungsverfolgungen in der
+            Übersichtstabelle der Ansicht <guilabel>Sendungsverfolgungen</guilabel> anzeigen.</para>
+        <mediaobject>
+            <alt>Screenshot Ansicht Sendungsverfolgungen</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_MailPieceTrackingsView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>In der Übersichtstabelle werden für jede konfigurierte Sendungsverfolgung
+            standardmäßig die folgenden Informationen angezeigt:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Der eindeutige Bezeichner (laufende Nummer) der Sendungsverfolgung.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Sendungs-ID</guilabel></term>
+                <listitem>
+                    <para>Verweis auf die Sendung, für die die Sendungsverfolgung konfiguriert
+                        wurde.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Sequenz-ID</guilabel></term>
+                <listitem>
+                    <para>Sequenz-ID</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Prozess-ID</guilabel></term>
+                <listitem>
+                    <para>Verweis auf den Prozess mit dem die Sendungsverfolgung verknüpft
+                        ist.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Tracking-Typ</guilabel></term>
+                <listitem>
+                    <para>Angabe des benutzerdefinierten Tracking-Typs für die
+                        Sendungsverfolgung.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Status</guilabel></term>
+                <listitem>
+                    <para>Angabe des Status der (abgeschlossenen) Sendungsverfolgung.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Informationen</guilabel></term>
+                <listitem>
+                    <para>Informationen zum verknüpften Job (Job-ID).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_mailPieceTrackingDetails">
+        <title>Sendungsverfolgungs-Details anzeigen</title>
+        <para>Sie können die Detailinformationen zu einer Sendungsverfolgung im Detailbereich
+            anzeigen lassen. Im Vergleich zur Übersichtstabelle enthält der Detailbereich
+            zusätzliche Informationen.</para>
+        <mediaobject>
+            <alt>Ansicht Sendungsverfolgungen mit Details</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_MailPieceTrackingsViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Die folgenden Informationen sind aktuell im Detailbereich verfügbar.</para>
+        <para>In der Übersichtstabelle werden für jede konfigurierte Sendungsverfolgung
+            standardmäßig die folgenden Informationen angezeigt:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Der eindeutige Bezeichner (laufende Nummer) der Sendungsverfolgung.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Sendungs-ID</guilabel></term>
+                <listitem>
+                    <para>Verweis auf die Sendung, für die die Sendungsverfolgung konfiguriert
+                        wurde.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Sequenz-ID</guilabel></term>
+                <listitem>
+                    <para>Sequenz-ID</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Prozess-ID</guilabel></term>
+                <listitem>
+                    <para>Verweis auf den Prozess mit dem die Sendungsverfolgung verknüpft
+                        ist.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Tracking-Typ</guilabel></term>
+                <listitem>
+                    <para>Angabe des benutzerdefinierten Tracking-Typs für die
+                        Sendungsverfolgung.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Status</guilabel></term>
+                <listitem>
+                    <para>Angabe des Status der (abgeschlossenen) Sendungsverfolgung.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Informationen</guilabel></term>
+                <listitem>
+                    <para>Informationen zum verknüpften Job (Job-ID).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Tracking-Datum</guilabel></term>
+                <listitem>
+                    <para>Erstellungszeitpunkt der Sendungsverfolgung.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Benutzerfeld 0-4</guilabel></term>
+                <listitem>
+                    <para>Benutzerdefinierte Felder, die unterschiedliche Inhalte aufnehmen
+                        können.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="edit_mailPieceTrackingDetails">
+        <title>Sendungsverfolgungs-Eigenschaften bearbeiten</title>
+        <para>Sie können die Eigenschaften einer Sendungsverfolgung direkt in der Übersichtstabelle
+            bearbeiten.</para>
+        <para>Gehen Sie wie folgt vor, um den Typ eines vorhandenen Befehls zu bearbeiten:</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Sendungsverfolgungen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Doppelklicken Sie in der Übersichtstablle auf den gewünschten Eintrag.</para>
+                <result>
+                    <para>Der Eintrag wechselt in den Editiermodus.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Sendungs-ID</guilabel> die ID der Sendung an, für
+                    die die Sendungsverfolgung konfiguriert wurde.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Sequenz-ID</guilabel> die gewünschte Sequenz-ID
+                    an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Tracking-Typ</guilabel> den gewünschten
+                    Tracking-Typs für die Sendungsverfolgung an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Status</guilabel> den gewünschten neuen Status der
+                    Sendungsverfolgung an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Informationen</guilabel> die Informationen zum
+                    verknüpften Job (die Job-ID) an.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um die geänderte Sendungsverfolgung zu
+                            speichern und den Editiermodus zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und die Sendungsverfolgung wird mit
+                                den neuen Werten in der Übersichtstabelle angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um das Bearbeiten der
+                            Sendungsverfolgung abzubrechen und den Editiermodus zu beenden ohne die
+                            Änderungen zu speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_mailPieceTrackings">
+        <title>Mehrere Sendungsverfolgungen bearbeiten</title>
+        <para>Mithilfe dieser Aktion können Sie ausgewählte Werte für mehrere Sendungsverfolgungen
+            in einem Schritt bearbeiten.</para>
+        <note>
+            <para>Bitte beachten Sie, dass Sie mit dieser Funktion, die gleichen Werte für alle
+                ausgewählten Sendungsverfolgungen definieren.</para>
+        </note>
+        <para>Gehen Sie wie folgt vor, um die Eigenschaften der ausgewählten Sendungsverfolgungen zu
+            bearbeiten.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Sendungsverfolgungen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens zwei Sendungsverfolgungen aus der
+                    Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Schaltfläche Bearbeiten</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Bearbeiten).</para>
+                <result>
+                    <para>Das Dialogfenster <guilabel>Bearbeiten</guilabel> wird geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <para>Setzen Sie ein Häkchen in die Checkbox vor jedem Wert, den Sie für alle
+                    ausgewählten Sendungsverfolgungen ändern wollen.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Sendungs-ID</guilabel> die ID der Sendung an, für
+                    die die ausgewählten Sendungsverfolgungen konfiguriert wurden.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Sequenz-ID</guilabel> die gewünschte Sequenz-ID
+                    an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Tracking-Typ</guilabel> den gewünschten
+                    Tracking-Typ für alle ausgewählten Sendungsverfolgungen an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Status</guilabel> den gewünschten neuen Status der
+                    ausgewählten Sendungsverfolgungen an.</para>
+                <note>
+                    <para>Mit diesem Feld können Sie den Status aller ausgewählten
+                        Sendungsverfolgungen in einem Schritt ändern.</para>
+                </note>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Informationen</guilabel> die Informationen zum
+                    verknüpften Job (die Job-ID) an.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <guibutton>Bestätigen</guibutton>, um die Änderungen
+                            für die ausgewählten Sendungsverfolgungen zu speichern und das
+                            Dialogfenster zu schließen.</para>
+                        <result>
+                            <para>Die geänderten Einstellungen werden für die ausgewählten Sendungsverfolgungen in
+                                der Übersichtstabelle und im Detailbereich angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <guibutton>Abbrechen</guibutton>, um das Dialogfenster
+                            zu schließen ohne die Änderungen zu speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+
+    <sect1 xml:id="delete_mailPieceTracking">
+        <title>Sendungsverfolgungen löschen</title>
+        <para>Mithilfe dieser Aktion können Sie eine Sendungsverfolgung oder mehrere
+            Sendungsverfolgungen löschen. Gehen Sie wie folgt vor, um vorhandene
+            Sendungsverfolgungen zu löschen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Sendungsverfolgungen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens eine Sendungsverfolgung aus der
+                    Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Löschen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Löschen).</para>
+                <result>
+                    <para>Der Bestätigungsdialog <guilabel>Sendungsverfolgungen löschen</guilabel>
+                        wird geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Sendungsverfolgungen
+                                löschen</guilabel> auf <guibutton>Ok</guibutton>, um die
+                            ausgewählte(n) Sendungsverfolgung(en) zu löschen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Sendungsverfolgungen
+                                löschen</guilabel> auf <guibutton>Cancel</guibutton>, um das
+                            Dialogfenster zu schließen, <emphasis>ohne</emphasis> die ausgewählte(n)
+                            Sendungsverfolgung(en) zu löschen.</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Wenn die Sendungsverfolgung(en) erfolgreich gelöscht wurde(n), wird eine
+                        Erfolgsmeldung ausgegeben.</para>
+                    <para>Wenn die Sendungsverfolgung(en) nicht gelöscht werden konnte(n) wird eine
+                        entsprechende Fehlermeldung ausgegeben.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

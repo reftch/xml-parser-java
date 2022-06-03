@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_paperSizeView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Working with Paper Size Definitions</title>
+    <para>The following sections describe how to display information about the predefined paper size definitions for the provided processes and how to define and manage custom paper size definitions. Paper size definitions are referenced in mail piece configurations. The size of a paper has an impact on the mail piece class assignment. The following actions are supported in the <guilabel>Paper Sizes</guilabel> view:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_paperSize"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_paperSize"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_paperSizeDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_paperSize"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_paperSizes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_paperSizes"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_paperSize"><?dbhtml filename="SearchPaperSizeView.html" ?><title>Creating a Paper Size Definition</title>
+        <para>You can create a new paper size definition. You can configure the desired properties in a separate dialog.</para>
+        <para>Proceed as follows to define a new paper size.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Paper sizes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Create</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Create).</para>
+                <result>
+                    <para>A new entry with empty fields is created in the overview table. The <guilabel>ID</guilabel> and <guilabel>Thickness Factor</guilabel>, <guilabel>Width</guilabel> and <guilabel>Height</guilabel> fields are mandatory and therefore highlighted in red (marked as incorrect) while they do not contain valid entries.</para>
+                </result>
+            </step>
+            <step>
+                <para>Enter a unique identifier for the new paper size definition in the <guilabel>ID</guilabel> field.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Format</guilabel> field, enter a format description according to ISO standard (e.g.&nbsp;e.g. A4).</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Thickness Factor</guilabel> field, enter the number of paper layers after an (optional) folding process.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Width</guilabel> field, use the arrow keys to select the width of the paper size in thousandths of a centimeter or enter the desired value directly in the text field.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Height</guilabel> field, use the arrow keys to select the height of the paper size in thousandths of a centimeter or enter the desired value directly in the text field.</para>
+            </step>
+            <step>
+                <para>Enter a brief description of the paper size definition in the <guilabel>Description</guilabel> field as required.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Prefolded</guilabel> field, specify whether the paper is added  prefolded.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the new paper size definition and exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the new paper size definition is displayed in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel the creation of the paper size definition and exit the editing mode without saving the paper size definition.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_paperSize">
+        <title>Listing Paper Size Definitions</title>
+        <para>You can display an overview of the configured paper size definitions in the workspace of the <guilabel>Paper Sizes</guilabel> view.</para>
+        <mediaobject><alt>Screenshot Paper Sizes view</alt><imageobject>
+                <imagedata fileref="images/scr_paperSizesView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>The overview table displays the following information for each configured paper size definition by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The unique identifier of the paper size definition (sequential number).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Format</guilabel></term>
+                <listitem>
+                    <para>Format name like A4 or C5.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Thickness factor</guilabel></term>
+                <listitem>
+                    <para>The thickness factor defines the number of paper layers after an (optional) folding process. The thickness factor describes the factor that is used for determining the total thickness of a mail piece. The thickness factor is the factor by which the thickness of the paper needs to be multiplied after the folding procedure. An unfolded paper has the thickness factor of 1 since it contains one layer of paper only. A sheet of paper that is folded once has a thickness factor of 2 and so on. A sheet of paper that is folded three times can be of 4 (cross fold, twice) or 3 (z-fold) layers of paper depending on its folding method. That would be either a thickness factor of 3 or a thickness factor of 4.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Width</guilabel></term>
+                <listitem>
+                    <para>Specifies the width of the paper size in tcm.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Height</guilabel></term>
+                <listitem>
+                    <para>Specifies the height of the paper size in tcm.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Description</guilabel></term>
+                <listitem>
+                    <para>Optional text. May contain a description or details of the intended use of the paper size definition.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Prefolded</guilabel></term>
+                <listitem>
+                    <para>Specifies whether the paper is added prefolded (<guilabel>true</guilabel>) or not (<guilabel>false</guilabel>). If you set the value <guilabel>true</guilabel>, a thickness factor of <userinput>1</userinput> is automatically set as the paper is added after having been prefolded (e.g. for inserts).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_paperSizeDetails">
+        <title>Displaying Paper Size Definition Information</title>
+        <para>You can display the details for a specific paper size definition in the details pane. Compared to the overview table the details pane contains an additional information element.</para>
+        <mediaobject><alt>Paper Size Definitions view with details pane</alt><imageobject>
+                <imagedata fileref="images/scr_paperSizeViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>The following information is currently available in the details pane.</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The unique identifier of the paper size definition (sequential number).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Type</guilabel></term>
+                <listitem>
+                    <para>Currently, only the value <code>papersizes</code>  is supported.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Format</guilabel></term>
+                <listitem>
+                    <para>Format name like A4 or C5.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Thickness factor</guilabel></term>
+                <listitem>
+                    <para>The thickness factor defines the number of paper layers after an (optional) folding process. The thickness factor describes the factor that is used for determining the total thickness of a mail piece. The thickness factor is the factor by which the thickness of the paper needs to be multiplied after the folding procedure. An unfolded paper has the thickness factor of 1 since it contains one layer of paper only. A sheet of paper that is folded once has a thickness factor of 2 and so on. A sheet of paper that is folded three times can be of 4 (cross fold, twice) or 3 (z-fold) layers of paper depending on its folding method. That would be either a thickness factor of 3 or a thickness factor of 4.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Width</guilabel></term>
+                <listitem>
+                    <para>Specifies the width of the paper size in tcm.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Height</guilabel></term>
+                <listitem>
+                    <para>Specifies the height of the paper size in tcm.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Description</guilabel></term>
+                <listitem>
+                    <para>Optional text. May contain a description or details of the intended use of the paper size definition.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Prefolded</guilabel></term>
+                <listitem>
+                    <para>Specifies whether the paper is added prefolded (<guilabel>true</guilabel>) or not (<guilabel>false</guilabel>). If you set the value <guilabel>true</guilabel>, a thickness factor of <userinput>1</userinput> is automatically set as the paper is added after having been prefolded (e.g. for inserts).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="modify_paperSize">
+        <title>Modifying a Paper Size Definition</title>
+        <para>You can edit the paper size definition properties.</para>
+        <note>
+            <para>Please keep in mind that you cannot use this action to modify the paper size definition ID. To change the ID of a paper size definition, create a new paper size definition with the desired ID (see <xref
+                    linkend="create_paperSize"/>).</para>
+        </note>
+        <para>Proceed as follows to edit the values of an existing paper size definition:</para>
+        <procedure>
+            <step>
+                <para>Go to the <guilabel>Paper Sizes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Double-click the desired row in the overview table.</para>
+                <result>
+                    <para>The entry switches to editing mode.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Format</guilabel> field, enter a format description according to ISO standard (e.g.&nbsp;e.g. A4).</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Thickness Factor</guilabel> field, enter the number of paper layers after an (optional) folding process.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Width</guilabel> field, use the arrow keys to select the width of the paper size in thousandths of a centimeter or enter the desired value directly in the text field.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Height</guilabel> field, use the arrow keys to select the height of the paper size in thousandths of a centimeter or enter the desired value directly in the text field.</para>
+            </step>
+            <step>
+                <para>Enter a brief description of the paper size definition in the <guilabel>Description</guilabel> field as required.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Prefolded</guilabel> field, specify whether the paper is added  prefolded.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the updated paper size definition and to exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the paper size definition is displayed with the updated values in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel updating the paper size definition and exit the editing mode without saving the changes.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_paperSizes">
+        <title>Modifying Multiple Paper Size Definitions</title>
+        <para>You can edit selected values for multiple paper size definitions in one step.</para>
+        <note>
+            <para>Please keep in mind that with this function, you define the same values for all selected paper size definitions.</para>
+        </note>
+        <para>Proceed as follows to edit the properties of the selected paper size definitions.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Paper sizes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least two paper size definitions from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the web interface, click <inlinemediaobject><alt>Icon Edit</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Edit).</para>
+                <result>
+                    <para>The <guilabel>Edit</guilabel> dialog opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>Tick the checkbox in front of each value you want to change for all selected paper size definitions.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Format</guilabel> field, enter a format description according to ISO standard (e.g.&nbsp;e.g. A4).</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Thickness Factor</guilabel> field, enter the number of paper layers after an (optional) folding process.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Width</guilabel> field, specify the width of the paper size in thousandths of a centimeter.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Height</guilabel> field, specify the height of the paper size in thousandths of a centimeter.</para>
+            </step>
+            <step>
+                <para>If required, enter a brief description for the selected paper size definitions in the <guilabel>Description</guilabel> field.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Prefolded</guilabel> field, specify whether the paper is added  prefolded.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <guibutton>OK</guibutton> to save the changed settings for all selected paper size definitions and close the dialog.</para>
+                        <result>
+                            <para>The changed settings for the selected paper size definitions are displayed  in the overview table and in the details pane.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <guibutton>Cancel</guibutton> to close the dialog without changing the settings.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_paperSizes">
+        <title>Deleting Paper Size Definitions</title>
+        <para>Use this action to delete a  single paper size definition or multiple paper size definitions. Proceed as follows to delete existing paper size definitions.</para>
+        <procedure>
+            <step>
+                <para>Go to the <guilabel>Paper Sizes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one paper size definition from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Delete</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Delete).</para>
+                <result>
+                    <para>The confirmation dialog <guilabel>Delete Paper Size Definitions</guilabel> opens.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Paper Size Definitions</guilabel>, click <guibutton>OK</guibutton> to delete the selected paper size definition (or paper size definitions).</para>
+                    </step>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Paper Size Definitions</guilabel>, click <guibutton>Cancel</guibutton> to close the dialog <emphasis>without</emphasis> deleting the selected paper size definitions (or paper size definitions).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>If the paper size definition(s) has (have) been successfully deleted, a success message is displayed in a separate dialog.</para>
+                    <para>If the paper size definition(s) could not be deleted, the corresponding error message is displayed in a separate dialog.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

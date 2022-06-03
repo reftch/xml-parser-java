@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_jobsView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="de-DE">
+    <title>Umgang mit Jobs</title>
+    <para>Die Ansicht <guilabel>Jobs</guilabel> zeigt die von <productname>&dbpi;</productname>
+        importierten und verarbeiteten Jobs. In der Ansicht <guilabel>Jobs</guilabel> können Sie die
+        folgenden Aktionen ausführen:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="import_job"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_jobs"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_job_details"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_jobs"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="edit_job"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_jobs"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="unbundle_jobs"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="reImport_job"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="split_job"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="merge_jobs"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="retain_job"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_jobs"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="import_job">
+        <title>Job importieren</title>
+        <para>Sie können einen neuen Job als vordefinierte JSON-Datei importieren.</para>
+        <para>Gehen Sie wie folgt vor, um einen neuen Job zu importieren.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Jobs</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Schaltfläche Importieren</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_import.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Importieren).</para>
+                <result>
+                    <para>Das Dialogfenster <guilabel>Generischer Import</guilabel> wird
+                        geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <para>Klicken Sie neben dem Feld <guilabel>Dokumente</guilabel> auf die Schaltfläche
+                        <guibutton>Datei auswählen</guibutton>.</para>
+                <result>
+                    <para>Der Dateiauswahl Dialog wird geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <para>Wählen Sie im Dateiauswahl Dialog eine Eingabedatei, für die Sie den neuen Job
+                    erstellen wollen, aus dem Verzeichnisbaum.</para>
+            </step>
+            <step>
+                <para>Klicken Sie im Dateiauswahl Dialog auf die Schaltfläche
+                        <guibutton>Öffnen</guibutton>, um die Auswahl zu bestätigen und den
+                    Dateiauswahl Dialog zu schließen.</para>
+            </step>
+            <step>
+                <para>Klicken Sie neben dem Feld <guilabel>Metadaten</guilabel> auf die Schaltfläche
+                        <guibutton>Datei auswählen</guibutton>.</para>
+                <result>
+                    <para>Der Dateiauswahl Dialog wird geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <para>Wählen Sie im Dateiauswahl Dialog eine JSON-Datei mit den Metadaten für den
+                    neuen Job aus dem Verzeichnisbaum.</para>
+            </step>
+            <step>
+                <para>Klicken Sie im Dateiauswahl Dialog auf die Schaltfläche
+                        <guibutton>Öffnen</guibutton>, um die Auswahl zu bestätigen und den
+                    Dateiauswahl Dialog zu schließen.</para>
+            </step>
+
+            <step>
+                <para>Klicken Sie auf <guibutton>Bestätigen</guibutton>, die Auswahl der Dateien zu
+                    bestätigen.</para>
+                <result>
+                    <para>Wenn die beiden ausgewählten Dateien gültig sind, wird der importierte Job
+                        in der Übersichtstabelle der Ansicht <guilabel>Jobs</guilabel>
+                        angezeigt.</para>
+                    <para>Wenn die JSON-Datei nicht die erwartete Struktur aufweist, wird der
+                        Importvorgang mit einer Fehlermeldung abgebrochen.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_jobs">
+        <?dbhtml filename="SearchJobsView.html" ?>
+        <title>Jobs anzeigen</title>
+        <para>Sie können eine Übersicht der importierten bzw. verarbeiteten Jobs in der Ansicht
+                <guilabel>Jobs</guilabel> anzeigen.</para>
+        <mediaobject>
+            <alt>Screenshot Ansicht Jobs</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_JobsViewGen.png" width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>In der Übersichtstabelle werden für jeden Prozess standardmäßig die folgenden
+            Informationen angezeigt:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Der eindeutige Bezeichner des Jobs.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Klasse</guilabel></term>
+                <listitem>
+                    <para>Job-Klassen-ID (z.&nbsp;B. <guilabel>PRINTED</guilabel>).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Seiten</guilabel></term>
+                <listitem>
+                    <para>Anzahl der Seiten im Job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Blätter</guilabel></term>
+                <listitem>
+                    <para>Anzahl der Blätter im Job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Dokumente</guilabel></term>
+                <listitem>
+                    <para>Anzahl der Dokumente im Job</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Erstellt</guilabel></term>
+                <listitem>
+                    <para>Erstellungsdatum und -uhrzeit des Jobs.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Kommentar</guilabel></term>
+                <listitem>
+                    <para>Zusätzliche Job-Informationen. Dies kann eine kurze Beschreibung oder
+                        Anmerkung zum Job sein.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_job_details">
+        <title>Job-Details anzeigen</title>
+        <para>Sie können die Detailinformationen zu einem spezifischen Job im Detailbereich anzeigen
+            lassen. Im Vergleich zur Übersichtstabelle, enthält der Detailbereich zusätzliche
+            Informationen zum ausgewählten Job. </para>
+        <mediaobject>
+            <alt>Detailbereich</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_JobsViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Im Detailbereich eines ausgewählten Jobs sind die folgenden Informationen
+            verfügbar:</para>
+        <variablelist>
+            <varlistentry>
+                <term>ID</term>
+                <listitem>
+                    <para>Der eindeutige Bezeichner des Jobs.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Klasse</term>
+                <listitem>
+                    <para>Job-Klassen-ID (z.&nbsp;B. <guilabel>PRINTED</guilabel>).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Teilklasse</term>
+                <listitem>
+                    <para>Job-Teilklasse. Diese Information hat die folgende Struktur:
+                            <code>[CHANNEL]_[SUBCHANNEL]</code>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Informationen</term>
+                <listitem>
+                    <para>Zusätzliche Job-Informationen</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Seiten</term>
+                <listitem>
+                    <para>Anzahl der Seiten im Job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Blätter</term>
+                <listitem>
+                    <para>Anzahl der Blätter im Job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Dokumente</term>
+                <listitem>
+                    <para>Anzahl der Dokumente im Job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Erstellt</term>
+                <listitem>
+                    <para>Erstellungsdatum und -uhrzeit des Jobs.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Kommentar</term>
+                <listitem>
+                    <para>Zusätzliche Job-Informationen</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Physische Beilagen Dokumente</term>
+                <listitem>
+                    <para>Anzahl der Dokumente vom Typ physische Beilage im Job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Elektronische Beilagen Dokumente</term>
+                <listitem>
+                    <para>Anzahl der Dokumente vom Typ elektronische Beilage im Job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Deckblatt Dokumente</term>
+                <listitem>
+                    <para>Anzahl der Dokumente vom Typ Deckblatt im Job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Elektronische Beilagen Blätter</term>
+                <listitem>
+                    <para>Anzahl der Blätter vom Typ elektronische Beilage im Job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Deckblätter</term>
+                <listitem>
+                    <para>Anzahl der Blätter vom Typ Deckblatt im Job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Start-/Endeblätter</term>
+                <listitem>
+                    <para>Anzahl der Blätter vom Typ Start-/Endeblatt im Job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Trennblätter</term>
+                <listitem>
+                    <para>Anzahl der Blätter vom Typ Trennblatt im Job.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+
+    </sect1>
+    <sect1 xml:id="filter_jobs">
+        <title>Jobs filtern</title>
+        <para>Mithilfe dieser Aktion können Sie die Übersicht der vorhandenen Jobs anhand der ID
+            filtern.</para>
+        <para>Gehen Sie wie folgt vor, um die vorhandenen Jobs zu filtern und damit die Anzahl der
+            angezeigten Jobs zu reduzieren.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Jobs</guilabel>.</para>
+            </step>
+            <step>
+                <para>Setzen Sie in der Navigationsleiste der Ansicht den Cursor in das Textfeld
+                        <guilabel>Filter</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sie können die vorhandenen Jobs anhand der ID (einfacher Filter) oder anhand
+                    anderer Parameter filtern (für weitere Informationen zu Filterkriterien, siehe
+                        <xref linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="edit_job">
+        <title>Job bearbeiten</title>
+        <para>Mithilfe dieser Aktion können Sie ausgewählte Werte eines Job ändern.</para>
+        <para>Gehen Sie wie folgt vor, um die Eigenschaften eines ausgewählten Jobs zu
+            bearbeiten.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Jobs</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie einen Job aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Schaltfläche Bearbeiten</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Bearbeiten).</para>
+                <result>
+                    <para>Der ausgewählte Eintrag in der Übersichtstabelle wechselt in den
+                        Editiermodus.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Klasse</guilabel> die gewünschte neue Job-Klasse
+                    an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Kommentar</guilabel> bei Bedarf den gewünschten
+                    Text an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>PU_SPOOL_HANDLER_ID</guilabel> bei Bedarf die
+                    Job-Benutzer-Eigenschaften (Handler-ID) an.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um die Änderungen in der
+                            Job-Konfiguration zu speichern und den Editiermodus für den ausgewählten
+                            Eintrag zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und die Änderungen werden in der
+                                Übersichtstabelle und im Detailbereich des ausgewählten Eintrags
+                                angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um die Änderungen abzubrechen und den
+                            Editiermodus zu beenden ohne die Änderungen zu speichern. </para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_jobs">
+        <title>Mehrere Jobs bearbeiten</title>
+        <para>Mithilfe dieser Aktion können Sie ausgewählte Werte für mehrere Jobs in einem Schritt
+            bearbeiten.</para>
+        <note>
+            <para>Bitte beachten Sie, dass Sie mit dieser Funktion, die gleichen Werte für alle
+                ausgewählten Jobs definieren.</para>
+        </note>
+        <para>Gehen Sie wie folgt vor, um die Eigenschaften der ausgewählten Jobs zu
+            bearbeiten.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Jobs</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens zwei Jobs aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Schaltfläche Bearbeiten</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Bearbeiten).</para>
+                <result>
+                    <para>Das Dialogfenster <guilabel>Bearbeiten</guilabel> wird geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <para>Setzen Sie ein Häkchen in die Checkbox vor jedem Wert, den Sie für alle
+                    ausgewählten Jobs ändern wollen.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Klasse</guilabel> bei Bedarf die gewünschte neue
+                    Job-Klasse für alle ausgewählten Jobs an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Teilklasse</guilabel> bei Bedarf die gewünschte
+                    neue Teilklasse für alle ausgewählten Jobs an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Informationen</guilabel> bei Bedarf die
+                    gewünschten Werte für alle ausgewählten Jobs an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Kommentar</guilabel> bei Bedarf den gewünschten
+                    Text an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>PU_SPOOL_HANDLER_ID</guilabel> bei Bedarf die
+                    Job-Benutzer-Eigenschaften (Handler-ID) für alle ausgewählten Jobs an.</para>
+                <mediaobject>
+                    <alt>Dialog Bearbeiten</alt>
+                    <imageobject>
+                        <imagedata fileref="images/dia_editMultiJobs.png" align="left" format="PNG"
+                            width="12cm"/>
+                    </imageobject>
+                </mediaobject>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <guibutton>Bestätigen</guibutton>, um die Änderungen
+                            für die ausgewählten Jobs zu speichern und das Dialogfenster zu
+                            schließen.</para>
+                        <result>
+                            <para>Die geänderten Einstellungen werden für die ausgewählten Jobs in
+                                der Übersichtstabelle und im Detailbereich angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <guibutton>Abbrechen</guibutton>, um das Dialogfenster
+                            zu schließen ohne die Änderungen zu speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="unbundle_jobs">
+        <title>Jobs entbündeln</title>
+        <para>Mithilfe dieser Aktion können Sie das Job-Paket entpacken. Diese Aktion ist sinnvoll,
+            wenn Sie beispielsweise neue Umschläge zuweisen wollen, ohne den eigentlichen Job-Inhalt
+            (die importierten Dokumente) zu verändern.</para>
+        <para>Gehen Sie wie folgt vor, um einen ausgewählten Job zu entbündeln.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Jobs</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens einen Job aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Schaltfläche Entpacken</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_unbundle.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Jobs entbündeln).</para>
+                <result>
+                    <para>Der Bestätigungsdialog <guilabel>Jobs entbündeln</guilabel> wird geöffnet.
+                        Der Bestätigungsdialog enthält die ID des (bzw. der) ausgewählten Jobs.
+                    </para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Jobs entbündeln</guilabel>
+                            auf <guibutton>Bestätigen</guibutton>, um den ausgewählten Job zu
+                            entpacken und erneut in den Status <guilabel>IMPORT</guilabel> zu
+                            versetzen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Jobs entbündeln</guilabel>
+                            auf <guibutton>Abbrechen</guibutton>, um den Bestätigungsdialog zu
+                            schließen, ohne den ausgewählten Job zu entpacken.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="reImport_job">
+        <title>Job erneut importieren</title>
+        <para>Mithilfe dieser Aktion können Sie einen Job oder mehrere Jobs erneut importieren (in
+            den Status <guilabel>IMPORT</guilabel> versetzen). Damit werden alle Dokumente, die in
+            der CSV-Datei des Jobs enthalten sind erneut importiert. Das Ergebnis kann ein
+            veränderter (größerer oder kleinerer) Job sein, der möglicherweise erneut vorverarbeitet
+            (aufgeteilt oder zusammengeführt) werden muss.</para>
+        <para>Gehen Sie wie folgt vor, um einen ausgewählten Job erneut für die Verarbeitung zu
+            importieren.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Jobs</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens einen Job aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Schaltfläche Erneut importieren</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_reImport.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Erneut importieren).</para>
+                <result>
+                    <para>Der Bestätigungsdialog <guilabel>Jobs erneut importieren</guilabel> wird
+                        geöffnet. Der Bestätigungsdialog enthält die ID des (bzw. der) ausgewählten
+                        Jobs. </para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Jobs erneut
+                                importieren</guilabel> auf <guibutton>Bestätigen</guibutton>, um die
+                            Dokumente des ausgewählten Jobs erneut zu importieren und den Job in den
+                            Status <guilabel>IMPORT</guilabel> zu versetzen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Jobs erneut
+                                importieren</guilabel> auf <guibutton>Abbrechen</guibutton>, um den
+                            Bestätigungsdialog zu schließen, ohne den ausgewählten Job erneut zu
+                            importieren.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="split_job">
+        <title>Einen Job in mehrere Jobs aufteilen</title>
+        <para>Mithilfe dieser Aktion können Sie einen vorhandenen Job in mehrere neue Jobs
+            aufteilen.</para>
+        <para>Gehen Sie wie folgt vor, um einen ausgewählten Job in mehrere einzelne Jobs
+            aufzuteilen.</para>
+        <note>
+            <para>Bitte beachten Sie, dass das Aufteilen eines Jobs in mehrere Jobs nur für einen
+                einzelnen Job unterstützt wird. Wenn Sie in der Übersichtstabelle der Ansicht
+                    <guilabel>Jobs</guilabel> mehrere Jobs ausgewählt haben, ist die Schaltfläche <inlinemediaobject>
+                    <alt>Schaltfläche Aufteilen</alt>
+                    <imageobject>
+                        <imagedata fileref="images/btn_split.png" align="left" format="PNG"
+                            scalefit="1"/>
+                    </imageobject>
+                </inlinemediaobject> (Aufteilen) in der Navigationszeile der Ansicht
+                deaktiviert.</para>
+        </note>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Jobs</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie einen Job aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Schaltfläche Aufteilen</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_split.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Aufteilen).</para>
+                <result>
+                    <para>Der Bestätigungsdialog <guilabel>Job aufteilen</guilabel> wird geöffnet.
+                        Der Bestätigungsdialog enthält die ID des ausgewählten Jobs.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Job aufteilen</guilabel>
+                            auf <guibutton>Bestätigen</guibutton>, um den ausgewählten Job in
+                            mehrere neue Jobs aufzuteilen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Job aufteilen</guilabel>
+                            auf <guibutton>Abbrechen</guibutton>, um den Bestätigungsdialog zu
+                            schließen, ohne den ausgewählten Job in meherere neue Jobs
+                            aufzuteilen.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="merge_jobs">
+        <title>Mehrere Jobs in einem Job zusammenführen</title>
+        <para>Mithilfe dieser Aktion können Sie mehrere vorhandene Jobs in einem neuen Job
+            zusammenführen.</para>
+        <para>Gehen Sie wie folgt vor, um mehrere ausgewählte Jobs in einem Job
+            zusammenzuführen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Jobs</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie einen Job aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Schaltfläche Zusammenführen</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_merge.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Zusammenführen).</para>
+                <result>
+                    <para>Der Bestätigungsdialog <guilabel>Jobs zusammenführen</guilabel> wird
+                        geöffnet. Der Bestätigungsdialog enthält die ID des (bzw. der) ausgewählten
+                        Jobs.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Job
+                                zusammenführen</guilabel> auf <guibutton>Bestätigen</guibutton>, um
+                            die ausgewählten Jobs in einem neuen Job zusammenzuführen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Jobs
+                                zusammenführen</guilabel> auf <guibutton>Abbrechen</guibutton>, um
+                            den Bestätigungsdialog zu schließen, ohne die ausgewählten Jobs in einem
+                            neuen Job zusammenzuführen.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="retain_job">
+        <title>Job-Verarbeitung verzögert starten</title>
+        <para>Mithilfe dieser Aktion können Sie die Verarbeitung eines Jobs um die angegeben Anzahl
+            von Tagen, Stunden und/oder Minuten verzögern. Diese Aktion bietet sich an, wenn Sie
+            beispielsweise wissen, dass eine benötigte Ressource aktuell noch nicht verrfügbar ist.
+            Durch die zeitverzögerte Verarbeitung können Sie Fehlermeldungen vermeiden.</para>
+        <para>Gehen Sie wie folgt vor, um die Verarbeitung eines Jobs zeitverzögert zu
+            starten.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Jobs</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie (mindestens) einen Job aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Schaltfläche Zurückstellen</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_retain.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Zurückstellen).</para>
+                <result>
+                    <para>Das Dialogfenster <guilabel>Zurückstellen</guilabel> wird geöffnet. Das
+                        Dialogfenster enthält ein Eingabefeld, in dem Sie angeben können, bis wann
+                        (Datum und Uhrzeit) Sie den ausgewählten Job zurückstellen wollen.</para>
+                    <mediaobject>
+                        <alt>Schaltfläche Zurückstellen</alt>
+                        <imageobject>
+                            <imagedata fileref="images/dia_retain.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </mediaobject>
+                </result>
+            </step>
+            <step>
+                <para>Klicken Sie im Feld <guilabel>Zurückgestellt bis</guilabel> auf den Kalender,
+                    um die Datums- und Zeitauswahl in einem separaten Dialogfenster zu
+                    öffnen.</para>
+            </step>
+            <step>
+                <para>Wählen Sie im Dialogfenster für die Datums- und Zeitauswahl den Tag und ggf.
+                    die Uhrzeit aus, bis zu der Sie den ausgewählten Job zurückstellen
+                    wollen.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Dialogfenster für die Datums- und Zeitauswahl auf
+                                <guibutton>Zurücksetzen</guibutton> um das Dialogfenster zu
+                            schließen ohne einen Zeitpunkt (Datum und Uhrzeit) auszuwählen, bis zu
+                            dem Sie den ausgewählten Job zurückstellen wollen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Dialogfenster für die Datums- und Zeitauswahl auf
+                                <guibutton>Fertig</guibutton>, um die Datums- und Zeitauswahl zu
+                            bestätigen und das Dialogfenster zu schließen.</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Das Dialogfenster für die Datums- und Zeitauswahl wird geschlossen.Wenn
+                        Sie ein Datum und eine Uhrzeit ausgewählt haben, werden das Datum und die
+                        Uhrzeit im Dialogfenster <guilabel>Zurückstellen</guilabel> in das Feld
+                            <guilabel>Zurückgestellt bis</guilabel> übernommen.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Dialogfenster <guilabel>Zurückstellen</guilabel> auf
+                                <guibutton>Bestätigen</guibutton>, um die Verarbeitung des
+                            ausgewählten Jobs bis zum ausgewwählten Zeitpunkt zurückzustellen und das Dialogfenster
+                                <guilabel>Zurückstellen</guilabel> zu schließen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Dialogfenster <guilabel>Zurückstellen</guilabel> auf
+                                <guibutton>Abbrechen</guibutton>, um das Dialogfenster
+                                <guilabel>Zurückstellen</guilabel> zu schließen, ohne die
+                            Verarbeitung des ausgewählten Jobs zurückzustellen.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_jobs">
+        <title>Jobs löschen</title>
+        <para>Mithilfe dieser Aktion können Sie einen Job oder mehrere Jobs löschen. Gehen Sie wie
+            folgt vor, um vorhandene Jobs zu löschen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Jobs</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens einen Job aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Schaltfläche Löschen</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_delete.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject>
+                    </inlinemediaobject> (Löschen).</para>
+                <result>
+                    <para>Der Bestätigungsdialog <guilabel>Jobs löschen</guilabel> wird
+                        geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Jobs löschen</guilabel>
+                            auf <guibutton>Ok</guibutton>, um den ausgewählten Job (bzw. die
+                            ausgewählten Jobs) zu löschen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Jobs löschen</guilabel>
+                            auf <guibutton>Cancel</guibutton>, um das Dialogfenster zu schließen,
+                                <emphasis>ohne</emphasis> den ausgewählten Job (bzw. die
+                            ausgewählten Jobs) zu löschen.</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Wenn der Job (die Jobs) erfolgreich gelöscht wurde(n), wird eine
+                        Erfolgsmeldung in einem separaten Dialogfenster ausgegeben.</para>
+                    <para>Wenn der Job (die Jobs) nicht gelöscht werden konnte(n) wird die
+                        entsprechende Fehlermeldung in einem separaten Dialogfenster
+                        angezeigt.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

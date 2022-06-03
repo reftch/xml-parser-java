@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_structuralOverview" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Principes de base pour travailler avec l&apos;interface web</title>
+    <sect1 xml:id="elements_webinterface">
+        <title>Éléments de l&apos;interface utilisateur</title>
+        <para>Après la première connexion (voir <xref linkend="login_server_db"/>), l&apos;interface web de <productname>&dbpi;</productname> est d&apos;abord vide. Une fois que vous avez créé (au moins) un bureau (voir <xref linkend="createDesktop"/>), vous pouvez ouvrir et gérer des affichages. L&apos;interface web de <productname>&dbpi;</productname> se compose des éléments suivants :</para>
+        <mediaobject><alt>Capture d&apos;écran avec bureau et affichage Processus</alt><imageobject>
+                <imagedata fileref="images/DBPilotWUI_Overview.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <variablelist>
+            <varlistentry>
+                <term><emphasis>Barre de navigation de l&apos;interface web</emphasis></term>
+                <listitem>
+                    <indexterm><primary>naviguer</primary></indexterm>
+                    <para>L&apos;interface web propose des barres de navigation à deux niveaux différents. La barre de navigation de l&apos;interface web contient différents éléments fonctionnels. En plus des boutons pour les fonctions des différents affichages, la barre de navigation contient également les onglets pour les bureaux existants. Utilisez les onglets pour basculer d&apos;un bureau à l&apos;autre. Le bureau actuellement actif est mis en évidence en couleur (bleu). Les boutons suivants sont actuellement disponibles (vus de gauche à droite) :</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Bouton Créer un bureau</alt><imageobject>
+                                        <imagedata fileref="images/addDesktop.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Ajouter un bureau)</term>
+                            <listitem>
+                                <para>Le bouton <guilabel>Ajouter un bureau</guilabel> permet de créer un nouveau bureau (vide) (pour plus d&apos;informations, voir <xref linkend="createDesktop"/>).</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Bouton Supprimer un bureau</alt><imageobject>
+                                        <imagedata fileref="images/btn_deleteDesktop.png"
+                                            align="left" scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Supprimer un bureau)</term>
+                            <listitem>
+                                <note>
+                                    <para>Ce bouton n&apos;est visible que si au moins un bureau est disponible.</para>
+                                </note>
+                                <para>Le bouton <guilabel>Supprimer un bureau</guilabel> permet de supprimer le bureau actuellement actif (pour plus d&apos;informations, voir <xref linkend="deleteDesktop"/>).</para>
+                            </listitem>
+                        </varlistentry><!--<varlistentry>
+                            <term><inlinemediaobject>
+                                    <alt>Automatisch anordnen Schaltfläche</alt>
+                                    <imageobject>
+                                        <imagedata fileref="images/btn_arrangeViews.png"
+                                            align="left" scalefit="1" format="PNG"/>
+                                    </imageobject>
+                                </inlinemediaobject> (Fenster automatisch anordnen)</term>
+                            <listitem>
+                                <para>Mit der Schaltfläche <guilabel>Fenster auotmatisch
+                                        anordnen</guilabel> können Sie ein Gitterlayout verwenden,
+                                    um die geöffneten Fenster automatisch anordnen zu lassen (für
+                                    weitere Informationen, siehe <xref linkend="arrangeViews"
+                                    />).</para>
+                            </listitem>
+                        </varlistentry>--><varlistentry>
+                            <term><inlinemediaobject><alt>Fermer tous les widgets</alt><imageobject>
+                                        <imagedata fileref="images/btn_closeAll.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Fermer tous les widgets)</term>
+                            <listitem>
+                                <para>Le bouton <guilabel>Fermer tous les widgets</guilabel> vous permet de fermer en une seule fois tous les widgets (fenêtres) ouverts sur le bureau actuel.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Bouton Basculer en plein écran</alt><imageobject>
+                                        <imagedata fileref="images/btn_toggleFullscreen.png"
+                                            align="left" scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Basculer en plein écran)</term>
+                            <listitem>
+                                <para>Le bouton <guilabel>Basculer en plein écran</guilabel> vous permet d&apos;afficher l&apos;interface web en plein écran. Si l&apos;interface web est déjà affichée en mode plein écran, vous pouvez utiliser le même bouton pour réduire à nouveau la taille.</para>
+                            </listitem>
+                        </varlistentry><!--<varlistentry>
+                            <term><inlinemediaobject>
+                                    <alt>Farbschema wechseln Schaltfläche</alt>
+                                    <imageobject>
+                                        <imagedata fileref="images/btn_switchMode.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject>
+                                </inlinemediaobject> (Farbschema wechseln)</term>
+                            <listitem>
+                                <para>Mit der Schaltfläche <guilabel>Farbschema wechseln</guilabel>
+                                    können Sie das Farbschema der Weboberfläche umzustellen (für
+                                    weitere Informationen, siehe <xref linkend="change_wui_contrast"
+                                    />)..</para>
+                            </listitem>
+                        </varlistentry>--><varlistentry>
+                            <term><inlinemediaobject><alt>Bouton Paramètres</alt><imageobject>
+                                        <imagedata fileref="images/btn_settings.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Éditer les paramètres)</term>
+                            <listitem>
+                                <para>Le bouton <guilabel>Paramètres</guilabel> ouvre une boîte de dialogue distincte dans laquelle vous pouvez modifier la langue d&apos;affichage et le niveau de journal (pour plus d&apos;informations, voir <xref linkend="Systemsettings_WUI"/>).</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Bouton Info</alt><imageobject>
+                                        <imagedata fileref="images/btn_info.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Afficher la boîte de dialogue d&apos;information)</term>
+                            <listitem>
+                                <para>L&apos;élément <guilabel>Info</guilabel> affiche des informations sur <productname>&dbpi;</productname> dans une boîte de dialogue séparée.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Afficher l’aide</alt><imageobject>
+                                        <imagedata fileref="images/btn_openHelp.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Afficher l&apos;aide)</term>
+                            <listitem>
+                                <para>L&apos;élément <guilabel>Afficher l&apos;aide</guilabel> ouvre dans votre navigateur un onglet séparé qui affiche l&apos;aide pour l&apos;interface web (pour plus d&apos;informations, voir <xref linkend="displayHelp"/>).</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Déconnexion</alt><imageobject>
+                                        <imagedata fileref="images/btn_logout.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Déconnexion)</term>
+                            <listitem>
+                                <para>L&apos;élément <guilabel>Déconnexion</guilabel> vous déconnecte de l&apos;interface web. Utilisez ce bouton, par&nbsp;exemple, pour changer d&apos;utilisateur.</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis>Barre de navigation de l&apos;affichage</emphasis></term>
+                <listitem>
+                    <indexterm><primary>naviguer</primary></indexterm>
+                    <para>L&apos;interface web propose des barres de navigation à deux niveaux différents. La barre de navigation de l&apos;affichage contient des boutons pour les actions standard (<guibutton>Supprimer l&apos;élément</guibutton> et <guibutton>Actualiser l&apos;affichage</guibutton>) ainsi que d&apos;autres actions spécifiques à l&apos;affichage, le cas échéant. Vous pouvez utiliser les boutons pour exécuter des actions sur une ou plusieurs entrée(s) (sélectionnée(s)) dans la table. Ce faisant, seuls les boutons disponibles pour l&apos;ensemble des entrées sélectionnées dans la table sont proposés respectivement. Si aucun autre bouton que <inlinemediaobject><alt>bouton Actualiser l&apos;affichage</alt><imageobject>
+                                <imagedata fileref="images/btn_refresh.png" align="left"
+                                    scalefit="1" format="PNG"/>
+                            </imageobject></inlinemediaobject> (Actualiser l&apos;affichage) n&apos;est visible au-dessus de la table, ceci signifie qu&apos;aucune action ne peut être appliquée à l&apos;ensemble des entrées sélectionnées ou que vous ne disposez pas des autorisations requises pour exécuter des actions sur les éléments affichés.</para>
+                    <para>En outre, la barre de navigation de l&apos;affichage de droite contient certains éléments fonctionnels (représentés par des icônes de boutons). Les éléments fonctionnels suivants sont actuellement disponibles :</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Bouton Sélectionner les colonnes</alt><imageobject>
+                                        <imagedata fileref="images/btn_columns.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Sélectionner les colonnes à afficher)</term>
+                            <listitem>
+                                <para>L&apos;élément <guilabel>Paramètres d&apos;affichage des colonnes</guilabel> ouvre une boîte de dialogue distincte dans laquelle vous pouvez sélectionner les colonnes à afficher dans chaque affichage (pour plus d&apos;informations, voir <xref
+                                        linkend="db_pil_wui_columnPreferences"/>).</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><inlinemediaobject><alt>Afficher l&apos;aide</alt><imageobject>
+                                        <imagedata fileref="images/btn_openHelp.png" align="left"
+                                            scalefit="1" format="PNG"/>
+                                    </imageobject></inlinemediaobject> (Afficher l&apos;aide)</term>
+                            <listitem>
+                                <para>L&apos;élément <guilabel>Afficher l&apos;aide</guilabel> ouvre dans votre navigateur un onglet séparé qui affiche l&apos;aide pour l&apos;affichage actuel (pour plus d&apos;informations, voir <xref linkend="displayHelp"/>).</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis>Encadré</emphasis></term>
+                <listitem>
+                    <para>L&apos;encadré contient une entrée avec l&apos;icône correspondante pour chaque affichage. En cliquant sur l&apos;icône de l&apos;affichage souhaité, vous ouvrez l&apos;affichage dans une fenêtre séparée sur le bureau actif pour une vue globale complète des affichages disponibles, voir <xref
+                            linkend="listOfViews"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis>Espace de travail</emphasis></term>
+                <listitem>
+                    <para>L&apos;espace de travail sert de conteneur pour le bureau et les affichages ouverts sur le bureau. Quand vous cliquez sur une des lignes de la table dans un affichage, des informations détaillées sur l&apos;entrée sélectionnée s&apos;affichent dans le volet des détails figurant sur la partie droite.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis>Volet des détails</emphasis></term>
+                <listitem>
+                    <para>Le volet des détails contient des informations supplémentaires sur l&apos;entrée de table sélectionnée. Généralement, la portée des informations dans le volet des détails va au-delà des informations de la table d&apos;aperçu. Le volet des détails est automatiquement affiché si au moins un élément existe dans la table d&apos;aperçu de l&apos;affichage respectif. Dans certains affichages, les informations disponibles sont regroupées dans le volet des détails à l&apos;aide de différents onglets.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="listOfViews">
+        <title>Vue globale des affichages disponibles</title>
+        <para>La liste suivante vous donne une brève vue globale des affichages disponibles.</para>
+        <variablelist>
+            <varlistentry>
+                <term>Affichage Processus</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_processesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Activités de processus</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_processActivitiesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Jobs</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_jobsView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Activités de job</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_jobActivitiesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Envois</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_mailPiecesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Documents</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_documentsView"
+                    />.</para>
+                </listitem>
+            </varlistentry>            
+            <varlistentry>
+                <term>Affichage Suivi des envois</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref
+                        linkend="db_pil_wui_mailPieceTrackingsView"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Applications</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref
+                            linkend="db_pil_wui_applicationsView"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Activités d&apos;application</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref
+                        linkend="db_pil_wui_applicationActivitiesView"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Commandes</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_commandsView"
+                        />.</para>
+                </listitem>
+            </varlistentry>            
+            <varlistentry>
+                <term>Affichage Modèles de workflow</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_workflowTemplatesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Instances de workflow</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_workflowInstancesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Activités de workflow</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_workflowActivitiesView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Activités de l&apos;ordonnanceur</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref
+                            linkend="db_pil_wui_taskHistoryView"/>.</para>
+                </listitem>
+            </varlistentry>
+            
+            
+            
+            <varlistentry>
+                <term>Affichage Répertoires</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref
+                            linkend="db_pil_wui_directoriesView"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Attributs de documents</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_fieldsView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+
+            <varlistentry>
+                <term>Affichage Hotfolders</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_hotfoldersView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Minuteries</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_timersView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Déclencheurs</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_triggersView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Activités de l&apos;ordonnanceur</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_taskHistoryView"
+                    />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Enveloppes</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_envelopesView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Médias</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_mediaView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Tailles de papier</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_paperSizeView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Types de documents</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref
+                            linkend="db_pil_wui_documentTypesView"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Jobs d&apos;impression</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_printJobsView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Verrous de processus</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref
+                            linkend="db_pil_wui_processLocksView"/>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Affichage Clients</term>
+                <listitem>
+                    <para>Pour plus d&apos;informations, voir <xref linkend="db_pil_wui_tenantsView"
+                        />.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+</chapter>

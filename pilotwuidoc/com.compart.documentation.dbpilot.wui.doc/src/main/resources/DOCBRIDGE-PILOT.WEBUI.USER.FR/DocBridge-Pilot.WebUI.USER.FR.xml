@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<book xml:id="DocBridge_Pilot_UI_USER" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+
+    <info>
+        <title><trademark class="registered">DocBridge</trademark><jobtitle>Pilot Web UI</jobtitle>
+        </title>
+        <subtitle>Guide de l&apos;utilisateur</subtitle>
+        <titleabbrev>Guide de l&apos;utilisateur DocBridge Pilot Web UI</titleabbrev>
+        <orgname>
+            <inlinemediaobject>
+                <alt>Compart Logo</alt>
+                <imageobject>
+                    <imagedata align="right"
+                        fileref="../../../../../../commonimages/com.compart.documentation.common.images/resources/Compart-Logo.png"
+                        format="PNG"/>
+                </imageobject>
+            </inlinemediaobject>
+        </orgname>
+        <mediaobject>
+            <alt>Fond du titre</alt>
+            <imageobject>
+                <imagedata align="left"
+                    fileref="../../../../../../commonimages/com.compart.documentation.common.images/resources/Titelseite-Banner.png"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <releaseinfo><inlinemediaobject>
+                <alt>Symbole de produit</alt>
+                <imageobject>
+                    <imagedata
+                        fileref="../../../../../../commonimages/com.compart.documentation.common.images/resources/DB-pilot.png"
+                        format="PNG" align="center"/>
+                </imageobject>
+            </inlinemediaobject></releaseinfo>
+        <author>
+            <orgname>Compart AG</orgname>
+        </author>
+        <subjectset>
+            <subject>
+                <subjectterm>DocBridge Pilot Web Interface</subjectterm>
+            </subject>
+            <subject>
+                <subjectterm>Utilisation</subjectterm>
+            </subject>
+        </subjectset>
+        <keywordset>
+            <keyword>Utilisation</keyword>
+            <keyword>DocBridge Pilot Web Interface</keyword>
+        </keywordset>
+        <pubdate>2-3</pubdate>
+        <xi:include
+            href="../../../../../../prefacechapters/com.compart.documentation.preface.chapters/resources/legalnotice_fr_new.xml"
+        />
+    </info>
+
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_PRE.xml"/>
+    <!-- Allgemeine Pilot Einführung -->
+    <xi:include
+        href="../../../../../../pilotproductarchitecture/com.compart.documentation.pilot.productarchitecture/resources/fr-FR/Topic_PilotArchitecture.xml"/>
+    <!-- Setup Schritte für Pilot UI -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_SetupSteps.xml"/>
+    <!-- Strukturelle Übersicht der Weboberfläche -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_StructOverview.xml"/>
+    <!-- Allgemeine Benutzeraktionen -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_GeneralActions.xml"/>
+    <!-- Arbeiten mit Prozessen -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Processes.xml"/>
+    <!-- Arbeiten mit Prozess-Aktivitäten -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_ProcessActivities.xml"/>
+    <!-- Arbeiten mit Jobs -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Jobs.xml"/>
+    <!-- Arbeiten mit Job-Aktivitäten -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_JobActivities.xml"/>
+    <!-- Arbeiten mit Sendungen -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_MailPieces.xml"/>
+    <!-- Arbeiten mit Dokumenten -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Documents.xml"/>
+    <!-- Arbeiten mit Sendungsnachverfolgungen -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_MailPieceTrackings.xml"/>
+    <!-- Arbeiten mit Anwendungen -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Applications.xml"/>
+    <!-- Arbeiten mit Anwendungsaktivitäten -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_ApplicationActivities.xml"/>
+    <!-- Arbeiten mit Befehlen -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Commands.xml"/>
+    <!-- Arbeiten mit Workflow-Vorlagen -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_WorkflowTemplates.xml"/>
+    <!-- Arbeiten mit Workflow-Instanzen -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_WorkflowInstances.xml"/>
+    <!-- Arbeiten mit Workflow-Aktivitäten -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_WorkflowActivities.xml"/>
+    <!-- Arbeiten mit Verzeichnissen -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Directories.xml"/>
+    <!-- Arbeiten mit Dokumentattributen -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Fields.xml"/>
+    <!-- Arbeiten mit Hotfoldern -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Hotfolders.xml"/>
+    <!-- Arbeiten mit Timern -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Timers.xml"/>
+    <!-- Arbeiten mit Triggern -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Triggers.xml"/>
+    <!-- Arbeiten mit Scheduler-Aktivitäten -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_TaskHistory.xml"/>
+    <!-- Arbeiten mit Umschlägen -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Envelopes.xml"/>
+    <!-- Arbeiten mit Medien -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Media.xml"/>
+    <!-- Arbeiten mit Papierformaten -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_PaperSizes.xml"/>
+    <!-- Arbeiten mit Dokumenttypen -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_DocumentTypes.xml"/>
+    <!-- Arbeiten mit Druck-Jobs -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_PrintJobs.xml"/>
+    <!-- Arbeiten mit Prozess-Locks -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_ProcessLocks.xml"/>
+    <!-- Arbeiten mit Mandanten -->
+    <xi:include href="DocBridge-Pilot.WebUI.USER.FR_Tenants.xml"/>
+
+    <glossary role="auto" xml:id="glossar_de">
+        <glossentry>
+            <glossterm>Dummy</glossterm>
+            <glossdef>
+                <para>Dummy</para>
+            </glossdef>
+        </glossentry>
+    </glossary>
+
+    <index xml:id="index"/>
+
+</book>

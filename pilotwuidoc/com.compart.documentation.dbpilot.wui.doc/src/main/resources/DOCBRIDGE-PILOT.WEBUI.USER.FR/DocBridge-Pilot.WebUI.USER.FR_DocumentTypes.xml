@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_documentTypesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des types de document</title>
+    <para>Les sections suivantes décrivent le travail avec des types de document. Les types de document permettent de décrire les composants d&apos;un envoi. Vous pouvez définir un ou plusieurs types de document pour chaque unité de traitement configurée. Dans l&apos;affichage <guilabel>Types de document</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_documentType"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_documentTypes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_documentTypeDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_documentType"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_documentTypes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_documentTypes"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_documentType"><?dbhtml filename="SearchDocumentTypeView.html" ?><title>Définir un type de documents</title>
+        <para>Vous pouvez définir un nouveau type de document. Vous pouvez configurer les propriétés souhaitées dans une boîte de dialogue séparée.</para>
+        <para>Procédez comme suit pour créer un nouveau type de document.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Types de document</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Créer</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Créer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Créer un type de document</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Saisissez les paramètres souhaités pour le nouveau type de document dans la boîte de dialogue <guilabel>Créer un type de document</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la boîte de dialogue <guilabel>Créer un type de document</guilabel>, cliquez sur <guibutton>OK</guibutton> pour créer le type de document avec les paramètres spécifiés.</para>
+                <result>
+                    <para>La boîte de dialogue se ferme et le nouveau type de document s&apos;affiche dans la vue globale des types de document configurés.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_documentTypes">
+        <title>Afficher des types de document</title>
+        <para>Vous pouvez afficher une vue globale des types de documents configurés dans l&apos;espace de travail de l&apos;affichage <guilabel>Types de documents</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Types de documents</alt><imageobject>
+                <imagedata fileref="images/scr_documentTypesView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque type de document configuré :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Identificateur unique du type de document.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Mode d&apos;impression</guilabel></term>
+                <listitem>
+                    <para>Mode d&apos;impression. Les valeurs valides sont :</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term>SIMPLEX</term>
+                            <listitem>
+                                <para>Impression recto</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>DUPLEX</term>
+                            <listitem>
+                                <para>Impression recto-verso</para>
+                            </listitem>
+                        </varlistentry><!--<varlistentry>
+                            <term>MIXPLEX</term>
+                            <listitem>
+                                <para>Ein- und beidseitiger Druck innerhalb eines Dokuments</para>
+                            </listitem>
+                        </varlistentry>--></variablelist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Média</guilabel></term>
+                <listitem>
+                    <para>Référence au média (pour plus d&apos;informations, voir <xref
+                            linkend="db_pil_wui_mediaView"/>). Permet de calculer le poids du document</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Nombre minimum</guilabel></term>
+                <listitem>
+                    <para>Nombre minimum de documents de ce type qui doivent être inclus dans un envoi.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Nombre maximum</guilabel></term>
+                <listitem>
+                    <para>Nombre maximal de documents de ce type pouvant être inclus dans un envoi.</para>
+                    <note>
+                        <para>La valeur <guilabel>nombre minimum</guilabel> doit toujours être inférieure à la valeur <guilabel>nombre maximum</guilabel>.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Autoriser seul</guilabel></term>
+                <listitem>
+                    <para>L&apos;indicateur détermine si ce type de document peut également être envoyé seul. Les valeurs valides sont <userinput>true</userinput> (valeur par défaut) et <userinput>false</userinput>. Avec la valeur <userinput>true</userinput>, ce document peut être contenu seul dans un envoi.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Bac</guilabel></term>
+                <listitem>
+                    <para>Désignation du bac de sortie.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Canal</guilabel></term>
+                <listitem>
+                    <para>Désignation du canal de sortie.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Types</guilabel></term>
+                <listitem>
+                    <para>Types de documents pris en charge (formats).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_documentTypeDetails">
+        <title>Afficher les détails du type de document</title>
+        <para>Vous pouvez afficher les informations détaillées concernant chaque type de document dans le volet des détails. Par rapport à la table d&apos;aperçu, le volet des détails contient des informations plus détaillées.</para>
+        <mediaobject><alt>Affichage des types de documents avec le volet des détails</alt><imageobject>
+                <imagedata fileref="images/scr_documentTypeViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Les informations suivantes sont actuellement disponibles dans le volet des détails :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Identificateur unique du type de document.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Type</guilabel></term>
+                <listitem>
+                    <para>Actuellement, seule la valeur <code>directories</code> est prise en charge.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Mode d&apos;impression</guilabel></term>
+                <listitem>
+                    <para>Mode d&apos;impression. Les valeurs valides sont :</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term>SIMPLEX</term>
+                            <listitem>
+                                <para>Impression recto</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>DUPLEX</term>
+                            <listitem>
+                                <para>Impression recto-verso</para>
+                            </listitem>
+                        </varlistentry>
+                        <!--<varlistentry>
+                            <term>MIXPLEX</term>
+                            <listitem>
+                                <para>Ein- und beidseitiger Druck innerhalb eines Dokuments</para>
+                            </listitem>
+                        </varlistentry>-->
+                    </variablelist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Média</guilabel></term>
+                <listitem>
+                    <para>Référence au média (pour plus d&apos;informations, voir <xref
+                            linkend="db_pil_wui_mediaView"/>). Permet de calculer le poids du document</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Nombre minimum</guilabel></term>
+                <listitem>
+                    <para>Nombre minimum de documents de ce type qui doivent être inclus dans un envoi.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Nombre maximum</guilabel></term>
+                <listitem>
+                    <para>Nombre maximal de documents de ce type pouvant être inclus dans un envoi.</para>
+                    <note>
+                        <para>La valeur <guilabel>nombre minimum</guilabel> doit toujours être inférieure à la valeur <guilabel>nombre maximum</guilabel>.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Autoriser seul</guilabel></term>
+                <listitem>
+                    <para>L&apos;indicateur détermine si ce type de document peut également être envoyé seul. Les valeurs valides sont <userinput>true</userinput> (valeur par défaut) et <userinput>false</userinput>. Avec la valeur <userinput>true</userinput>, ce document peut être contenu seul dans un envoi.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Bac</guilabel></term>
+                <listitem>
+                    <para>Désignation du bac de sortie.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Canal</guilabel></term>
+                <listitem>
+                    <para>Désignation du canal de sortie.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Types</guilabel></term>
+                <listitem>
+                    <para>Types de documents pris en charge (formats).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="modify_documentType">
+        <title>Éditer le type de document</title>
+        <para>Vous pouvez éditer les propriétés d&apos;un type de document.</para>
+        <note>
+            <para>Veuillez noter que vous ne pouvez pas changer le nom du type de documents avec cette action. Si vous souhaitez modifier le nom du type de document, créez un nouveau type de document avec le nom souhaité (voir <xref
+                    linkend="create_application"/>).</para>
+        </note>
+        <para>Procédez comme suit pour éditer les valeurs d&apos;un type de document existant :</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Types de document</guilabel>.</para>
+            </step>
+            <step>
+                <para>Double-cliquez sur l&apos;entrée souhaitée dans la table d&apos;aperçu.</para>
+                <result>
+                    <para>L&apos;entrée passe en mode d&apos;édition.</para>
+                </result>
+            </step>
+            <step>
+                <para>Saisissez les nouvelles valeurs souhaitées et cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                            <imagedata fileref="images/btn_save.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject></inlinemediaobject>pour enregistrer les nouvelles valeurs.</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_documentTypes">
+        <title>Éditer plusieurs types de documents</title>
+        <para>Cette action vous permet d&apos;éditer les valeurs sélectionnées pour plusieurs types de documents en une seule étape.</para>
+        <note>
+            <para>Veuillez noter qu&apos;avec cette fonction, vous définissez les mêmes valeurs pour tous les types de documents sélectionnés.</para>
+        </note>
+        <para>Procédez comme suit pour éditer les propriétés des types de documents sélectionnés.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Types de document</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins deux types de document dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Éditer</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cochez la case en face de chaque valeur que vous souhaitez modifier pour tous les types de documents sélectionnés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Processus</guilabel>, entrez le processus auquel les types de documents doivent être liés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Mode d&apos;impression</guilabel>, indiquez si le type de document doit être imprimé en recto ou en recto-verso.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Médias</guilabel>, indiquez le média configuré auquel le type de document doit être lié.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Nombre minimum</guilabel>, entrez le nombre minimum de documents de ce type qui doivent figurer dans un envoi.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Nombre maximal</guilabel>, entrez le nombre maximal de documents de ce type qui peuvent figurer dans un envoi.</para>
+                <note>
+                    <para>La valeur <guilabel>Nombre minimum</guilabel> doit toujours être inférieure à la valeur <guilabel>Nombre maximal</guilabel>.</para>
+                </note>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Autoriser seul</guilabel>, indiquez si ce type de document peut être envoyé seul. Les valeurs valides sont <userinput>true</userinput> (valeur par défaut) et <userinput>false</userinput>. Avec la valeur <userinput>true</userinput>, ce document peut être contenu seul dans un envoi.</para>
+            </step>
+            <step>
+                <para>Précisez le bac de sortie souhaité dans le champ <guilabel>Bac</guilabel>.</para>
+            </step>
+            <step>
+                <para>Précisez le canal de sortie souhaité dans le champ <guilabel>Canal</guilabel>.</para>
+            </step>
+            <step>
+                <para>Précisez le type de document (format) souhaité dans le champ <guilabel>Type</guilabel>.</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_documentTypes">
+        <title>Supprimer des types de documents</title>
+        <para>Vous pouvez utiliser cette action pour supprimer un ou plusieurs type(s) de documents. Procédez comme suit pour supprimer un ou plusieurs  type(s) de document.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Types de document</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins un type de document dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Supprimer</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Supprimer).</para>
+                <result>
+                    <para>La boîte de dialogue de confirmation <guilabel>Supprimer des types de documents</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des types de documents</guilabel>, cliquez sur <guibutton>Ok</guibutton> pour supprimer le(s) type(s) de document(s) sélectionné(s).</para>
+                    </step>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des types de documents</guilabel>, cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue <emphasis>sans</emphasis> supprimer le(s) type(s) de document(s) sélectionné(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Si le(s) type(s) de document(s) a/ont été supprimé(s), un message de confirmation est émis.</para>
+                    <para>Si le(s) type(s) de document(s) n&apos;a/ont pas pu être supprimé(s), un message d&apos;erreur correspondant est émis.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_workflowInstancesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="de-DE">
+    <title>Umgang mit Workflow-Instanzen</title>
+    <para>Beim Umgang mit Workflows wird zwischen Workflow-Vorlagen, Workflow-Instanzen und
+        Workflow-Aktivitäten unterschieden. Als Workflow-Vorlagen werden JSON-Objekte bezeichnet,
+        die die allgemeine Struktur eines Workflows vorgeben. Auf Basis einer Workflow Vorlage
+        könnne beliebig viele (ausführbare) Workflow-Instanzen erstellt werden. Workflow-Aktivitäten
+        sind mit jeweils einer Workflow-Instanz verknüpft (für weitere Informationen zu
+        Workflow-Vorlagen, siehe <xref linkend="db_pil_wui_workflowTemplatesView"/>, für weitere
+        Informationen zu Workflow-Aktivitäten, siehe <xref
+            linkend="db_pil_wui_workflowActivitiesView"/>).</para>
+    <para>In der Ansicht <guilabel>Workflow-Instanzen</guilabel> können Sie die folgenden Aktionen
+        ausführen:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_workflowInstance"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_workflowInstances"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_workflowInstanceDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_workflowInstanceRoutes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="startManualActions_workflowInstance"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_workflowInstances"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="pause_workflowInstances"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="interrupt_workflowInstances"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_workflowInstance"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_workflowInstance">
+        <?dbhtml filename="SearchWorkflowinstanceView.html" ?>
+        <title>Workflow-Instanz definieren</title>
+        <para>Sie können eine neue Workflow-Instanz definieren. Dabei können Sie die gewünschten
+            Eigenschaften direkt in der Übersichtstabelle konfigurieren.</para>
+        <para>Gehen Sie wie folgt vor, um eine neue Workflow-Instanz zu erstellen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Workflow-Instanzen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Schaltfläche Erstellen</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_add.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Erstellen).</para>
+                <result>
+                    <para>In der Übersichtstabelle wird ein neuer Eintrag mit leeren Feldern
+                        erstellt. Das Feld <guilabel>ID</guilabel> wird automatisch gefüllt und ist
+                        daher nicht editierbar.</para>
+                </result>
+            </step>
+            <step>
+                <para>Stellen Sie im Feld <guilabel>Prozess</guilabel> sicher, dass der in der
+                    Ansicht <guilabel>Prozesse</guilabel> ausgewählte Prozess übernommen
+                    wurde.</para>
+            </step>
+
+            <step>
+                <para>Wählen Sie im Feld <guilabel>Vorlage</guilabel> die Workflow-Vorlage aus, auf
+                    deren Grundlage die neue Workflow-Instanz erstellt werden soll.</para>
+            </step>
+            <step>
+                <para>Stelllen Sie sicher, dass im Feld <guilabel>Jobs</guilabel> die eindeutigen
+                    Bezeichner der in der Ansicht <guilabel>Jobs</guilabel> ausgewählten Jobs
+                    übernommen wurden.</para>
+                <note>
+                    <para>Die Jobs werden nur dann automatisch übernommen und angezeigt, wenn sie
+                        dem (in der Ansicht <guilabel>Prozesse</guilabel>) ausgewählten Prozess
+                        zugewiesen sind. Prüfen Sie also gegbenenfalls Ihre Auswahl in den beiden
+                        Ansichten <guilabel>Prozesse</guilabel> und
+                        <guilabel>Jobs</guilabel>.</para>
+                </note>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um die neue Workflow-Instanz zu
+                            speichern und den Editiermodus zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und die neue Workflow-Instanz wird
+                                in der Übersichtstabelle angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um das Erstellen der Workflow-Instanz
+                            abzubrechen und den Editiermodus zu beenden ohne den Befehl zu
+                            speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_workflowInstances">
+        <title>Workflow-Instanzen anzeigen</title>
+        <para>Sie können eine Übersicht der konfigurierten Workflow-Instanzen im Arbeitsbereich der
+            Ansicht <guilabel>Workflow-Instanzen</guilabel> anzeigen.</para>
+        <mediaobject>
+            <alt>Screenshot Ansicht Workflow-Instanzen</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_WorkflowInstancesView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>In der Übersichtstabelle werden für jede Workflow-Instanz standardmäßig die folgenden
+            Informationen angezeigt:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Der automatisch genereirte eindeutige Bezeichner der
+                        Workflow-Instanz.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Prozess</guilabel></term>
+                <listitem>
+                    <para>Der Prozess mit dem die Workflow-Instanz verknüpft ist.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Status</guilabel></term>
+                <listitem>
+                    <para>Verarbeitungsstatus der Workflow-Instanz.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Letzte Aktion</guilabel></term>
+                <listitem>
+                    <para>Nummer der letzten Aktion, die abgeschlossen wurde..</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Vorlage</guilabel></term>
+                <listitem>
+                    <para>Name der Workflow-Vorlage, mit der die Workflow-Instanz verknüpft
+                        ist.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Jobs</guilabel></term>
+                <listitem>
+                    <para>Job oder Jobs mit dem/denen die Workflow-Instanz verknüpft ist.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_workflowInstanceDetails">
+        <title>Workflow-Instanz Details anzeigen</title>
+        <para>Wenn Sie in der Übersichtstabelle eine Workflow-Instanz auswählen, werden die
+            Informationen zur ausgewählten Workflow-Instanz im Detailbereich angezeigt. Der
+            Detailbereich enthält aktuell die gleichen Informationen, wie die
+            Übersichtstabellle.</para>
+        <mediaobject>
+            <alt>Ansicht Workflow-Instanzen mit Details</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_WorkflowInstancesViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="display_workflowInstanceRoutes">
+        <title>Workflow-Instanz Verbindungen anzeigen</title>
+        <para>Sie können die Verbindungen (Routen) zwischen den einzelnen Workflow-Elementen für
+            eine Workflow-Instanz in einem separaten Dialogfenster anzeigen lassen.</para>
+
+        <para>Gehen Sie wie folgt vor, um die Verbindungen für eine vorhandene Workflow-Instanz
+            anzeigen zu lassen:</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Workflow-Instanzen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Verbindungen anzeigen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_routes.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Verbindungen anzeigen).</para>
+                <result>
+                    <para>Das Dialogfenster <guilabel>Route ausführen</guilabel> wird geöffnet. Die
+                        Verbindungen zwischen den einzelnen Elementen des Workflows werden
+                        visualisiert.</para>
+                    <mediaobject>
+                        <alt>Dialogfenster Verbindungen</alt>
+                        <imageobject>
+                            <imagedata fileref="images/dia_routes.png" width="12cm"/>
+                        </imageobject>
+                    </mediaobject>
+                </result>
+            </step>
+            <step>
+                <para>Klicken Sie im Dialogfenster <guilabel>Route ausführen</guilabel> auf die
+                    Schaltfläche <guilabel>Schließen</guilabel>, um das Dialogfenster zu
+                    schließen.</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="startManualActions_workflowInstance">
+        <title>Mit Workflow-Schritten interagieren</title>
+        <para>Wenn Sie die Workflow-Instanz basierend auf einer Vorlage für die manuelle
+            Verarbeitung erstellt haben (für weitere Inforrmationen, siehe <xref
+                linkend="display_workflowTemplates"/>), müssen die einzelnen Schritte manuell
+            gestartet werden. In diesem Fall können Sie über die <productname>&dbpi;</productname>
+            Weboberfläche den gewünschten nächsten Schritt starten.</para>
+        <para>Gehen Sie wie folgt vor, um die Schritte für eine Workflow-Instanz anzeigen zu lassen
+            und den nächsten Schritt manuell zu starten:</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Workflow-Vorlagen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Stellen Sie sicher, dass Sie in der Ansicht
+                        <guilabel>Workflow-Vorlagen</guilabel> eine Vorlage für einen manuellen
+                    Workflow ausgewählt haben (die Spalte <guilabel>Automatisch</guilabel> enthält
+                    keinen Wert).</para>
+                <result>
+                    <para>In der Ansicht <guilabel>Workflow-Instanzen</guilabel> werden nur noch
+                        Instanzen angezeigt, die auf Grundlage der ausgewählten Vorlage erstellt
+                        wurden.</para>
+                </result>
+            </step>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Workflow-Instanzen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie eine der angezeigten manuellen Workflow-Instanzen aus der
+                    Übersichtstabellle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Verbindungen anzeigen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_routes.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Verbindungen anzeigen).</para>
+                <result>
+                    <para>Das Dialogfenster <guilabel>Route ausführen</guilabel> wird geöffnet. Die
+                        Verbindungen zwischen den einzelnen Elementen des Workflows werden
+                        visualisiert.</para>
+                    <mediaobject>
+                        <alt>Dialogfenster Verbindungen</alt>
+                        <imageobject>
+                            <imagedata fileref="images/dia_routesAction.png" width="12cm"/>
+                        </imageobject>
+                    </mediaobject>
+                </result>
+            </step>
+            <step>
+                <para>Klicken Sie auf eine der verfügbaren Aktionen (im oberen Beispiel
+                        <guilabel>Split</guilabel> oder <guilabel>End</guilabel>), um den
+                    entsprechenden Schritt zu starten.</para>
+                <result>
+                    <para>Der ausgewählte Schritt wird ausgeführt. Die Ansicht der verfügbaren
+                        Schritte im Dialogfenster <guilabel>Route ausführen</guilabel> wird
+                        aktualisiert.</para>
+                </result>
+            </step>
+            <step>
+                <para>Klicken Sie im Dialogfenster <guilabel>Route ausführen</guilabel> auf die
+                    Schaltfläche <guilabel>Schließen</guilabel>, um das Dialogfenster zu
+                    schließen.</para>
+                <result>
+                    <para>Die ausgewählte Workflow-Instanz wird in der Übersichtstabelle ggf. mit
+                        einem aktualisierten Status angezeigt.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="filter_workflowInstances">
+        <title>Workflow-Instanzen filtern</title>
+        <para>Mithilfe dieser Aktion können Sie die Übersicht der vorhandenen Workflow-Instanzen
+            anhand der verfügbaren Spalten filtern.</para>
+        <para>Gehen Sie wie folgt vor, um die vorhandenen Workflow-Instanzen zu filtern und damit
+            die Anzahl der angezeigten Workflow-Instanzen zu reduzieren.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Workflow-Instanzen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche
+                        <guibutton>Filter</guibutton>.</para>
+            </step>
+            <step>
+                <para>Sie können die vorhandenen Workflow-Instanzen anhand der ID (einfacher Filter)
+                    oder anhand anderer Parameter filtern (für weitere Informationen zu
+                    Filterkriterien, siehe <xref linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="pause_workflowInstances">
+        <title>Workflow-Instanzen anhalten</title>
+        <para>Mithilfe dieser Aktion können Sie die Verarbeitung einer oder mehrerer ausgewählter
+            Workflow-Instanzen anhalten. Dabei wird jeweils nach der aktuell in Ausführung
+            befindlichen Aktion geprüft, ob das Anhalten möglich ist.</para>
+        <para>Gehen Sie wie folgt vor, um eine ausgewählte Workflow-Instanz anzuhalten.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Workflow-Instanzen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens eine Workflow-Instanz in einem gültigen Anfangsstatus
+                    aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Anhalten Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_pause.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Workflow-Instanz anhalten).</para>
+                <result>
+                    <para>Wenn die Verarbeitung der ausgewählten Workflow-Instanz erfolgreich
+                        angehalten wurde wird eine Erfolgsmeldung ausgegeben.</para>
+                    <para>Wenn die Verarbeitung der ausgewählten Workflow-Instanz nicht angehalten
+                        werden konnte (beispielsweise weil sie nicht mehr ausgeführt wird), wird
+                        eine Fehlermeldung ausgegeben.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="interrupt_workflowInstances">
+        <title>Workflow-Instanzen unterbrechen</title>
+        <para>Mithilfe dieser Aktion können Sie die Verarbeitung einer oder mehrerer ausgewählter
+            Workflow-Instanzen unterbrechen. Dabei wird jeweils nach der aktuell in Ausführung
+            befindlichen AKtion geprüft, ob das Unterbrechen möglich ist.</para>
+        <para>Gehen Sie wie folgt vor, um eine ausgewählte Workflow-Instanz zu unterbrechen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Workflow-Instanzen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens eine Workflow-Instanz in einem gültigen Anfangsstatus
+                    aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Unterbrechen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_interrupt.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Workflow-Instanz unterbrechen).</para>
+                <result>
+                    <para>Wenn die Verarbeitung der ausgewählten Workflow-Instanz erfolgreich
+                        unterbrochen wurde wird eine Erfolgsmeldung ausgegeben.</para>
+                    <para>Wenn die Verarbeitung der ausgewählten Workflow-Instanz nicht unterbrochen
+                        werden konnte (beispielsweise weil sie nicht mehr ausgeführt wird), wird
+                        eine Fehlermeldung ausgegeben.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <!--<sect1 xml:id="modify_workflowInstance">
+        <title>Workflow-Instanz bearbeiten</title>
+        <para>Sie können die Eigenschaften einer Workflow-Instanz bearbeiten.</para>
+
+        <para>Gehen Sie wie folgt vor, um die Werte einer vorhandenen Workflow-Instanz zu
+            bearbeiten:</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Workflow-Instanzen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie den gewünschten Eintrag aus der Übersichtstablle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Bearbeiten Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Bearbeiten).</para>
+                <result>
+                    <para>Der Eintrag wechselt in den Editiermodus.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie in den einzelnen Feldern die gewünschten neuen Werte ein bzw. wählen
+                    Sie einen der verfügbaren Werte aus den Aufklapplisten aus.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um die geänderte Workflow-Instanz zu
+                            speichern und den Editiermodus zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und die Workflwo-Instanz wird mit
+                                den neuen Werten in der Übersichtstabelle angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um das Bearbeiten der Workflow-Instanz
+                            abzubrechen und den Editiermodus zu beenden ohne die Änderungen zu
+                            speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>-->
+    <sect1 xml:id="delete_workflowInstance">
+        <title>Workflow-Instanzen löschen</title>
+        <para>Mithilfe dieser Aktion können Sie eine Workflow-Instanz oder mehrere
+            Workflow-Instanzen in einem gültigen Anfangsstatus löschen.</para>
+        <note>
+            <para>Sie können einen (mit mindestens einer Workflow-Instanz verknüpften) Prozess nur löschen,
+                wenn Sie zuvor alle verknüpften Workflow-Instanzen (manuell oder per Housekeeping)
+                gelöscht haben. Ebenso können Sie eine Workflow-Vorlage nur aktualisieren, nachdem Sie
+                die verknüpften Workflow-Instanzen gelöscht haben.</para>
+        </note>
+        <para>Die folgenden Anfangsstatus sind aktuell gültig:</para>
+        <itemizedlist>
+            <listitem>
+                <para><guilabel>FINISHED</guilabel></para>
+            </listitem>
+            <listitem>
+                <para><guilabel>FAILED</guilabel></para>
+            </listitem>
+            <listitem>
+                <para><guilabel>INTERRUPTED</guilabel></para>
+            </listitem>
+        </itemizedlist>
+        <para>Gehen Sie wie folgt vor, um vorhandene Workflow-Instanzen zu löschen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Workflow-Instanzen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens eine Workflow-Instanz mit einem gültigen Status aus der
+                    Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Löschen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Löschen).</para>
+                <result>
+                    <para>Der Bestätigungsdialog <guilabel>Workflow-Instanzen löschen</guilabel>
+                        wird geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Workflow-Instanzen
+                                löschen</guilabel> auf <guibutton>Ok</guibutton>, um die
+                            ausgewählte(n) Workflow-Instanz(en) zu löschen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Workflow-Instanzen
+                                löschen</guilabel> auf <guibutton>Abbrechen</guibutton>, um das
+                            Dialogfenster zu schließen, <emphasis>ohne</emphasis> die ausgewählte(n)
+                            Workflow-Instanz(en) zu löschen.</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Wenn die Workflow-Instanz(en) erfolgreich gelöscht wurde(n), wird eine
+                        Erfolgsmeldung ausgegeben.</para>
+                    <para>Wenn die Workflow-Instanz(en) nicht gelöscht werden konnte(n) wird eine
+                        entsprechende Fehlermeldung ausgegeben.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_applicationsView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des applications</title>
+    <para>Dans l&apos;affichage <guilabel>Applications</guilabel>, vous pouvez afficher les définitions existantes des applications et des scripts et définir de nouveaux scripts et applications.</para>
+    <note>
+        <para>Notez que vous devez d&apos;abord créer tous les objets enfants (programmes externes, scripts, classes Java) avant de définir l&apos;application (pour plus d&apos;informations, voir <xref linkend="db_pil_wui_commandsView"/>).</para>
+    </note>
+    <para>Vous pouvez créer des applications à diverses fins, telles&nbsp;que le traitement des données d&apos;entrée (importation), la création du fichier de sortie ou le post-traitement.</para>
+    <para>Une application comprend jusqu&apos;à quatre commandes. Chacune de ces commandes peut être un programme externe, un JavaScript ou une commande Java. Les commandes sont traitées dans l&apos;ordre suivant :</para>
+    <itemizedlist>
+        <listitem>
+            <para>Avant-commande</para>
+            <indexterm>
+                <primary>application</primary>
+                <secondary>BEFORE</secondary>
+            </indexterm>
+            <indexterm>
+                <primary>BEFORE</primary>
+                <secondary>application</secondary>
+            </indexterm>
+        </listitem>
+        <listitem>
+            <para>Commande principale</para>
+        </listitem>
+        <listitem>
+            <para>Commande AFTER</para>
+            <indexterm>
+                <primary>application</primary>
+                <secondary>AFTER</secondary>
+            </indexterm>
+            <indexterm>
+                <primary>AFTER</primary>
+                <secondary>application</secondary>
+            </indexterm>
+        </listitem>
+    </itemizedlist>
+    <note>
+        <para>En cas d&apos;erreur, la commande d&apos;erreur est exécutée une fois que la commande principale a été traitée.</para>
+    </note>
+    <para>Vous pouvez définir des programmes externes, des classes Java, des commandes de script et des applications dans l&apos;interface de configuration de <productname>&dbwp;</productname> sous <menuchoice><guimenu>Configuration de processus</guimenu> <guisubmenu>Paramètres généraux</guisubmenu> <guisubmenu>Définitions</guisubmenu></menuchoice> (pour plus d&apos;informations, voir <xref
+            linkend="DocBridge-Workbench-for-Pilot.USER_t" xrefstyle="select:title select:nopage"
+        />).</para>
+    <note>
+        <para>Si vous apportez des modifications aux définitions dans l&apos;interface web, veuillez noter que vous devez également effectuer ces modifications dans <productname>&dbwp;</productname>. Dans le cas contraire, vos modifications seront écrasées lors du prochain déploiement de l&apos;unité de traitement en question.</para>
+    </note>
+    <para>Dans l&apos;affichage <guilabel>Applications</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_application"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_applications"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_applicationsDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_application"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_applications"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="start_application"/></para>
+            <para/>
+        </listitem>
+        <listitem>
+            <para><xref linkend="stop_application"/></para>
+            <para/>
+        </listitem>
+        <listitem>
+            <para><xref linkend="manage_parameters"/></para>
+            <para/>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_application"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_application"><?dbhtml filename="SearchApplicationsView.html" ?><title>Créer une application</title>
+        <para>Vous pouvez définir une nouvelle application dans l&apos;interface web pour démarrer une application externe ou exécuter une commande Java (pour plus d&apos;informations, voir aussi <xref linkend="db_pil_wui_commandsView"/>).</para>
+        <para>Procédez comme suit pour créer une nouvelle application.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Applications</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Créer</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Créer).</para>
+                <result>
+                    <para>Une nouvelle entrée avec des champs vides est créée dans la table d&apos;aperçu. Les champs <guilabel>ID</guilabel> et <guilabel>Commande principale</guilabel> sont obligatoires et donc surlignés en rouge (marqués comme incorrects) tant qu&apos;ils ne contiennent pas d&apos;entrées valides.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>ID</guilabel>, saisissez le nom souhaité pour la nouvelle application.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Commande principale</guilabel>, sélectionnez la commande appelée ou l&apos;application externe dans la liste déroulante.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Avant-commande</guilabel>, sélectionnez la commande ou l&apos;application qui est exécutée avant la commande principale dans la liste déroulante.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Après-commande</guilabel>, sélectionnez la commande ou l&apos;application qui est exécutée après la commande principale dans la liste déroulante.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Commande d&apos;erreur</guilabel>, sélectionnez la commande ou l&apos;application à exécuter en cas d&apos;erreur dans la liste déroulante.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer la nouvelle application et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et la nouvelle application est affichée dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la création de l&apos;application et quitter le mode d&apos;édition sans enregistrer l&apos;application.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_applications">
+        <title>Afficher des applications</title>
+        <para>Vous pouvez afficher une vue globale des applications configurées dans l&apos;espace de travail de l&apos;affichage <guilabel>Applications</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Applications</alt><imageobject>
+                <imagedata fileref="images/scr_ApplicationsView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque application configurée :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Identificateur unique de l&apos;application.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>État</guilabel></term>
+                <listitem>
+                    <para>État de l&apos;application. Les valeurs valides sont :</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>QUEUED</para>
+                        </listitem>
+                        <listitem>
+                            <para>RUNNING</para>
+                        </listitem>
+                        <listitem>
+                            <para>STARTED</para>
+                        </listitem>
+                        <listitem>
+                            <para>FINISHED</para>
+                        </listitem>
+                        <listitem>
+                            <para>FAILED</para>
+                        </listitem>
+                        <listitem>
+                            <para>INTERRUPTED</para>
+                        </listitem>
+                    </itemizedlist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Commande principale</guilabel></term>
+                <listitem>
+                    <para>La commande appelée ou l&apos;application externe.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Avant-commande</guilabel></term>
+                <listitem>
+                    <para>Commande ou application qui est exécutée avant la commande principale.</para>
+                    <note>
+                        <para>Si une erreur se produit lors de l&apos;exécution de l&apos;avant-commande, la commande principale peut ne pas être exécutée ou peut également se terminer par une erreur.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Après-commande</guilabel></term>
+                <listitem>
+                    <para>Commande ou application qui est exécutée après la commande principale.</para>
+                    <note>
+                        <para>Si une erreur se produit pendant l&apos;exécution de la commande principale, l&apos;après-commande peut ne pas être exécutée ou peut également se terminer par une erreur.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Commande d&apos;erreur</guilabel></term>
+                <listitem>
+                    <para>Commande ou application à exécuter en cas d&apos;erreur. La commande spécifiée est exécutée si au moins une erreur se produit lors de l&apos;exécution de la commande principale.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_applicationsDetails">
+        <title>Afficher les détails de l&apos;application</title>
+        <para>Vous pouvez afficher les informations détaillées concernant une application dans le volet des détails. Actuellement, le volet des détails contient une information supplémentaire (type) qui n&apos;est pas disponible dans la table d&apos;aperçu.</para>
+        <mediaobject><alt>Affichage des applications avec le volet des détails</alt><imageobject>
+                <imagedata fileref="images/scr_ApplicationsViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="set_applicationParameters">
+        <title>Spécifier des paramètres</title>
+        <para>Si vous avez sélectionné une entrée dans la table d&apos;aperçu, vous pouvez afficher ou définir des paramètres d&apos;exécution de l&apos;application dans le volet des détails de l&apos;onglet <guilabel>Paramètres</guilabel>. Lorsque vous appelez <productname>cpmcopy</productname>, vous pouvez p.&nbsp;ex. définir des paramètres tels que <code>infile</code> (en spécifiant le nom du fichier d&apos;entrée) ou <code>logdir</code> (en spécifiant le répertoire de journal).</para>
+        <mediaobject>
+            <alt>Affichage des applications avec paramètre</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_ApplicationsViewParam.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Les paramètres disponibles dépendent de l&apos;application ou du script exécuté. Par défaut, la liste des paramètres d&apos;exécution définis est vide. Procédez comme suit pour définir de nouveaux paramètres :</para>
+        <procedure>
+            <step>
+                <para>Dans l&apos;affichage <guilabel>Applications</guilabel>, sélectionnez l&apos;application souhaitée dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Cliquez sur l&apos;onglet <guilabel>Paramètres</guilabel> dans le volet des détails de l&apos;application sélectionnée.</para>
+                <result>
+                    <para>La liste vide des paramètres est affichée dans le volet des détails.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans la barre de navigation du volet des détails, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject></inlinemediaobject> (<guilabel>Éditer</guilabel>).</para>
+                <result>
+                    <para>Le masque de saisie des paramètres s&apos;ouvre dans le volet des détails.</para>
+                    <mediaobject><alt>Affichage Applications avec saisie des paramètres</alt><imageobject>
+                            <imagedata fileref="images/scr_ApplicationsNoParam.png" align="left"
+                                width="15cm" format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                    <para>Dans le masque de saisie, vous pouvez exécuter les actions suivantes pour chaque entrée.</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term><guilabel>Éditer</guilabel></term>
+                            <listitem>
+                                <para>Vous pouvez éditer le nom et la valeur du paramètre de chaque entrée.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>Supprimer</term>
+                            <listitem>
+                                <para>Vous pouvez supprimer chacune des entrées en cliquant sur <inlinemediaobject><alt>bouton Supprimer</alt><imageobject>
+                                            <imagedata fileref="images/btn_delete.png" align="left"
+                                                scalefit="1" format="PNG"/>
+                                        </imageobject></inlinemediaobject> (<guilabel>Supprimer</guilabel>).</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>Ajouter une entrée</term>
+                            <listitem>
+                                <para>Quand vous cliquez sur <inlinemediaobject><alt>bouton Ajouter</alt><imageobject>
+                                            <imagedata fileref="images/btn_add.png" align="left"
+                                                scalefit="1" format="PNG"/>
+                                        </imageobject></inlinemediaobject> (<guilabel>Ajouter</guilabel>) à côté de la dernière entrée, vous pouvez ajouter une nouvelle entrée de paramètre.</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                </result>
+            </step>
+            <step>
+                <para>Dans le premier champ de texte, spécifiez le nom du paramètre.</para>
+            </step>
+            <step>
+                <para>Entrez la valeur du paramètre dans le deuxième champ de texte.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Dans la barre de navigation du volet des détails, cliquez sur <inlinemediaobject><alt>bouton enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        scalefit="1" format="PNG"/>
+                                </imageobject></inlinemediaobject> (<guilabel>Enregistrer</guilabel>) pour enregistrer les modifications et quitter le mode d&apos;édition pour toutes les entrées des paramètres.</para>
+                    </step>
+                    <step>
+                        <para>Dans la barre de navigation du volet des détails, cliquez sur <inlinemediaobject><alt>bouton annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        scalefit="1" format="PNG"/>
+                                </imageobject></inlinemediaobject> (<guilabel>Annuler</guilabel>) pour quitter le mode d&apos;édition sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Le mode d&apos;édition pour toutes les entrées de paramètres est arrêté.</para>
+                    <para>Quand vous cliquez de nouveau sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                                <imagedata fileref="images/btn_edit.png" align="left" scalefit="1"
+                                    format="PNG"/>
+                            </imageobject></inlinemediaobject> (<guilabel>Éditer</guilabel>), vous pouvez de nouveau ouvrir la zone des paramètres en mode édition.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="modify_application">
+        <title>Éditer une application</title>
+        <para>Vous pouvez éditer les propriétés d&apos;une application.</para>
+        <note>
+            <para>Veuillez noter que vous ne pouvez pas changer le nom de l&apos;application avec cette action. Si vous souhaitez modifier le nom de l&apos;application, créez une nouvelle application avec le nom souhaité (voir <xref linkend="create_application"
+                />).</para>
+        </note>
+        <para>Procédez comme suit pour éditer les valeurs d&apos;une application existante :</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Applications</guilabel>.</para>
+            </step>
+
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>L&apos;entrée passe en mode d&apos;édition.</para>
+                    <note>
+                        <para>Veuillez noter que vous ne pouvez pas modifier l&apos;ID et l&apos;état de l&apos;application sélectionnée.</para>
+                    </note>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Commande principale</guilabel>, sélectionnez la commande appelée ou l&apos;application externe dans la liste déroulante.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Avant-commande</guilabel>, sélectionnez la commande ou l&apos;application qui est exécutée avant la commande principale dans la liste déroulante.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Après-commande</guilabel>, sélectionnez la commande ou l&apos;application qui est exécutée après la commande principale dans la liste déroulante.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Commande d&apos;erreur</guilabel>, sélectionnez la commande ou l&apos;application à exécuter en cas d&apos;erreur dans la liste déroulante.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer l&apos;application avec les nouvelles valeurs et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et l&apos;application est affichée avec les nouvelles valeurs dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler l&apos;édition de l&apos;application et quitter le mode d&apos;édition sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+        <para>Outre l&apos;édition des propriétés, vous pouvez également définir de nouveaux paramètres pour l&apos;exécution de l&apos;application ou modifier des paramètres existants (pour plus d&apos;informations, voir <xref linkend="manage_parameters"/>).</para>
+    </sect1>
+    <sect1 xml:id="multi_edit_applications">
+        <title>Éditer plusieurs applications</title>
+        <para>Cette action vous permet d&apos;éditer des valeurs sélectionnées pour plusieurs applications en une seule étape.</para>
+        <note>
+            <para>Veuillez noter qu&apos;avec cette fonction, vous définissez les mêmes valeurs pour toutes les applications sélectionnées.</para>
+        </note>
+        <para>Procédez comme suit pour éditer les propriétés des applications sélectionnées.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Applications</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins deux applications dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                        <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                            scalefit="1"/>
+                    </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Éditer</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cochez la case en face de chaque valeur que vous souhaitez modifier pour toutes les applications sélectionnées.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Commande principale</guilabel>, sélectionnez la commande appelée ou l&apos;application externe pour toutes les applications sélectionnées.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Avant-commande</guilabel>, sélectionnez la commande ou l&apos;application qui est exécutée avant la commande principale, pour toutes les applications sélectionnées.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Après-commande</guilabel>, sélectionnez la commande ou l&apos;application qui est exécutée après la commande principale, pour toutes les applications sélectionnées.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Commande d&apos;erreur</guilabel>, sélectionnez la commande ou l&apos;application à exécuter en cas d&apos;erreur pour toutes les applications sélectionnées.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <guibutton>Confirmer</guibutton> pour enregistrer les modifications affectant toutes les applications sélectionnées et fermer la boîte de dialogue.</para>
+                        <result>
+                            <para>Les paramètres modifiés sont affichés pour les applications sélectionnées dans la table d&apos;aperçu et dans le volet des détails.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+        <para>Outre l&apos;édition des propriétés, vous pouvez également définir de nouveaux paramètres pour l&apos;exécution de l&apos;application ou modifier des paramètres existants (pour plus d&apos;informations, voir <xref linkend="manage_parameters"/>).</para>
+    </sect1>
+    
+    <sect1 xml:id="start_application">
+        <title>Démarrer l&apos;application</title>
+        <para>Vous pouvez démarrer une application configurée dans l&apos;interface web pour démarrer une application externe ou exécuter une commande Java (pour plus d&apos;informations, voir également <xref linkend="db_pil_wui_commandsView"/>).</para>
+        <para>Procédez comme suit pour démarrer une application.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Applications</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Démarrer</alt><imageobject>
+                            <imagedata fileref="images/btn_start.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Exécuter).</para>
+                <result>
+                    <para>L&apos;application configurée est démarrée.</para>
+                    <note>
+                        <para>Si une erreur se produit lors de la tentative de démarrage de l&apos;application, consultez le fichier journal pour plus d&apos;informations.</para>
+                    </note>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="stop_application">
+        <title>Arrêter l&apos;application</title>
+        <para>Vous pouvez arrêter une application en cours d&apos;exécution (application externe ou commande Java) dans l&apos;interface web (pour plus d&apos;informations, voir aussi <xref
+                linkend="db_pil_wui_commandsView"/>).</para>
+        <para>Procédez comme suit pour arrêter une application.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Applications</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Arrêt</alt><imageobject>
+                            <imagedata fileref="images/btn_stop.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Arrêter).</para>
+                <result>
+                    <para>L&apos;exécution de l&apos;application configurée est arrêtée.</para>
+                    <note>
+                        <para>Si une erreur se produit lors de la tentative d&apos;arrêt de l&apos;application, consultez le fichier journal pour plus d&apos;informations.</para>
+                    </note>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="manage_parameters">
+        <title>Gestion des paramètres d&apos;exécution de l&apos;application</title>
+        <para>Outre l&apos;édition des propriétés (voir <xref linkend="modify_application"/>), vous pouvez également définir de nouveaux paramètres pour l&apos;exécution de l&apos;application ou ajuster ou supprimer des paramètres existants. Procédez comme suit pour éditer les paramètres d&apos;une application :</para>
+        <procedure>
+            <title>Définir des paramètres</title>
+            <step>
+                <para>Dans la table d&apos;aperçu de l&apos;affichage <guilabel>Applications</guilabel>, cliquez sur l&apos;entrée souhaitée.</para>
+                <result>
+                    <para>L&apos;entrée est cochée.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cliquez sur l&apos;onglet <guilabel>Paramètres</guilabel> dans le volet des détails de l&apos;entrée.</para>
+            </step>
+            <step>
+                <para>Cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject></inlinemediaobject> (Éditer) pour créer une nouvelle entrée.</para>
+                <result>
+                    <para>Une nouvelle entrée de paramètre est créée.</para>
+                </result>
+            </step>
+            <step>
+                <para>Saisissez le nom souhaité du paramètre dans le premier champ de saisie.</para>
+            </step>
+            <step>
+                <para>Saisissez la valeur souhaitée du nouveau paramètre dans le deuxième champ de saisie.</para>
+            </step>
+            <step>
+                <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                            <imagedata fileref="images/btn_save.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer la nouvelle entrée de paramètre.</para>
+                <note>
+                    <para>Si vous créez plusieurs paramètres en une seule étape, tous les nouveaux paramètres sont enregistrés.</para>
+                </note>
+            </step>
+        </procedure>
+        <para>Outre la création de nouveaux paramètres, vous pouvez également éditer les propriétés de paramètres existants. Procédez comme suit pour éditer un paramètre existant :</para>
+        <procedure>
+            <title>Éditer des paramètres</title>
+            <step>
+                <para>Dans la table d&apos;aperçu de l&apos;affichage <guilabel>Applications</guilabel>, cliquez sur l&apos;entrée souhaitée.</para>
+                <result>
+                    <para>L&apos;entrée est cochée.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cliquez sur l&apos;onglet <guilabel>Paramètres</guilabel> dans le volet des détails de l&apos;entrée.</para>
+            </step>
+            <step>
+                <para>Cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>Tous les paramètres existants sont ouverts pour l&apos;édition.</para>
+                </result>
+            </step>
+            <step>
+                <para>Saisissez les nouvelles valeurs ou les nouveaux noms de paramètres souhaités.</para>
+            </step>
+            <step>
+                <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                            <imagedata fileref="images/btn_save.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer le(s) paramètre(s) modifié(s).</para>
+                <note>
+                    <para>Si vous avez édité plusieurs paramètres en une seule étape, toutes les modifications sont enregistrées.</para>
+                </note>
+            </step>
+        </procedure>
+        <para>Outre la création et l&apos;édition de paramètres, vous pouvez également supprimer des paramètres dans le volet des détails. Procédez comme suit pour supprimer des paramètres existants :</para>
+        <procedure>
+            <title>Supprimer des paramètres</title>
+            <step>
+                <para>Dans la table d&apos;aperçu de l&apos;affichage <guilabel>Applications</guilabel>, cliquez sur l&apos;entrée souhaitée.</para>
+                <result>
+                    <para>L&apos;entrée est cochée.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cliquez sur l&apos;onglet <guilabel>Paramètres</guilabel> dans le volet des détails de l&apos;entrée.</para>
+            </step>
+            <step>
+                <para>Cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>Tous les paramètres existants sont ouverts pour l&apos;édition.</para>
+                </result>
+            </step>
+            <step>
+                <para>À côté du paramètre que vous souhaitez supprimer, cliquez sur <inlinemediaobject><alt>bouton Supprimer</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject></inlinemediaobject> (Supprimer).</para>
+                <result>
+                    <para>Le paramètre est supprimé de la vue globale.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                            <imagedata fileref="images/btn_save.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer les modifications.</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_application">
+        <title>Supprimer des applications</title>
+        <para>Utilisez cette action pour supprimer une ou plusieurs application(s). Procédez comme suit pour supprimer des applications existantes.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Applications</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins une application dans la table d&apos;aperçu.</para>
+                <note>
+                    <para>Cochez la case à côté de l&apos;entrée souhaitée pour la sélectionner</para>
+                </note>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Supprimer</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Supprimer).</para>
+                <result>
+                    <para>La boîte de dialogue de confirmation <guilabel>Supprimer des applications</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des applications</guilabel>, cliquez sur <guibutton>Ok</guibutton> pour supprimer la ou les applications sélectionnée(s).</para>
+                    </step>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des applications</guilabel>, cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue <emphasis>sans</emphasis> supprimer l&apos;application ou les applications sélectionnée(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Si l&apos;application/les applications a/ont été supprimée(s), un message de confirmation est émis dans une boîte de dialogue séparée.</para>
+                    <para>Si l&apos;application/les applications n&apos;a/ont pas pu être supprimée(s), le message d&apos;erreur correspondant est affiché dans une boîte de dialogue séparée.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

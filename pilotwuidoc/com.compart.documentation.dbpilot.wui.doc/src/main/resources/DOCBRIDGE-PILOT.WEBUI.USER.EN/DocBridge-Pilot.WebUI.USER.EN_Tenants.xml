@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_tenantsView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Working with Tenants</title>
+    <para>The <guilabel>Tenants</guilabel> view displays the configured tenants. The processes (process units) are responsible for the actual processing of jobs. The processing concept of <productname>&dbpi;</productname> requires you to assign each process (or process unit) to a tenant. A tenant can be linked to several processing units. However, each process unit is always mapped to only one tenant (for more information on process units, see <xref linkend="db_pil_wui_processesView"/>). This way you can distinguish between process units for different tenants. After the initial start of <productname>&dbpi;</productname> you can directly use the predefined tenant <code>DEFAULT</code>. The following actions are supported in the <guilabel>Tenants</guilabel> view:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_tenant"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="list_tenants"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_tenant_details"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_tenant"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_tenants"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_tenants"/></para>
+        </listitem>
+    </itemizedlist>
+
+    <sect1 xml:id="create_tenant"><?dbhtml filename="SearchTenantsView.html" ?><title>Creating a Tenant</title>
+        <para>You can define a new tenant in the web interface.</para>
+        <para>Proceed as follows to create a new tenant.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Tenants</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Create</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Create).</para>
+                <result>
+                    <para>A new entry with empty fields is created in the overview table. The <guilabel>ID</guilabel> field contains mandatory information and is therefore highlighted in red (marked as incorrect) while it does not contain a valid value.</para>
+                </result>
+            </step>
+            <step>
+                <para>Enter a name for the new tenant in the <guilabel>ID</guilabel> field.</para>
+            </step>
+            <step>
+                <para>Enter the long name for the new tenant in the <guilabel>Name</guilabel> field.</para>
+            </step>
+            <step>
+                <para>Enter a brief description of the tenant in the <guilabel>Comment</guilabel> field as required.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the new tenant and exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the new tenant is displayed in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel the creation of the tenant and exit the editing mode without saving the tenant cnfiguration.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="list_tenants">
+        <title>Listing Tenants</title>
+        <para>You can display an overview of the existing tenants in the <guilabel>Tenants</guilabel> view.</para>
+        <mediaobject><alt>Screenshot Tenants view</alt><imageobject>
+                <imagedata fileref="images/scr_TenantsViewGen.png" width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>The overview table displays the following information for each tenant by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Unique identifier or short name of the tenant.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Name</guilabel></term>
+                <listitem>
+                    <para>Full name of the tenant.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Comment</guilabel></term>
+                <listitem>
+                    <para>Description of the tenant or comment on the intended use.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_tenant_details">
+        <title>Displaying Tenant Details</title>
+        <para>You can display the details for a specific tenant in the details pane. Compared to the overview table, the details pane contains more information about the selected tenant.</para>
+        <mediaobject><alt>Details Pane</alt><imageobject>
+                <imagedata fileref="images/scr_TenantsViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>The following information is available in the details pane of a selected tenant:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Unique identifier or short name of the tenant.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Type</guilabel></term>
+                <listitem>
+                    <para>Currently, only the value <guilabel>tenants</guilabel>  is supported.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Name</guilabel></term>
+                <listitem>
+                    <para>Full name of the tenant.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Extra line 1</term>
+                <listitem>
+                    <para>Name additions (optional)</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Extra Line 2</term>
+                <listitem>
+                    <para>Name additions (optional)</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Street</term>
+                <listitem>
+                    <para>Address information for the tenant.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>City</term>
+                <listitem>
+                    <para>Address information for the tenant.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Zip code</term>
+                <listitem>
+                    <para>Address information for the tenant.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Country</term>
+                <listitem>
+                    <para>Address information for the tenant.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Comment</guilabel></term>
+                <listitem>
+                    <para>Description of the tenant or comment on the intended use.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+
+    </sect1>
+    <sect1 xml:id="modify_tenant">
+        <title>Modifying a Tenant</title>
+        <para>You can modify the tenant properties.</para>
+        <note>
+            <para>Please keep in mind that you cannot use this action to modify the tenant ID. To change the ID, create a new tenant with the desired ID (see <xref linkend="create_application"/>).</para>
+        </note>
+        <para>Proceed as follows to edit the properties of a tenant:</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Tenants</guilabel> view.</para>
+            </step>
+
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Edit</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Edit).</para>
+                <result>
+                    <para>The entry switches to editing mode.</para>
+                </result>
+            </step>
+            <step>
+                <para>Enter a name for the new tenant in the <guilabel>Name</guilabel> field.</para>
+            </step>
+            <step>
+                <para>Enter the updated comment on the tenant in the <guilabel>Comment</guilabel> field.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the tenant with the new values and exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the tenant is displayed with the new values in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel editing the tenant and exit the editing mode without saving the changes.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+        <para>Besides editing the properties, you can also define new parameters for the application execution or modify existing parameters (for more information, see <xref linkend="manage_parameters"/>).</para>
+    </sect1>
+    <sect1 xml:id="multi_edit_tenants">
+        <title>Modifying Multiple Tenants</title>
+        <para>You can edit selected values for multiple tenants in one step.</para>
+        <note>
+            <para>Please keep in mind that with this function, you define the same values for all selected tenants.</para>
+        </note>
+        <para>Proceed as follows to edit the settings of the selected tenants.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Tenants</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least two tenants from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the web interface, click <inlinemediaobject><alt>Icon Edit</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Edit).</para>
+                <result>
+                    <para>The <guilabel>Edit</guilabel> dialog opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>Tick the checkbox in front of each value you want to change for all selected tenants.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Name</guilabel> field, specify the desired name for all selected tenants.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Field 1</guilabel> field, specify a value for the additional field 1 for all selected tenants as required.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Field 2</guilabel> field, specify a value for additional field 2 for all selected tenants, as required.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Street</guilabel> field, specify the desired street name of the address for all selected tenants.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>ZIP Code</guilabel> field, specify the postal code of the address for all selected tenants.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Country</guilabel> field, specify the desired country name for the address for all selected tenants.</para>
+            </step>
+            <step>
+                <para>Enter a brief description for all selected tenants in the <guilabel>Comment</guilabel> field as required.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <guibutton>OK</guibutton> to save the changed settings for all selected tentants and close the dialog.</para>
+                        <result>
+                            <para>The changed settings for the selected tenants are displayed in the overview table and in the details pane.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <guibutton>Cancel</guibutton> to close the dialog without changing the settings.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>        
+    </sect1>
+
+    <sect1 xml:id="delete_tenants">
+        <title>Deleting Tenants</title>
+        <para>Use this action to delete a single tenant or multiple tenants. Proceed as follows to delete existing tenants.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Tenants</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one tenant from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Delete</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" align="left" scalefit="1"
+                                format="PNG"/>
+                </imageobject></inlinemediaobject>. (Delete).</para>
+                <result>
+                    <para>The confirmation dialog <guilabel>Delete Tenants</guilabel> opens.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Tenants</guilabel>, click <guibutton>OK</guibutton> to delete the selected tenants.</para>
+                    </step>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Tenants</guilabel>, click <guibutton>Cancel</guibutton>  to close the dialog <emphasis>without</emphasis> deleting the selected tenants.</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>If the tenants have been successfully deleted, a success message is displayed.</para>
+                    <para>If the tenants could not be deleted, the corresponding error message is displayed.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

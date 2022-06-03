@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<sect2 xml:id="db_pil_wui_columnPreferences" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Configurer le nombre de colonnes</title>
+    <para>Procédez comme suit pour configurer le nombre de colonnes affichées dans la table d&apos;aperçu (espace de travail) de l&apos;affichage respectif :</para>
+    <procedure>
+        <step>
+            <indexterm>
+                <primary>colonnes</primary>
+                <secondary>sélectionner</secondary>
+            </indexterm>
+            <indexterm>
+                <primary>colonnes</primary>
+                <secondary>masquer</secondary>
+            </indexterm>
+            <para>Cliquez sur l&apos;icône de sélection des colonnes <inlinemediaobject><alt>Icône de sélection des colonnes</alt></inlinemediaobject> dans la barre de navigation de l&apos;affichage<imageobject>
+                        <imagedata fileref="images/btn_columns.png" align="left" scalefit="1"
+                            format="PNG"/>
+                    </imageobject><inlinemediaobject></inlinemediaobject>.</para>
+            <result>
+                <para>Les colonnes disponibles dans la table d&apos;aperçu de l&apos;espace de travail pour l&apos;affichage respectif sont affichées dans une boîte de dialogue séparée.</para>
+                <mediaobject><alt>Boîte de dialogue des paramètres (affichage des processus)</alt><imageobject>
+                        <imagedata fileref="images/dia_columnsPreferences.png" align="left"
+                            width="12cm" format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </result>
+        </step>
+        <step>
+            <note>
+                <para>Par défaut, toutes les colonnes disponibles sont affichées pour l&apos;affichage respectif.</para>
+            </note>
+            <para>Décochez les cases souhaitées pour réduire le nombre de colonnes affichées dans la table d&apos;aperçu dans l&apos;espace de travail.</para>
+            <para>Les colonnes disponibles dépendent de l&apos;affichage respectif.</para>
+        </step>
+        <step>
+            <para>Cliquez sur <guibutton>OK</guibutton> pour fermer la boîte de dialogue et afficher uniquement les colonnes sélectionnées dans la table d&apos;aperçu.</para>
+        </step>
+        <result>
+            <para>Les paramètres modifiés pour la sélection des colonnes sont appliqués sans redémarrage.</para>
+        </result>
+    </procedure>
+</sect2>

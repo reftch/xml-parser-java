@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_printJobsView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des jobs d&apos;impression</title>
+    <para>Les sections suivantes décrivent comment créer des jobs d&apos;impression définis par l&apos;utilisateur (objets de configuration pour l&apos;impression) en plus des jobs d&apos;impression préconfigurés pour les processus standard fournis. Dans l&apos;affichage <guilabel>Jobs d&apos;impression</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_printJob"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_printJobs"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_printJobDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_printJob"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_printJobs"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_printJobs"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_printJob"><?dbhtml filename="SearchPrintJobsView.html" ?><title>Créer un job d&apos;impression</title>
+        <para>Vous pouvez créer un nouveau job d&apos;impression. Vous pouvez configurer les propriétés souhaitées dans une boîte de dialogue séparée.</para>
+        <para>Procédez comme suit pour créer un nouveau job d&apos;impression.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Jobs d&apos;impression</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Créer</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Créer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Créer un job d&apos;impression</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>ID</guilabel>, entrez un identificateur unique pour le nouveau job d&apos;impression.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Requête</guilabel>, indiquez la requête SQL que le job d&apos;impression doit utiliser pour créer les données d&apos;impression.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Application</guilabel>, spécifiez l&apos;application à utiliser pour créer le job d&apos;impression.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Application de réimpression</guilabel>, indiquez l&apos;application par laquelle la réimpression doit être créée.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer le nouveau job d&apos;impression et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et le nouveau job d&apos;impression est affiché dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la création d&apos;un job d&apos;impression et quitter le mode d&apos;édition sans enregistrer le job d&apos;impression.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_printJobs">
+        <title>Afficher des jobs d&apos;impression</title>
+        <para>Vous pouvez afficher une vue globale des jobs d&apos;impression configurés dans l&apos;espace de travail de l&apos;affichage <guilabel>Jobs d&apos;impression</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Jobs d&apos;impression</alt><imageobject>
+                <imagedata fileref="images/scr_printJobsView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque job d&apos;impression configuré :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Nom du job d&apos;impression qui peut être référencé.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Requête</guilabel></term>
+                <listitem>
+                    <para>Requête SQL que le job d&apos;impression utilise pour créer les données d&apos;impression.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Application</guilabel></term>
+                <listitem>
+                    <para>Application à utiliser pour créer le job d&apos;impression.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Application de réimpression</guilabel></term>
+                <listitem>
+                    <para>Application à utiliser pour créer la réimpression.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_printJobDetails">
+        <title>Afficher les détails du job d&apos;impression</title>
+        <para>Vous pouvez afficher les informations détaillées concernant un job d&apos;impression dans le volet des détails. Par rapport à la table d&apos;aperçu, le job d&apos;impression contient un élément d&apos;information supplémentaire.</para>
+        <mediaobject><alt>Affichage des détails des jobs d&apos;impression</alt><imageobject>
+                <imagedata fileref="images/scr_printJobsViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Les informations suivantes sont actuellement disponibles dans le volet des détails.</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Nom du job d&apos;impression qui peut être référencé.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Processus</guilabel></term>
+                <listitem>
+                    <para>Processus auquel le job d&apos;impression est lié.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Requête</guilabel></term>
+                <listitem>
+                    <para>Requête SQL que le job d&apos;impression utilise pour créer les données d&apos;impression.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Application</guilabel></term>
+                <listitem>
+                    <para>Application à utiliser pour créer le job d&apos;impression.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Application de réimpression</guilabel></term>
+                <listitem>
+                    <para>Application à utiliser pour créer la réimpression.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="modify_printJob">
+        <title>Éditer un job d&apos;impression</title>
+        <para>Vous pouvez éditer les propriétés d&apos;un job d&apos;impression.</para>
+        <note>
+            <para>Veuillez noter que vous ne pouvez pas changer l&apos;ID du job d&apos;impression avec cette action. Vous pouvez modifier la requête, l&apos;application et l&apos;application de réimpression. Si vous souhaitez modifier l&apos;ID du job d&apos;impression, créez un nouveau job d&apos;impression avec le nom souhaité (voir <xref linkend="create_printJob"/>).</para>
+        </note>
+        <para>Procédez comme suit pour éditer les valeurs d&apos;un job d&apos;impression existant :</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Jobs d&apos;impression</guilabel>.</para>
+            </step>
+            <step>
+                <para>Double-cliquez sur l&apos;entrée souhaitée dans la table d&apos;aperçu.</para>
+                <result>
+                    <para>L&apos;entrée passe en mode d&apos;édition.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Requête</guilabel>, indiquez la nouvelle requête SQL souhaitée que le job d&apos;impression doit utiliser pour créer les données d&apos;impression.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Application</guilabel>, spécifiez la nouvelle application à utiliser pour créer le job d&apos;impression.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Application de réimpression</guilabel>, spécifiez la nouvelle application à utiliser pour créer la réimpression.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer le job d&apos;impression avec les valeurs mises à jour et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et le job d&apos;impression s&apos;affiche avec les valeurs actualisées dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la création d&apos;un job d&apos;impression et quitter le mode d&apos;édition sans enregistrer le job d&apos;impression.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_printJobs">
+        <title>Éditer plusieurs jobs d&apos;impression</title>
+        <para>Cette action vous permet d&apos;éditer des valeurs sélectionnées pour plusieurs jobs d&apos;impression en une seule étape.</para>
+        <note>
+            <para>Veuillez noter qu&apos;avec cette fonction, vous définissez les mêmes valeurs pour tous les jobs d&apos;impression sélectionnés.</para>
+        </note>
+        <para>Procédez comme suit pour éditer les propriétés des jobs sélectionnés.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Jobs d&apos;impression</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins deux jobs d&apos;impression dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Éditer</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cochez la case en face de chaque valeur que vous souhaitez modifier pour tous les jobs d&apos;impression sélectionnés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Processus</guilabel>, saisissez le nom du processus auquel les jobs d&apos;impression sélectionnés doivent être liés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Requête</guilabel>, indiquez la nouvelle requête SQL souhaitée que le job d&apos;impression doit utiliser pour créer les données d&apos;impression.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Application</guilabel>, spécifiez l&apos;application à utiliser pour créer le job d&apos;impression sélectionné.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Application de réimpression</guilabel>, indiquez l&apos;application par laquelle la réimpression des jobs sélectionnés doit être créée.</para>
+            </step>            
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <guibutton>Confirmer</guibutton> pour enregistrer les modifications affectant les jobs d&apos;impression sélectionnés et fermer la boîte de dialogue.</para>
+                        <result>
+                            <para>Les paramètres modifiés sont affichés pour les jobs d&apos;impression sélectionnés dans la table d&apos;aperçu et dans le volet des détails.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_printJobs">
+        <title>Supprimer des jobs d&apos;impression</title>
+        <para>Cette action vous permet de supprimer un ou plusieurs job(s) d&apos;impression en une seule étape. Procédez comme suit pour supprimer des jobs d&apos;impression existants.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Jobs d&apos;impression</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins un job d&apos;impression dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Supprimer</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Supprimer).</para>
+                <result>
+                    <para>La boîte de dialogue de confirmation <guilabel>Supprimer des jobs d&apos;impression</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des jobs d&apos;impression</guilabel>, cliquez sur <guibutton>Ok</guibutton> pour supprimer le(s) job(s) d&apos;impression sélectionné(s).</para>
+                    </step>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des jobs d&apos;impression</guilabel>, cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue <emphasis>sans</emphasis> supprimer le(s) job(s) d&apos;impression sélectionné(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Si le(s) job(s) d&apos;impression a/ont été supprimé(s), un message de confirmation est affiché.</para>
+                    <para>Si le(s) job(s) d&apos;impression n&apos;a/ont pas pu être supprimé(s), un message d&apos;erreur correspondant est émis.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

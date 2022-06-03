@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_processLocksView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Working with Process Locks</title>
+    <para>The <guilabel>Process Locks</guilabel> view shows the existing process locks. Using the web interface, you can display information about existing process locks and remove any process lock.</para>
+
+    <para>The following actions are supported in the <guilabel>Proces Locks</guilabel> view:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="display_processLocks"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_processLock_details"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_processLocks"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="display_processLocks"><?dbhtml filename="SearchProcessLocksView.html" ?><title>Listing Process Locks</title>
+        <para>You can display an overview of the existing process locks in the <guilabel>Process Locks</guilabel> view.</para><!--<mediaobject>
+            <alt>Screenshot Ansicht Prozess-Sperren</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_ProcessLocksViewGen.png" width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>--><para>The overview table displays the following information for each process lock by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The unique identifier of the process lock.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Lock type</guilabel></term>
+                <listitem>
+                    <para>The following values are currently valid.</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>SHARED</para>
+                            <para>The blocking process only requires read permissions. Other processes can also have read access.</para>
+                        </listitem>
+                        <listitem>
+                            <para>EXCLUSIVE</para>
+                            <para>The locking process requires read and write permissions.</para>
+                        </listitem>
+                    </itemizedlist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Job ID</guilabel></term>
+                <listitem>
+                    <para>The unique identifier of the job that is affected by the process lock.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Created</guilabel></term>
+                <listitem>
+                    <para>Date and time (time stamp) of the process lock creation.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_processLock_details">
+        <title>Displaying Process Lock Details</title>
+        <para>You can display the details for a specific process lock in the details pane as follows: The details pane contains the same scope of information as the overview table.</para><!--<mediaobject>
+            <alt>Detailbereich</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_ProcessLockViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>--></sect1>
+
+    <sect1 xml:id="delete_processLocks">
+        <title>Deleting Process Locks</title>
+        <para>Use this action to delete a single process lock or multiple process locks. Proceed as follows to delete existing process locks:</para>
+        <procedure>
+            <step>
+                <para>Go to the <guilabel>Process Locks</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one process lock from the overview table.</para>                
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Delete</alt></inlinemediaobject>.<imageobject>
+                            <imagedata fileref="images/btn_delete.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject><inlinemediaobject></inlinemediaobject> (Delete).</para>
+                <result>
+                    <para>The confirmation dialog <guilabel>Delete Process Locks</guilabel> opens.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Processes</guilabel>, click <guibutton>OK</guibutton> to delete the selected process (or processes).</para>
+                    </step>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Processes</guilabel>, click <guibutton>Cancel</guibutton> to close the dialog <emphasis>without</emphasis> deleting the selected process(es).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>If the process locks have been successfully deleted, a success message is displayed.</para>
+                    <para>If the process lock could not be deleted, a corresponding error message is displayed.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

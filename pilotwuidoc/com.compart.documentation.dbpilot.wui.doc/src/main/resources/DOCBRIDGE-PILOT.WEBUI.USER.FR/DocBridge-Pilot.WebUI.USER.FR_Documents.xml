@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_documentsView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation de documents</title>
+    <para>Vous pouvez configurer différents documents d&apos;entrée et de sortie pour la configuration du job. L&apos;affichage <guilabel>Documents</guilabel> affiche les documents configurés. Dans l&apos;affichage <guilabel>Documents</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="display_documents"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_document_details"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_document_previews"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_documents"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="display_documents"><?dbhtml filename="SearchDocumentsView.html" ?><title>Afficher des documents</title>
+        <para>Vous pouvez afficher une vue globale des documents existants dans l&apos;affichage Documents.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Documents</alt><imageobject>
+                <imagedata fileref="images/scr_DocumentsViewGen.png" width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque document :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;ID consiste en un numéro séquentiel qui est attribué au document lors de l&apos;importation. Les documents qui doivent être associés reçoivent le même ID et sont toujours affectés au même envoi.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Type</guilabel></term>
+                <listitem>
+                    <para>Le type de document spécifie des propriétés physiques (par&nbsp;exemple, le mode d&apos;impression) du document. Les valeurs valides sont p.&nbsp;ex. <guilabel>SIMPLEX</guilabel> ou <guilabel>DUPLEX</guilabel>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Classe</guilabel></term>
+                <listitem>
+                    <para>La classe de document spécifie des propriétés spécifiques au projet (par&nbsp;exemple, <quote>lettre de présentation</quote> ou <quote>facture</quote>) du document. Contrairement au type de document, la classe de documents ne contient pas d&apos;informations physiques, mais des informations fonctionnelles.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Créé</guilabel></term>
+                <listitem>
+                    <para>Date et heure (horodatage) de l&apos;importation du document.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Envoi</guilabel></term>
+                <listitem>
+                    <para>L&apos;envoi auquel le document est affecté.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>État</guilabel></term>
+                <listitem>
+                    <para>État du document. Les spécifications d&apos;état suivantes sont actuellement valides :</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term><guilabel>OK</guilabel></term>
+                            <listitem>
+                                <para>Le document a été importé avec succès.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>STAMPED</guilabel></term>
+                            <listitem>
+                                <para>Cette valeur n&apos;est pas analysée actuellement.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>PRINTED</guilabel></term>
+                            <listitem>
+                                <para>Cette valeur n&apos;est pas analysée actuellement.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>ERROR</guilabel></term>
+                            <listitem>
+                                <para>Si la vérification du pays et/ou du code postal est activée pendant l&apos;importation du document et qu&apos;un code postal incorrect ou une spécification de pays non valide est trouvé(e), l&apos;état du document est défini sur ERROR.</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Utilisation</guilabel></term>
+                <listitem>
+                    <para>Type d&apos;utilisation du document. Les valeurs suivantes sont actuellement valides :</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term><guilabel>Document</guilabel></term>
+                            <listitem>
+                                <para>Document régulier</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>EnclosureByFeeder</guilabel></term>
+                            <listitem>
+                                <para>Encart. Est affecté par un alimenteur d&apos;encarts.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>EnclosureElectronic</guilabel></term>
+                            <listitem>
+                                <para>Encart dématérialisé</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>CoverSheet</guilabel></term>
+                            <listitem>
+                                <para>Page de garde régulière</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>CoverSheet1stEnv</guilabel></term>
+                            <listitem>
+                                <para>Page de garde pour l&apos;éclatement par enveloppe (première enveloppe)</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><guilabel>CoverSheetFollowEnv</guilabel></term>
+                            <listitem>
+                                <para>Page de garde pour l&apos;éclatement par enveloppe (enveloppes de suivi)</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Priorité</guilabel></term>
+                <listitem>
+                    <para>Ordre de succession du document dans l&apos;envoi. Plus la valeur est faible, plus le document se situera en avant dans l&apos;envoi. Un document ayant la valeur 0 a la priorité la plus élevée.</para>
+                    <para>Nom du processus auquel le document est affecté.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Ordre dans l&apos;envoi</guilabel></term>
+                <listitem>
+                    <para>Ordre de succession des types d&apos;utilisation dans l&apos;envoi. Par défaut, les documents dont le type d&apos;utilisation est <guilabel>CoverSheet</guilabel> se voient attribuer la valeur <guilabel>0</guilabel> (le document est donc le premier document de l&apos;envoi). La valeur <guilabel>50</guilabel> est attribuée par défaut à tous les autres types de documents. Vous pouvez ajuster ces valeurs par défaut, par exemple, pour placer des encarts qui sont ajoutés par un alimenteur d&apos;encarts plus loin dans l&apos;envoi.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>ID du lien</guilabel></term>
+                <listitem>
+                    <para>Numéro séquentiel attribué au document lors de l&apos;importation (voir la description du champ <quote>ID</quote>). Des valeurs identiques désignent des documents qui appartiennent à un même ensemble, ne doivent pas être séparés et doivent donc toujours être affectés à un même envoi.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+        <note>
+            <para>Vous pouvez utiliser le champ de texte <guilabel>Attributs</guilabel> pour rechercher des attributs de document (p.&nbsp;ex., colonnes définies par l&apos;utilisateur dans la table DOCATTR ou fichiers binaires). Saisissez la chaîne souhaitée dans le champ de texte pour effectuer une recherche plein texte.</para>
+        </note>
+    </sect1>
+    <sect1 xml:id="display_document_details">
+        <title>Afficher des informations sur un document</title>
+        <para>Vous pouvez afficher les informations détaillées concernant un document spécifique dans le volet des détails. Par rapport à la table d&apos;aperçu, le volet des détails contient des informations supplémentaires sur le document sélectionné.</para>
+        <mediaobject><alt>Volet des détails</alt><imageobject>
+                <imagedata fileref="images/scr_DocumentsViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Les informations disponibles dans le volet des détails peuvent être divisées en deux catégories, <guilabel>métadonnées</guilabel> et <guilabel>attributs</guilabel>.</para>
+        <para>Les informations suivantes sont disponibles dans la catégorie <guilabel>Métadonnées</guilabel> :</para>
+        <variablelist>
+            <varlistentry>
+                <term>Répertoire</term>
+                <listitem>
+                    <para>ID de répertoire.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Fichier</term>
+                <listitem>
+                    <para>Nom de fichier du document.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Spool</term>
+                <listitem>
+                    <para>Fichier de sortie</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Pages</term>
+                <listitem>
+                    <para>Nombre de pages dans le document.</para>
+                    <note>
+                        <para>Si vous ne réglez pas cette valeur pour l&apos;importation CSV d&apos;un document Mixplex, elle est calculée en utilisant la séquence binaire dans la colonne <guilabel>Mixplex</guilabel>.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Feuillets</term>
+                <listitem>
+                    <para>Nombre de feuillets dans le document. Nombre de feuillets dans le document, en tenant compte des informations Mixplex.</para>
+                    <note>
+                        <para>Si vous ne réglez pas cette valeur pour l&apos;importation CSV d&apos;un document Mixplex, elle est calculée en utilisant la séquence binaire dans la colonne <guilabel>Mixplex</guilabel>.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Copies</term>
+                <listitem>
+                    <para>Nombre de copies pour ce document. La valeur affichée ne s&apos;applique qu&apos;au nombre de copies d&apos;un document dans un envoi. Cette valeur ne s&apos;applique <emphasis>pas</emphasis> aux canaux de sortie supplémentaires (par exemple, si le document doit être redirigé vers d&apos;autres canaux de sortie, tels que des archives, en plus de l&apos;impression).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Fichier CSV</term>
+                <listitem>
+                    <para>Nom du fichier CSV à partir duquel les informations du document ont été lues lors de l&apos;importation.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Enregistrement CSV</term>
+                <listitem>
+                    <para>Numéro de ligne (commençant par 1) dans le fichier CSV à partir duquel les informations du document ont été lues pendant l&apos;importation.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Page de</term>
+                <listitem>
+                    <para>Page de début du document dans le fichier.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Page à</term>
+                <listitem>
+                    <para>Dernière page du document dans le fichier.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Profil de filtrage MFF</term>
+                <listitem>
+                    <para>Chemin vers le profil de filtrage MFF (extension de fichier <filename>*.pro</filename>) pour l&apos;importation.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Page de spoule de</term>
+                <listitem>
+                    <para>Page de début du document dans le fichier de sortie.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Page de spoule à</term>
+                <listitem>
+                    <para>Dernière page du document dans le fichier de sortie.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Profil MFF de spoule</term>
+                <listitem>
+                    <para>Chemin vers le profil de filtrage MFF pour la sortie.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Mixplex</term>
+                <listitem>
+                    <para>Informations permettant de savoir si une page est une page recto ou une page verso. L&apos;exemple suivant montre une séquence binaire avec les spécifications correspondantes pour les différentes pages.</para>
+                    <programlisting>11100110</programlisting>
+                    <note>
+                        <para>La séquence binaire doit toujours contenir un nombre pair de chiffres, puisque chaque paire de chiffres représente une seule page (recto et verso).</para>
+                    </note>
+                    <para>Les différentes positions de la séquence binaire contiennent les informations suivantes.</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Les deux premiers chiffres 11 indiquent que le feuillet a un recto et un verso.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Les deux chiffres 10 suivants indiquent que le feuillet a un recto mais pas de verso.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Les deux chiffres 01 suivants indiquent que le feuillet n&apos;a pas de recto mais un verso.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Les deux derniers chiffres 10 indiquent que le feuillet a un recto mais pas de verso.</para>
+                        </listitem>
+                    </itemizedlist>
+                    <para>Si vous ne réglez pas cette valeur pour l&apos;importation CSV d&apos;un document Mixplex (et que les colonnes <guilabel>Pages</guilabel> et <guilabel>Feuillets</guilabel> ne sont pas remplies non plus), un mécanisme de repli est utilisé pour calculer la valeur en fonction du mode d&apos;impression.</para>
+                    <note>
+                        <para>Pour les très gros documents (lorsque la longueur de la séquence binaire dépasse 4000 caractères), la séquence binaire est compressée pour l&apos;enregistrer plus efficacement. Le codage et le décodage sont effectués par <productname>&dbpi;</productname> automatiquement. Si la séquence binaire dépasse toujours la longueur maximale de 4000 octets après compression, l&apos;importation CSV est interrompue par un message d&apos;erreur.</para>
+                    </note>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+        <para>Les informations suivantes sont disponibles dans la catégorie <guilabel>Attributs</guilabel> :</para>
+        <variablelist>
+            <varlistentry>
+                <term>ZIP</term>
+                <listitem>
+                    <para>Code postal de l&apos;adresse</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Pays</term>
+                <listitem>
+                    <para>Désignation du pays. Cette information n&apos;est importante que pour l&apos;affranchissement informatique international.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Ligne d&apos;adresse 3</term>
+                <listitem>
+                    <para>Ligne définie par l&apos;utilisateur avec des informations relatives à l&apos;adresse (ici le code postal et la ville)</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Ligne d&apos;adresse 2</term>
+                <listitem>
+                    <para>Ligne définie par l&apos;utilisateur avec des informations relatives à l&apos;adresse (ici la voie)</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Ligne d&apos;adresse 1</term>
+                <listitem>
+                    <para>Ligne définie par l&apos;utilisateur avec des informations relatives à l&apos;adresse (ici le nom du destinataire)</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Regroupement</term>
+
+                <listitem>
+                    <para>Numéro de groupement</para>
+
+                </listitem>
+            </varlistentry>
+        </variablelist>
+        <para>En plus des métadonnées et des attributs, un aperçu du document d&apos;entrée et de sortie peut être affiché dans un onglet séparé.</para>
+        <mediaobject><alt>Affichage détaillé avec aperçu</alt><imageobject>
+                <imagedata fileref="images/scr_DocumentsViewPreview.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="display_document_previews">
+        <title>Afficher l&apos;aperçu des entrées et des sorties</title>
+        <para>Si vous avez sélectionné une entrée dans la table d&apos;aperçu, vous pouvez afficher un aperçu des entrées et des sorties en plus des métadonnées et des attributs.</para>
+        <para>Pour afficher l&apos;aperçu des entrées, cliquez sur l&apos;onglet <guilabel>Aperçu des entrées</guilabel> dans le volet des détails du document sélectionné.</para>
+        <para>Pour afficher l&apos;aperçu des sorties, cliquez sur l&apos;onglet <guilabel>Aperçu des sorties</guilabel> dans le volet des détails du document sélectionné.</para>
+        <mediaobject><alt>Affichage Documents avec aperçu</alt><imageobject>
+                <imagedata fileref="images/scr_DocumentsViewPreviews.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="filter_documents">
+        <title>Filtrer les documents</title>
+        <para>Vous pouvez utiliser cette action pour filtrer la vue globale des documents existants à l&apos;aide de l&apos;ID.</para>
+        <para>Procédez comme suit pour filtrer les documents existants et ainsi réduire le nombre de documents affichés.</para>
+        <para>Procédez comme suit pour filtrer les documents disponibles :</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Documents</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, placez le curseur dans le champ de texte <guilabel>Filtre</guilabel>.</para>
+            </step>
+            <step>
+                <para>Vous pouvez filtrer les documents existants par ID (filtre simple) ou par d&apos;autres paramètres (pour plus d&apos;informations sur les critères de filtrage, voir <xref linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

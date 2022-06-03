@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_processActivitiesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Working with Process Activities</title>
+    <para>The <guilabel>Process Activities</guilabel> view shows the process activities for a selected process (process unit). The overview table in the <guilabel>Process Activities</guilabel> view includes all activities for the process(es) selected in the <guilabel>Processes</guilabel> view.<indexterm>
+            <primary>process activities</primary>
+            <secondary>process</secondary>
+        </indexterm></para>
+    <para>The following actions are supported in the <guilabel>Process Activities</guilabel> view:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="display_processActivities"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_processActivity_details"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_processActivities"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="display_processActivities"><?dbhtml filename="SearchProcessActivitiesView.html" ?><title>Listing Process Activities</title>
+        <para>If you have previously selected at least one process in the <guilabel>Processes</guilabel> view (see <xref linkend="db_pil_wui_processesView"/>), you can display an overview of the existing process activities in the <guilabel>Process Activities</guilabel> view.</para>
+        <mediaobject><alt>Screenshot Process Activities view</alt><imageobject>
+                <imagedata fileref="images/scr_ProcessActivitiesViewGen.png" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>The overview table displays the following information for each process by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The automatically generated unique identifier of the process activity (sequential number).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Process</guilabel></term>
+                <listitem>
+                    <para>The user-defined name of the process to which the process activity is attached.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Sequence</guilabel></term>
+                <listitem>
+                    <para>The process sequence of the process to which the process activity is attached.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>handler</guilabel></term>
+                <listitem>
+                    <para>The handler to which the process is assigned.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Job</guilabel></term>
+                <listitem>
+                    <para>The unique identifier of a job associated with the process (or process activity).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>State</guilabel></term>
+                <listitem>
+                    <para>Status of the process activity (for example, <guilabel>STARTED</guilabel> or <guilabel>FINISHED</guilabel>).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Selector</guilabel></term>
+                <listitem>
+                    <para>Selection criterion for the jobs to be processed.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_processActivity_details">
+        <title>Displaying Process Activities Details</title>
+        <para>You can display the details for a specific process in the details pane as follows: The details pane contains the same scope of information as the overview table.</para>
+        <para>Click an entry in the overview table to display detailed information in the details pane.</para>
+        <mediaobject><alt>Details Pane</alt><imageobject>
+                <imagedata fileref="images/scr_ProcessActivitiesViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="filter_processActivities">
+        <title>Filtering Process Activities</title>
+        <para>Use this action to filter the overview of available process activities based on the available columns.</para>
+        <para>Proceed as follows to filter the existing process activities and thus reduce the number of displayed process activities.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Process Activities</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <guibutton>Filter</guibutton>.</para>
+            </step>
+            <step>
+                <para>You can filter the existing process activities by ID (simple filter) or by other parameters (for more information about filter criteria, see <xref
+                        linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

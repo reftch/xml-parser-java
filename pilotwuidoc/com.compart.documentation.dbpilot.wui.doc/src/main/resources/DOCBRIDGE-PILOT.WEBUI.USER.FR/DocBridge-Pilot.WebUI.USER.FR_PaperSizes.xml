@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_paperSizeView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des définitions des tailles de papier</title>
+    <para>Les sections suivantes décrivent comment émettre les définitions des tailles de papier prédéfinies pour les processus fournis et comment créer, éditer et gérer vos propres définitions de tailles de papier. Les définitions des tailles de papier sont référencées lors de la configuration d&apos;envoi. La taille du papier est déterminante pour le mappage aux classes d&apos;envoi. Dans l&apos;affichage <guilabel>Formats de papier</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_paperSize"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_paperSize"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_paperSizeDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_paperSize"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_paperSizes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_paperSizes"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_paperSize"><?dbhtml filename="SearchPaperSizeView.html" ?><title>Créer une définition de taille de papier</title>
+        <para>Vous pouvez créer une nouvelle définition de taille de papier. Vous pouvez configurer les propriétés souhaitées dans une boîte de dialogue séparée.</para>
+        <para>Procédez comme suit pour créer un nouveau format de papier.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Tailles de papier</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Créer</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Créer).</para>
+                <result>
+                    <para>Une nouvelle entrée avec des champs vides est créée dans la table d&apos;aperçu. Les champs <guilabel>ID</guilabel> et <guilabel>Facteur d&apos;épaisseur</guilabel>, <guilabel>Largeur</guilabel> et <guilabel>Hauteur</guilabel> sont obligatoires et donc surlignés en rouge (marqués comme incorrects) tant qu&apos;ils ne contiennent pas d&apos;entrées valables.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>ID</guilabel>, entrez un identificateur unique pour la nouvelle définition de taille de papier.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Format</guilabel>, entrez une désignation du format selon la norme ISO (par&nbsp;exemple A4).</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Facteur d&apos;épaisseur</guilabel>, spécifiez le nombre de couches de papier après un processus de pliage (facultatif).</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Largeur</guilabel>, utilisez les touches fléchées pour sélectionner la largeur de la taille de papier en millièmes de centimètre, ou entrez la valeur souhaitée directement dans le champ de texte.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Hauteur</guilabel>, utilisez les touches fléchées pour sélectionner la hauteur de la taille de papier en millièmes de centimètre ou entrez la valeur souhaitée directement dans le champ de texte.</para>
+            </step>
+            <step>
+                <para>Si nécessaire, saisissez une brève description de la définition de taille de papier dans le champ <guilabel>Description</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Pré-plié</guilabel>, précisez si le papier est fourni pré-plié.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer la nouvelle définition de taille de papier et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est annulé et la nouvelle définition de taille de papier est affichée dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la création de la définition de la taille de papier et quitter le mode d&apos;édition sans enregistrer la définition de taille de papier.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_paperSize">
+        <title>Afficher des définitions de tailles de papier</title>
+        <para>Vous pouvez afficher une vue globale des définitions de tailles de papier configurées dans l&apos;espace de travail de l&apos;affichage <guilabel>Formats de papier</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Définitions de tailles de papier</alt><imageobject>
+                <imagedata fileref="images/scr_paperSizesView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque définition de taille de papier configurée :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique de la définition de taille de papier (numéro séquentiel).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Format</guilabel></term>
+                <listitem>
+                    <para>Désignation du format comme A4 ou C5.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Facteur d&apos;épaisseur</guilabel></term>
+                <listitem>
+                    <para>le facteur d&apos;épaisseur indique le nombre de couches de papier après un processus de pliage (facultatif). Le facteur d&apos;épaisseur définit donc le facteur par lequel l&apos;épaisseur du papier doit être multipliée après le pliage, de sorte que l&apos;épaisseur totale de l&apos;envoi puisse être calculée. Un papier déplié a un facteur d&apos;épaisseur de 1 parce qu&apos;il est constitué d&apos;une seule couche de papier. Un papier plié une seule fois a un facteur d&apos;épaisseur de 2, et ainsi de suite. Le papier plié 3 fois peut se composer de 4 couches de papier (<glossterm>pli croisé</glossterm>, 2 fois) ou de 3 couches de papier (<glossterm>pli accordéon</glossterm>), selon le type de pliage, ce qui correspond soit à un facteur d&apos;épaisseur de 3 soit à un facteur de 4.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Largeur</guilabel></term>
+                <listitem>
+                    <para>Spécification de la largeur de la taille de papier en millièmes de centimètre.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Hauteur</guilabel></term>
+                <listitem>
+                    <para>Spécification de la hauteur de la taille de papier en millièmes de centimètre.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Description</guilabel></term>
+                <listitem>
+                    <para>Texte facultatif. Peut contenir une description ou des informations sur l&apos;objectif de la définition de la taille de papier.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Pré-plié</guilabel></term>
+                <listitem>
+                    <para>Indique si le papier est fourni pré-plié (<guilabel>true</guilabel>) ou non (<guilabel>false</guilabel>). Si vous réglez l&apos;option sur <guilabel>true</guilabel>, le facteur d&apos;épaisseur est réglé sur <userinput>1</userinput> par défaut, car le papier est fourni déjà plié (par&nbsp;exemple, pour les encarts).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_paperSizeDetails">
+        <title>Afficher des informations concernant une définition de taille de papier</title>
+        <para>Vous pouvez afficher les informations détaillées d&apos;une définition de taille de papier dans le volet des détails. Par rapport à la table d&apos;aperçu, le volet des détails contient un élément d&apos;information supplémentaire.</para>
+        <mediaobject><alt>Affichage des tailles de papier avec le volet des détails</alt><imageobject>
+                <imagedata fileref="images/scr_paperSizeViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Les informations suivantes sont actuellement disponibles dans le volet des détails.</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique de la définition de taille de papier (numéro séquentiel).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Type</guilabel></term>
+                <listitem>
+                    <para>Actuellement, seule la valeur <code>papersizes</code> est prise en charge.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Format</guilabel></term>
+                <listitem>
+                    <para>Désignation du format comme A4 ou C5.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Facteur d&apos;épaisseur</guilabel></term>
+                <listitem>
+                    <para>le facteur d&apos;épaisseur indique le nombre de couches de papier après un processus de pliage (facultatif). Le facteur d&apos;épaisseur définit donc le facteur par lequel l&apos;épaisseur du papier doit être multipliée après le pliage, de sorte que l&apos;épaisseur totale de l&apos;envoi puisse être calculée. Un papier déplié a un facteur d&apos;épaisseur de 1 parce qu&apos;il est constitué d&apos;une seule couche de papier. Un papier plié une seule fois a un facteur d&apos;épaisseur de 2, et ainsi de suite. Le papier plié 3 fois peut se composer de 4 couches de papier (<glossterm>pli croisé</glossterm>, 2 fois) ou de 3 couches de papier (<glossterm>pli accordéon</glossterm>), selon le type de pliage, ce qui correspond soit à un facteur d&apos;épaisseur de 3 soit à un facteur de 4.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Largeur</guilabel></term>
+                <listitem>
+                    <para>Spécification de la largeur de la taille de papier en millièmes de centimètre.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Hauteur</guilabel></term>
+                <listitem>
+                    <para>Spécification de la hauteur de la taille de papier en millièmes de centimètre.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Description</guilabel></term>
+                <listitem>
+                    <para>Texte facultatif. Peut contenir une description ou des informations sur l&apos;objectif de la définition de la taille de papier.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Pré-plié</guilabel></term>
+                <listitem>
+                    <para>Indique si le papier est fourni pré-plié (<guilabel>true</guilabel>) ou non (<guilabel>false</guilabel>). Si vous réglez l&apos;option sur <guilabel>true</guilabel>, le facteur d&apos;épaisseur est réglé sur <userinput>1</userinput> par défaut, car le papier est fourni déjà plié (par&nbsp;exemple, pour les encarts).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="modify_paperSize">
+        <title>Éditer une définition de taille de papier</title>
+        <para>Vous pouvez éditer les propriétés d&apos;une définition de taille de papier.</para>
+        <note>
+            <para>Veuillez noter que vous ne pouvez pas modifier l&apos;ID de la définition de taille de papier avec cette action. Si vous souhaitez modifier l&apos;ID de la définition de taille de papier, créez une nouvelle définition de taille de papier avec l&apos;ID souhaité (voir <xref
+                    linkend="create_paperSize"/>).</para>
+        </note>
+        <para>Procédez comme suit pour éditer les valeurs d&apos;une définition de taille de papier existante :</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Formats de papier</guilabel>.</para>
+            </step>
+            <step>
+                <para>Double-cliquez sur l&apos;entrée souhaitée dans la table d&apos;aperçu.</para>
+                <result>
+                    <para>L&apos;entrée passe en mode d&apos;édition.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Format</guilabel>, entrez une désignation du format selon la norme ISO (par&nbsp;exemple A4).</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Facteur d&apos;épaisseur</guilabel>, spécifiez le nombre de couches de papier après un processus de pliage (facultatif).</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Largeur</guilabel>, utilisez les touches fléchées pour sélectionner la largeur de la taille de papier en millièmes de centimètre, ou entrez la valeur souhaitée directement dans le champ de texte.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Hauteur</guilabel>, utilisez les touches fléchées pour sélectionner la hauteur de la taille de papier en millièmes de centimètre ou entrez la valeur souhaitée directement dans le champ de texte.</para>
+            </step>
+            <step>
+                <para>Si nécessaire, saisissez une brève description de la définition de taille de papier dans le champ <guilabel>Description</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Pré-plié</guilabel>, précisez si le papier est fourni pré-plié.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer la définition actualisée de la taille de papier et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et la définition de la taille de papier est affichée avec les valeurs actualisées dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la mise à jour de la définition de la taille de papier et quitter le mode d&apos;édition sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_paperSizes">
+        <title>Éditer plusieurs définitions de taille de papier</title>
+        <para>Cette action vous permet d&apos;éditer des valeurs sélectionnées pour plusieurs définitions de taille de papier en une seule étape.</para>
+        <note>
+            <para>Veuillez noter qu&apos;avec cette fonction, vous définissez les mêmes valeurs pour toutes les définitions de taille de papier sélectionnées.</para>
+        </note>
+        <para>Procédez comme suit pour éditer les propriétés des définitions de taille de papier sélectionnées.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Tailles de papier</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins deux définitions de taille de papier dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Éditer</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cochez la case en face de chaque valeur que vous souhaitez modifier pour toutes les définitions de taille de papier sélectionnées.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Format</guilabel>, entrez une désignation du format selon la norme ISO (par&nbsp;exemple A4).</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Facteur d&apos;épaisseur</guilabel>, spécifiez le nombre de couches de papier après un processus de pliage (facultatif).</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Largeur</guilabel>, saisissez la largeur de la taille de papier en millièmes de centimètre.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Hauteur</guilabel>, saisissez la hauteur de la taille de papier en millièmes de centimètre.</para>
+            </step>
+            <step>
+                <para>Si nécessaire, saisissez une brève description de la définition de taille de papier sélectionnée dans le champ <guilabel>Description</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Pré-plié</guilabel>, précisez si le papier est fourni pré-plié.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <guibutton>Confirmer</guibutton> pour enregistrer les modifications affectant les définitions de taille de papier sélectionnées et fermer la boîte de dialogue.</para>
+                        <result>
+                            <para>Les paramètres modifiés sont affichés pour les définitions de taille de papier sélectionnées dans la table d&apos;aperçu et dans le volet des détails.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_paperSizes">
+        <title>Supprimer des définitions de tailles de papier</title>
+        <para>Utilisez cette action pour supprimer une ou plusieurs définition(s) de tailles de papier. Procédez comme suit pour supprimer des définitions de tailles de papier existantes.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Formats de papier</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins une définition de taille de papier dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Supprimer</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Supprimer).</para>
+                <result>
+                    <para>La boîte de dialogue de confirmation <guilabel>Supprimer des définitions de tailles de papier</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des définitions de tailles de papier</guilabel>, cliquez sur <guibutton>Ok</guibutton> pour supprimer la ou les définition(s) de taille(s) de papier sélectionnée(s).</para>
+                    </step>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des définitions des tailles de papier</guilabel>, cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue <emphasis>sans</emphasis> supprimer la ou les définition(s) de taille(s) de papier sélectionnée(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Si la/les définition(s) du format du papier a/ont été supprimée(s), un message de confirmation est émis dans une boîte de dialogue séparée.</para>
+                    <para>Si la ou les définition(s) du format du papier n&apos;a/ont pas pu être supprimée(s), le message d&apos;erreur correspondant est affiché dans une boîte de dialogue séparée.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

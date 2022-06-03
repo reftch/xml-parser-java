@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<sect2 xml:id="db_pil_wui_detailsPreferences" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Configuring the Scope of Information in the Details Pane</title>
+        <para>Proceed as follows to customize the information displayed in the details pane on the right:</para>
+    <procedure>
+        <step>
+            <indexterm>
+                <primary>details pane</primary>
+                <secondary>content</secondary>
+            </indexterm>
+            <indexterm>
+                <primary>details pane</primary>
+                <secondary>configuration</secondary>
+            </indexterm>
+            <para>In the title bar, click the Settings icon <inlinemediaobject><alt>Settings icon</alt><imageobject>
+                        <imagedata fileref="images/btn_preferences.png" align="left" scalefit="1"
+                            format="PNG"/>
+                    </imageobject></inlinemediaobject>.</para>
+            <result>
+                <para>The content available in the details pane for each view is displayed in a separate dialog.</para>
+                <mediaobject><alt>Settings dialog (Process view)</alt><imageobject>
+                        <imagedata fileref="images/dia_detailsPreferences.png" align="left"
+                            width="12cm" format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </result>
+        </step>
+        <step>
+            <note>
+                <para>By default, all available details for the respective view are displayed.</para>
+            </note>
+            <para>Untick the respective checkboxes to reduce the information available in the details pane.</para>
+            <para>The available information depends on the respective view.</para>            
+        </step>
+        <step>
+            <para>Click <guibutton>Close</guibutton>, to close the dialog and only display the selected information in the details pane.</para>
+        </step>
+        <result>
+            <para>The changed settings for the details pane are applied immediately (without re-start).</para>
+        </result>
+    </procedure>
+</sect2>

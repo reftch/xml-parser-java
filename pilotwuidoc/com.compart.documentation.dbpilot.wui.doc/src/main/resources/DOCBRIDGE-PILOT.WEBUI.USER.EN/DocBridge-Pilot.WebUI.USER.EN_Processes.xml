@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_processesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Working with Processes</title>
+    <para>The <guilabel>Processes</guilabel> view shows the configured process units (processes).
+        The list of process units does not only comprise the process units configured by you but
+        also two default process units: <guilabel>$SYSTEM</guilabel> and
+            <guilabel>DEFAULT</guilabel>.</para>
+    <para><indexterm>
+            <primary>process unit</primary>
+            <see>Process</see>
+        </indexterm>
+        <indexterm>
+            <primary>configuration</primary>
+            <secondary>process</secondary>
+            <tertiary>$SYSTEM</tertiary>
+        </indexterm><indexterm>
+            <primary>$SYSTEM</primary>
+            <secondary>process</secondary>
+            <tertiary>configuration</tertiary>
+        </indexterm><indexterm>
+            <primary>configuration</primary>
+            <secondary>process</secondary>
+            <tertiary>DEFAULT</tertiary>
+        </indexterm><indexterm>
+            <primary>DEFAULT</primary>
+            <secondary>process</secondary>
+            <tertiary>configuration</tertiary>
+        </indexterm></para>
+    <note>
+        <para>Please keep in mind that you must neither delete nor modify the default processes
+                <guilabel>$SYSTEM</guilabel> and <guilabel>DEFAULT</guilabel> as they contain vital
+            default and system-wide settings.</para>
+    </note>
+    <para>The following actions are supported in the <guilabel>Processes</guilabel> view:</para>
+    <itemizedlist>
+        <!--<listitem>
+            <para><xref linkend="create_process"/></para>
+        </listitem>-->
+        <listitem>
+            <para><xref linkend="deploy_process"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_processes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_process_details"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="edit_process"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_processes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="shareResource_process"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="download_processes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_processes"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="deploy_process">
+        <title>Deploying the Process</title>
+        <para>Use this action to deploy an existing process (file extension
+                <filename>.dbe</filename>).</para>
+        <note>
+            <para>During deployment, you will be asked to select the desired DBE file from the
+                directory tree. Therefore, before deployment, make sure that you know the location
+                of the DBE file on your system.</para>
+        </note>
+        <para>Proceed as follows to deploy an existing process via the web interface.</para>
+        <note>
+            <para>Please keep in mind that you can also deploy processes from
+                    <productname>&dbwp;</productname>. If you want to deploy processes via
+                    <productname>&dbwp;</productname> as well as via
+                    <productname>&dbpw;</productname>, make sure that the deployed processes do not
+                overwrite each other.</para>
+        </note>
+        <procedure>
+            <step>
+                <para>Now switch to <guilabel>Processes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the web interface, click <inlinemediaobject>
+                        <alt>Create Button</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_add.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Deploy).</para>
+                <result>
+                    <para>The <guilabel>Deploy Process</guilabel> dialog opens. In the
+                            <guilabel>Deploy Process</guilabel> dialog, you can override DBE file
+                        settings.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the Deploy Process dialog, enter the systemnane in the field
+                        <guilabel>System Name</guilabel>. By default, the value
+                        <userinput>WIN64</userinput> is used. Alternatively, enter the value
+                        <userinput>LIN64</userinput> for Linux systems.</para>
+            </step>
+            <step>
+                <para>In the field <guilabel>DBE File Name</guilabel>, specify the name of the DBE
+                    file you want to use. This setting is optional. Specifying the DBE file name is
+                    useful if you are working with a ZIP archive with multiple DBE files or if the
+                    ZIP archive does not contain a manifest file.</para>
+            </step>
+            <step>
+                <para>Next to the text field <guilabel>Process Unit</guilabel>, click
+                        <guibutton>Select File</guibutton> to select the file file from the
+                    directory tree.</para>
+                <result>
+                    <para>The <guilabel>Open</guilabel> dialog opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Open</guilabel> dialog, select the file from the directory
+                    tree. This may be a single DBE file or a ZIP archive, for example.&nbsp;.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Open</guilabel> dialog, click <guibutton>Open</guibutton> to
+                    confirm your selection.</para>
+                <result>
+                    <para>The <guilabel>Open</guilabel> dialog closes and the file name of the
+                        selected file is displayed in the <guilabel>Process Unit</guilabel>
+                        field.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Deploy Process</guilabel> dialog, click
+                        <guibutton>OK</guibutton> to deploy the selected process..</para>
+            </step>
+            <step>
+                <para>The process is deployed, the <guilabel>Processes</guilabel> view is
+                    automatically updated.</para>
+                <result>
+                    <para>If the deployment succeeded, the process is displayed in the
+                            <guilabel>Processes</guilabel> view in the overview table.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <!--    <sect1 xml:id="create_process">
+        <title>Prozess deployen</title>
+        <para>Sie können einen neuen Prozess in der Ansicht <guilabel>Prozesse</guilabel> erstellen.
+            Gehen Sie wie folgt vor, um einen neuen Prozess über die Weboberfläche zu
+            erstellen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Prozesse</guilabel>.</para>
+            </step>
+
+            <step>
+                <para>Geben Sie im Feld <guilabel>ID</guilabel> den gewünschten Namen für den neuen
+                    Prozess an.</para>
+            </step>
+            <step>
+                <para>Wählen Sie im Feld <guilabel>Mandant</guilabel> einen konfigurierten Mandanten
+                    aus der Aufklappliste aus.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Version</guilabel> die Version der Prozesseinheit
+                    an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Kommentar</guilabel> bei Bedarf eine Beschreibung
+                    oder einen Hinweis zum neuen Prozess an.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um den neuen Prozess zu speichern und
+                            den Editiermodus zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und der neue Prozess wird in der
+                                Übersichtstabelle angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um das Erstellen des Prozesses
+                            abzubrechen und den Editiermodus zu beenden ohne den Prozess zu
+                            speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>-->
+    <sect1 xml:id="display_processes">
+        <?dbhtml filename="SearchProcessView.html" ?>
+        <title>Listing Processes</title>
+        <para>You can display an overview of the existing (deployed) processes in the
+                <guilabel>Processes</guilabel> view.</para>
+        <mediaobject>
+            <alt>Screenshot Processes view</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_ProcessViewGen.png" width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>The overview table displays the following information for each process by
+            default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The user-defined process name.</para>
+                </listitem>
+            </varlistentry>
+            <!--<varlistentry>
+                <term><guilabel>Typ</guilabel></term>
+                <listitem>
+                    <para>Aktuell wird nur der Wert <guilabel>processes</guilabel>
+                        unterstützt.</para>
+                </listitem>
+            </varlistentry>-->
+            <varlistentry>
+                <term><guilabel>Tenant</guilabel></term>
+                <listitem>
+                    <para>Mapping to a tenant. Indicates the tenant for which the process was
+                        created. Unless specified otherwise, this field contains the default tenant
+                            <guilabel>DEFAULT</guilabel>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Version</guilabel></term>
+                <listitem>
+                    <para>Optional. The process unit version for which the process was
+                        deployed.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Comment</guilabel></term>
+                <listitem>
+                    <para>Optional. Brief description or remarks about the process.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_process_details">
+        <title>Displaying Process Details</title>
+        <para>You can display the details for a specific process in the details pane as follows: The
+            details pane contains the same scope of information as the overview table.</para>
+        <para>Click an entry in the overview table to display detailed information in the details
+            pane.</para>
+        <mediaobject>
+            <alt>Details Pane</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_ProcessViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="edit_process">
+        <title>Modifying a Process</title>
+        <para>Use this action to change the configuration settings of an existing process.</para>
+        <para>Proceed as follows to edit the settings of a process.</para>
+        <procedure>
+            <step>
+                <para>Now switch to <guilabel>Processes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select a process from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the web interface, click <inlinemediaobject>
+                        <alt>Icon Edit</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Edit).</para>
+                <result>
+                    <para>The selected entry in the overview table changes to editing mode.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Tenant</guilabel> field, indicate to which tenant the process
+                    is to be mapped.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Version</guilabel> field, enter the version of the process
+                    unit.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Comment</guilabel> field, enter the desired text as
+                    required.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject>
+                                <alt>Save button</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Save) to save the changes in the process
+                            configuration and exit the editing mode for the selected entry.</para>
+                        <result>
+                            <para>The editing mode is terminated and the changes are displayed in
+                                the overview table and in the detail pane of the selected
+                                entry.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject>
+                                <alt>Cancel button</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Cancel) to cancel the changes and exit the editing
+                            mode without saving the changes.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_processes">
+        <title>Modifying Multiple Processes</title>
+        <para>You can edit selected values for multiple processes in one step.</para>
+        <note>
+            <para>Please keep in mind that with this function, you define the same values for all
+                selected processes.</para>
+        </note>
+        <para>Proceed as follows to edit the settings of the selected processes.</para>
+        <procedure>
+            <step>
+                <para>Now switch to <guilabel>Processes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least two processes from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the web interface, click <inlinemediaobject>
+                        <alt>Icon Edit</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Edit).</para>
+                <result>
+                    <para>The <guilabel>Edit</guilabel> dialog opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>Tick the checkbox in front of each value you want to change for all selected
+                    processes.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Tenant</guilabel> field, specify the tenant to which the
+                    selected processes are to be assigned.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Version</guilabel> field, specify the version number for all
+                    selected processes.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Comment</guilabel> field, enter the desired text as
+                    required.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <guibutton>OK</guibutton> to save the changed settings for all
+                            selected processes and close the dialog.</para>
+                        <result>
+                            <para>The changed settings for the selected processes are displayed in
+                                the overview table and in the details pane.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <guibutton>Cancel</guibutton> to close the dialog without
+                            changing the settings.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="shareResource_process">
+        <title>Sharing Process Permissions</title>
+        <para>With the factory default settings of <productname>&dbpi;</productname>, users who have
+            been assigned the <code>docpilot_admin</code> role have permissions for managing
+            processes. Therefore, you (as a user assigned the <code>docpilot_admin</code> role) can
+            share permissions for a selected process with other roles.</para>
+        <para>Proceed as follows to share the permissions for a selected process with other
+            roles.</para>
+        <procedure>
+            <step>
+                <para>Now switch to <guilabel>Processes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select a process from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject>
+                        <alt>Button Share resource</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_shareResource.png" align="left"
+                                format="PNG" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Share resource).</para>
+                <result>
+                    <para>The <guilabel>Share resource</guilabel> dialog opens.</para>
+                    <mediaobject>
+                        <alt>Share resource dialog</alt>
+                        <imageobject>
+                            <imagedata fileref="images/dia_shareResource.png" align="left"
+                                format="PNG" width="12cm"/>
+                        </imageobject>
+                    </mediaobject>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Share resource</guilabel> dialog, select the roles to which
+                    you want to assign permissions for the selected process.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <guibutton>OK</guibutton> to confirm the changed permissions and
+                            close the <guilabel>Share resource</guilabel> dialog.</para>
+                    </step>
+                    <step>
+                        <para>Click <guibutton>Cancel</guibutton> to close the <guilabel>Share
+                                resource</guilabel> dialog without changing the settings.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <!--<sect1 xml:id="download_processes">
+        <title>Prozesse herunterladen</title>
+        <para>Mithilfe dieser Aktion können Sie die konfigurierten Prozesse im JSON-Format vom
+            Server herunterladen (z.&nbsp;B. um zu prüfen, welche Konfiguration auf den Server
+            deployt wurde).</para>
+        <para>Gehen Sie wie folgt vor, um einen vorhandenen Prozess vom Server
+            herunterzuladen.</para>
+
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Prozesse</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                        <alt>Schaltfläche Herunterladen</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_download.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Herunterladen).</para>
+                <result>
+                    <para>Abhängig von Ihrem Browser wird die JSON-Datei mit dem heruntergeladenen
+                        Prozess entweder automatisch im Download-Verzeichnis gespeichert, oder Sie
+                        werden aufgefordert den gewünschten Speicherort (das Zielverzeichnis) aus
+                        dem Verzeichnisbaum auszuwählen.</para>
+                </result>
+            </step>
+            <step>
+                <para>Wechseln Sie in das Download- bzw. das Zielverzeichnis und öffnen Sie den
+                    heruntergeladenen Prozess in einem Editor, um die Konfiguration zu
+                    prüfen.</para>
+            </step>
+        </procedure>
+    </sect1>-->
+    <sect1 xml:id="delete_processes">
+        <title>Deleting Processes</title>
+        <para>Use this action to delete a single process or multiple processes. Proceed as follows
+            to delete existing processes:</para>
+        <procedure>
+            <step>
+                <para>Now switch to <guilabel>Processes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one process from the overview table.</para>
+                <note>
+                    <para>Please note that the default process <guilabel>$SYSTEM</guilabel> cannot
+                        be deleted.</para>
+                </note>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject>
+                        <alt>Button Delete</alt>
+                    <imageobject>
+                        <imagedata fileref="images/btn_delete.png" align="left" format="PNG"
+                            scalefit="1"/>
+                    </imageobject></inlinemediaobject> (Delete).</para>
+                <result>
+                    <para>The confirmation dialog <guilabel>Delete Processes</guilabel>
+                        opens.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Processes</guilabel>,
+                            click <guibutton>OK</guibutton> to delete the selected process (or
+                            processes).</para>
+                    </step>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Processes</guilabel>,
+                            click <guibutton>Cancel</guibutton> to close the dialog
+                                <emphasis>without</emphasis> deleting the selected
+                            process(es).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>If the process(es) has (have) been successfully deleted, a success message
+                        is displayed in a separate dialog.</para>
+                    <para>If the process(es) could not be deleted, the corresponding error message
+                        is displayed in a separate dialog.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

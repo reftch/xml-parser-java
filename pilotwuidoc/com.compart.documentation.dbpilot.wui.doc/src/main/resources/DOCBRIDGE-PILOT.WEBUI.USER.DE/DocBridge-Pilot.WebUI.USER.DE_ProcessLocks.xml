@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_processLocksView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="de-DE">
+    <title>Umgang mit Prozess-Sperren</title>
+    <para>Die Ansicht <guilabel>Prozess-Locks</guilabel> zeigt die vorhandenen Prozess-Sperren.
+        Mithilfe der Weboberfläche können Sie Informationen zu den vorhandenen Prozess-Sperren
+        anzeigen lassen und jede Prozess-Sperre entfernen.</para>
+
+    <para>In der Ansicht <guilabel>Prozess-Locks</guilabel> können Sie die folgenden Aktionen
+        ausführen:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="display_processLocks"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_processLock_details"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_processLocks"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="display_processLocks">
+        <?dbhtml filename="SearchProcessLocksView.html" ?>
+        <title>Prozess-Sperren anzeigen</title>
+        <para>Sie können eine Übersicht der vorhandenen Prozess-Sperren in der Ansicht
+                <guilabel>Prozess-Locks</guilabel> anzeigen.</para>
+        <!--<mediaobject>
+            <alt>Screenshot Ansicht Prozess-Sperren</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_ProcessLocksViewGen.png" width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>-->
+        <para>In der Übersichtstabelle werden für jede Prozess-Sperre standardmäßig die folgenden
+            Informationen angezeigt:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Der eindeutige Bezeichner der Prozess-Sperre.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Lock-Typ</guilabel></term>
+                <listitem>
+                    <para>Aktuell sind die folgenden Werte gültig.</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>SHARED</para>
+                            <para>Der sperrende Prozess benötigt nur Leserechte. Andere Prozesse
+                                können ebenfalls lesend zugreifen.</para>
+                        </listitem>
+                        <listitem>
+                            <para>EXCLUSIVE</para>
+                            <para>Der sperrende Prozess benötigt Lese- und Schreibrechte.</para>
+                        </listitem>
+                    </itemizedlist>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Job-ID</guilabel></term>
+                <listitem>
+                    <para>Der eindeutige Bezeichner des Jobs, der von der Prozess-Sperre betroffen
+                        ist.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Erstellt</guilabel></term>
+                <listitem>
+                    <para>Datum und Uhrzeit (Zeitstempel) der Prozess-Lock Erstellung.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_processLock_details">
+        <title>Details zu einer Prozess-Sperre anzeigen</title>
+        <para>Sie können die Detailinformationen zu einer spezifischen Prozess-Sperre im
+            Detailbereich anzeigen lassen. Der Detailbereich enthält aktuell die gleichen
+            Informationen, wie die Übersichtstabellle.</para>
+        <!--<mediaobject>
+            <alt>Detailbereich</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_ProcessLockViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>-->
+    </sect1>
+
+    <sect1 xml:id="delete_processLocks">
+        <title>Prozess-Sperren löschen</title>
+        <para>Mithilfe dieser Aktion können Sie eine oder mehrere Prozess-Sperre(n) löschen. Gehen
+            Sie wie folgt vor, um vorhandene Prozess-Sperren zu löschen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Prozess-Locks</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens eine Prozess-Sperre aus der Übersichtstabelle.</para>                
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Schaltfläche Löschen</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_delete.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Löschen).</para>
+                <result>
+                    <para>Der Bestätigungsdialog <guilabel>Prozess-Sperren löschen</guilabel> wird
+                        geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Prozesse
+                                löschen</guilabel> auf <guibutton>Ok</guibutton>, um den
+                            ausgewählten Prozess (bzw. die ausgewählten Prozesse) zu löschen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Prozesse
+                                löschen</guilabel> auf <guibutton>Abbrechen</guibutton>, um das
+                            Dialogfenster zu schließen, <emphasis>ohne</emphasis> den ausgewählten
+                            Prozess (bzw. die ausgewählten Prozesse) zu löschen.</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Wenn der Prozess (die Prozesse) erfolgreich gelöscht wurde(n), wird eine
+                        Erfolgsmeldung ausgegeben.</para>
+                    <para>Wenn der Prozess (die Prozesse) nicht gelöscht werden konnte(n) wird eine
+                        entsprechende Fehlermeldung
+                        ausgegeben.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

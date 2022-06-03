@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_printJobsView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Working with Print Jobs</title>
+    <para>The following sections describe how you can create custom print jobs (configuration objects for print output) for one or more documents in addition to the preconfigured print jobs for the provided  standard processes. The following actions are supported for the <guilabel>Print Jobs</guilabel> view:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_printJob"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_printJobs"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_printJobDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_printJob"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_printJobs"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_printJobs"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_printJob"><?dbhtml filename="SearchPrintJobsView.html" ?><title>Creating a Print Job</title>
+        <para>You can create a new print job. You can configure the desired properties in a separate dialog.</para>
+        <para>Proceed as follows to create a new print job.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Print Jobs</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Create</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Create).</para>
+                <result>
+                    <para>The <guilabel>Create Print Jobs</guilabel> dialog opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>Enter a unique identifier for the new print job in the <guilabel>ID</guilabel> field.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Query</guilabel> field, Indicate the SQL query the print job is to use for creating the print data.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Application</guilabel> field, specify which application should be used to create the print job.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Reprint Application</guilabel> field, specify which application should be used for reprinting.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the new print job and exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the new print job is displayed in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel the creation of the print job and exit the editing mode without saving the print job.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_printJobs">
+        <title>Listing Print Jobs</title>
+        <para>You can display an overview of the configured print jobs in the workspace of the <guilabel>Print Jobs</guilabel> view.</para>
+        <mediaobject><alt>Screenshot Print Jobs views</alt><imageobject>
+                <imagedata fileref="images/scr_printJobsView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>The overview table displays the following information for each configured print job by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Name of the print job, which can be used to reference this print job</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Query</guilabel></term>
+                <listitem>
+                    <para>SQL query used by the print job for creating the print data.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Application</guilabel></term>
+                <listitem>
+                    <para>Application that should be used to create the print job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Reprint Application</guilabel></term>
+                <listitem>
+                    <para>Application that should be used for reprinting.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_printJobDetails">
+        <title>Displaying Print Job Details</title>
+        <para>You can display the details for a specific print job in the details pane. Compared to the overview table, the print job contains an additional information element.</para>
+        <mediaobject><alt>Print Jobs view with details pane</alt><imageobject>
+                <imagedata fileref="images/scr_printJobsViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>The following information is currently available in the details pane.</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Name of the print job, which can be used to reference this print job</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Process</guilabel></term>
+                <listitem>
+                    <para>Process, to which the print job is connected.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Query</guilabel></term>
+                <listitem>
+                    <para>SQL query used by the print job for creating the print data.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Application</guilabel></term>
+                <listitem>
+                    <para>Application that should be used to create the print job.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Reprint Application</guilabel></term>
+                <listitem>
+                    <para>Application that should be used for reprinting.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="modify_printJob">
+        <title>Modifying a Print Job</title>
+        <para>You can edit the print job properties.</para>
+        <note>
+            <para>Please keep in mind that you cannot use this action to modify the print job ID. You can modify the query, application and reprint application. To modify the print job ID, create a new print job with the desired name (see <xref linkend="create_printJob"/>).</para>
+        </note>
+        <para>Proceed as follows to edit the values of an existing print job:</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Print Jobs</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Double-click the desired row in the overview table.</para>
+                <result>
+                    <para>The entry switches to editing mode.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Query</guilabel> field, specify the desired new SQL query that the print job should use to create the print data.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Application</guilabel> field, specify which application should be used to create the print job.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Reprint Application</guilabel> field, specify the desired new application through which the reprint is to be created.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the print job with the updated values and exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the print job is displayed with the updated values in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel the creation of the print job and exit the editing mode without saving the print job.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_printJobs">
+        <title>Modifying Multiple Print Jobs</title>
+        <para>You can edit selected values for multiple print jobs in one step.</para>
+        <note>
+            <para>Please keep in mind that with this function, you define the same values for all selected print jobs.</para>
+        </note>
+        <para>Proceed as follows to edit the properties of the selected print jobs.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Print Jobs</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least two print jobs from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the web interface, click <inlinemediaobject><alt>Icon Edit</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Edit).</para>
+                <result>
+                    <para>The <guilabel>Edit</guilabel> dialog opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>Tick the checkbox in front of each value you want to change for all selected print jobs.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Process</guilabel> field, specify the process to which all selected print jobs should be linked.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Query</guilabel> field, specify the desired SQL query that the selected print jobs should use to create the print data.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Application</guilabel> field, specify which application should be used to create print jobs.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Reprint Application</guilabel> field, specify which application should be used for reprinting the selected print jobs.</para>
+            </step>            
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <guibutton>OK</guibutton> to save the changed settings for all selected print jobs and close the dialog.</para>
+                        <result>
+                            <para>The changed settings for the selected print jobs are displayed in the overview table and in the details pane.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <guibutton>Cancel</guibutton> to close the dialog without changing the settings.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_printJobs">
+        <title>Deleting Print Jobs</title>
+        <para>Use this action to delete a single print job or multiple print jobs. Proceed as follows to delete existing print jobs.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Print Jobs</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one print job from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Delete</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Delete).</para>
+                <result>
+                    <para>The confirmation dialog <guilabel>Delete Print Jobs</guilabel> opens.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Print Jobs</guilabel>, click <guibutton>OK</guibutton> to delete the selected print job (or print jobs).</para>
+                    </step>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Print Jobs</guilabel>, click <guibutton>Cancel</guibutton>  to close the dialog <emphasis>without</emphasis> deleting the selected print job(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>If the print jobs have been successfully deleted, a success message is displayed in a separate dialog.</para>
+                    <para>If the print job could not be deleted, a corresponding error message is displayed.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_triggersView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation des déclencheurs</title>
+    <para>Les sections suivantes décrivent comment utiliser les déclencheurs (triggers) pour hotfolders (pour plus d&apos;informations, voir <xref linkend="db_pil_wui_hotfoldersView"/>) et les tâches de minuterie (pour plus d&apos;informations, voir <xref linkend="db_pil_wui_timersView"/>). Dans l&apos;affichage <guilabel>Déclencheur</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_trigger"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_triggers"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_triggerDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_trigger"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_triggers"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_triggers"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_trigger"><?dbhtml filename="SearchTriggersView.html" ?><title>Définir un déclencheur</title>
+        <para>Vous pouvez définir un nouveau déclencheur. Vous pouvez configurer les propriétés souhaitées directement dans la table d&apos;aperçu.</para>
+        <para>Procédez comme suit pour créer un nouveau déclencheur.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Déclencheur</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Créer</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Créer).</para>
+                <result>
+                    <para>Une nouvelle entrée avec des champs vides est créée dans la table d&apos;aperçu. Le champ <guilabel>ID</guilabel> est obligatoire et donc surligné en rouge (marqué comme incorrect) tant qu&apos;il ne contient pas une valeur valide.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Répétitions</guilabel>, indiquez à quelle fréquence le déclencheur doit être exécuté. Si vous utilisez la valeur par défaut <code>-1</code>, le nombre de répétitions n&apos;est pas limité (c&apos;est-à-dire que le déclencheur est exécuté à l&apos;infini à l&apos;intervalle spécifié).</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Intervalle</guilabel>, entrez l&apos;intervalle de temps en millisecondes dans lequel le déclencheur doit être exécuté.</para>
+            </step>
+            <step>
+                <para>Si nécessaire, saisissez un texte court sur le déclencheur dans le champ <guilabel>Commentaire</guilabel>.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer le nouveau déclencheur et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et le nouveau déclencheur est affiché dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la création du déclencheur et quitter le mode d&apos;édition sans enregistrer le déclencheur.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_triggers">
+        <title>Afficher un déclencheur</title>
+        <para>Vous pouvez afficher une vue globale des déclencheurs configurés dans l&apos;espace de travail de l&apos;affichage <guilabel>Déclencheurs</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Déclencheurs</alt><imageobject>
+                <imagedata fileref="images/scr_TriggersView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque déclencheur configuré :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique (défini par l&apos;utilisateur) du déclencheur.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Répétitions</guilabel></term>
+                <listitem>
+                    <para>Nombre de répétitions. Spécifie la fréquence d&apos;exécution du déclencheur. Avec la valeur par défaut <code>-1</code>, le nombre de répétitions n&apos;est pas limité (c&apos;est-à-dire que le déclencheur est exécuté à l&apos;infini à l&apos;intervalle spécifié).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Intervalle</guilabel></term>
+                <listitem>
+                    <para>Période pendant laquelle le déclencheur est exécuté. Spécifié en millisecondes.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Commentaire</guilabel></term>
+                <listitem>
+                    <para>Vous pouvez ajouter des commentaires pour documenter les caractéristiques spéciales ou les utilisations des déclencheurs.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_triggerDetails">
+        <title>Afficher les détails du déclencheur</title>
+        <para>Vous pouvez afficher les informations détaillées concernant chaque déclencheur dans le volet des détails. Par rapport à la table d&apos;aperçu, le volet des détails contient un élément d&apos;information supplémentaire.</para>
+        <mediaobject><alt>Affichage des déclencheurs avec le volet des détails</alt><imageobject>
+                <imagedata fileref="images/scr_TriggerViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Les informations suivantes sont actuellement disponibles dans le volet des détails :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique (défini par l&apos;utilisateur) du déclencheur.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Type</guilabel></term>
+                <listitem>
+                    <para>Actuellement, seule la valeur <code>triggers</code> est prise en charge.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Répétitions</guilabel></term>
+                <listitem>
+                    <para>Nombre de répétitions. Spécifie la fréquence d&apos;exécution du déclencheur. Avec la valeur par défaut <code>-1</code>, le nombre de répétitions n&apos;est pas limité (c&apos;est-à-dire que le déclencheur est exécuté à l&apos;infini à l&apos;intervalle spécifié).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Intervalle</guilabel></term>
+                <listitem>
+                    <para>Période pendant laquelle le déclencheur est exécuté. Spécifié en millisecondes.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Commentaire</guilabel></term>
+                <listitem>
+                    <para>Vous pouvez ajouter des commentaires pour documenter les caractéristiques spéciales ou les utilisations des déclencheurs.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="modify_trigger">
+        <title>Éditer un déclencheur</title>
+        <para>Vous pouvez éditer les propriétés d&apos;un déclencheur.</para>
+        <note>
+            <para>Veuillez noter que vous ne pouvez pas changer l&apos;ID du déclencheur (le nom du déclencheur défini par l&apos;utilisateur) avec cette action. Vous pouvez éditer le nombre de répétitions, l&apos;intervalle du déclencheur et le commentaire. Si vous souhaitez modifier l&apos;ID du déclencheur (nom), créez un nouveau déclencheur avec le nom souhaité (voir <xref linkend="create_trigger"/>).</para>
+        </note>
+        <para>Procédez comme suit pour éditer les valeurs d&apos;un déclencheur existant :</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Déclencheur</guilabel>.</para>
+            </step>
+            <step>
+                <para>Double-cliquez sur l&apos;entrée souhaitée dans la table d&apos;aperçu.</para>
+                <result>
+                    <para>L&apos;entrée passe en mode d&apos;édition.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Répétitions</guilabel>, entrez une nouvelle valeur.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Intervalle</guilabel>, entrez le nouvel intervalle de temps en millisecondes auquel le déclencheur doit être exécuté.</para>
+            </step>
+            <step>
+                <para>Si nécessaire, saisissez un texte court sur le déclencheur dans le champ <guilabel>Commentaire</guilabel>.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer le déclencheur avec les valeurs mises à jour et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et le déclencheur est affiché avec les valeurs actualisées dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler la mise à jour du déclencheur et quitter le mode d&apos;édition sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_triggers">
+        <title>Éditer plusieurs déclencheurs</title>
+        <para>Cette action vous permet d&apos;éditer des valeurs sélectionnées pour plusieurs déclencheurs en une seule étape.</para>
+        <note>
+            <para>Veuillez noter qu&apos;avec cette fonction, vous définissez les mêmes valeurs pour tous les déclencheurs sélectionnés.</para>
+        </note>
+        <para>Procédez comme suit pour éditer les propriétés des déclencheurs sélectionnés.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Déclencheur</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins deux déclencheurs dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Éditer</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cochez la case en face de chaque valeur que vous souhaitez modifier pour tous les déclencheurs sélectionnés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Répétitions</guilabel>, indiquez à quelle fréquence les déclencheurs doivent être exécutés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Intervalle</guilabel>, entrez l&apos;intervalle de temps en millisecondes dans lequel les déclencheurs doivent être exécutés.</para>
+            </step>
+            <step>
+                <para>Si nécessaire, saisissez un texte court sur le déclencheur sélectionné dans le champ <guilabel>Commentaire</guilabel>.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <guibutton>Confirmer</guibutton> pour enregistrer les modifications affectant tous les déclencheurs sélectionnés et fermer la boîte de dialogue.</para>
+                        <result>
+                            <para>Les paramètres modifiés sont affichés pour les déclencheurs sélectionnés dans la table d&apos;aperçu et dans le volet des détails.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_triggers">
+        <title>Supprimer un déclencheur</title>
+        <para>Vous pouvez utiliser cette action pour supprimer un ou plusieurs déclencheur(s). Procédez comme suit pour supprimer des déclencheurs existants.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Déclencheur</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins un déclencheur dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Supprimer</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Supprimer).</para>
+                <result>
+                    <para>La boîte de dialogue de confirmation <guilabel>Supprimer un déclencheur</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer un déclencheur</guilabel>, cliquez sur <guibutton>Ok</guibutton> pour supprimer le/les déclencheur(s) sélectionné(s).</para>
+                    </step>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer un déclencheur</guilabel>, cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue <emphasis>sans</emphasis> supprimer le(s) déclencheur(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Si le(s) déclencheur(s) a/ont été supprimé(s), un message de confirmation est émis.</para>
+                    <para>Si le(s) déclencheur(s) n&apos;a/ont pas pu être supprimé(s), un message d&apos;erreur correspondant est émis.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

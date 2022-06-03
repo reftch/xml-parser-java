@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_workflowActivitiesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Working with Workflow Activities</title>
+    <para>When working with workflows, a distinction is made between workflow templates, workflow instances and workflow activities. Workflow templates are JSON objects that specify the general structure of a workflow. Based on a workflow template, any number of (executable) workflow instances can be created. Workflow activities are linked to a specific workflow instance (for more information on workflow templates, see <xref linkend="db_pil_wui_workflowTemplatesView"/>, for more information on workflow instances, see <xref linkend="db_pil_wui_workflowInstancesView"
+        />).</para>
+    <para>The following actions are supported for the <guilabel>Workflow Activities</guilabel> view:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="display_workflowActivities"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_workflowActivityDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_workflowActivities"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="display_workflowActivities">
+        <title>Listing Workflow Activities</title>
+        <para>You can display an overview of the configured workflow activities in the workspace of the <guilabel>Workflow Activities</guilabel> view.</para>
+        <mediaobject><alt>Screenshot Workflow Activities view</alt><imageobject>
+                <imagedata fileref="images/scr_WorkflowActivitiesView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>The overview table displays the following information for each workflow activity by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The automatically generated unique identifier (sequence number) of the workflow activity.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Process</guilabel></term>
+                <listitem>
+                    <para>The process to which the workflow instance (and thus also the workflow activity) is linked.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>State</guilabel></term>
+                <listitem>
+                    <para>Processing status of the workflow activity (not identical with the processing status of the workflow instance).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Instance</guilabel></term>
+                <listitem>
+                    <para>Unique identifier of the workflow instance to which the workflow activity is linked.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Template</guilabel></term>
+                <listitem>
+                    <para>Unique identifier of the process to which the workflow template and thus also the workflow activity) is linked.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Action</guilabel></term>
+                <listitem>
+                    <para>Unique identifier of the action that is (or was) executed by the workflow activity.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Job</guilabel></term>
+                <listitem>
+                    <para>Unique identifier of the job connected with the workflow instance (or rather workflow activity).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_workflowActivityDetails">
+        <title>Displaying Workflow Activity Details</title>
+        <para>If you select a workflow activity in the overview table, the information about the selected workflow activity is displayed in the details pane. The details pane contains the same scope of information as the overview table.</para>        
+        <mediaobject><alt>Workflow activities view with details</alt><imageobject>
+                <imagedata fileref="images/scr_WorkflowActivitiesViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>        
+    </sect1>
+    <sect1 xml:id="filter_workflowActivities">
+        <title>Filtering Workflow Activities</title>
+        <para>Use this action to filter the overview of available workflow activities based on the available columns.</para>
+        <para>Proceed as follows to filter the existing workflow activities and thus reduce the number of displayed workflow activities.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Workflow Activities</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <guibutton>Filter</guibutton>.</para>
+            </step>
+            <step>
+                <para>You can filter the existing workflow activities by ID (simple filter) or by other parameters (for more information about filter criteria, see <xref
+                        linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

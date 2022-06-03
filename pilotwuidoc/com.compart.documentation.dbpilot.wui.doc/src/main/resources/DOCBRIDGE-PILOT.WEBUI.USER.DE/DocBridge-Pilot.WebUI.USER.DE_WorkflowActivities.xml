@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_workflowActivitiesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="de-DE">
+    <title>Umgang mit Workflow-Aktivitäten</title>
+    <para>Beim Umgang mit Workflows wird zwischen Workflow-Vorlagen, Workflow-Instanzen und
+        Workflow-Aktivitäten unterschieden. Als Workflow-Vorlagen werden JSON-Objekte bezeichnet,
+        die die allgemeine Struktur eines Workflows vorgeben. Auf Basis einer Workflow Vorlage
+        könnne beliebig viele (ausführbare) Workflow-Instanzen erstellt werden. Workflow-Aktivitäten
+        sind mit jeweils einer Workflow-Instanz verknüpft (für weitere Informationen zu
+        Workflow-Vorlagen, siehe <xref linkend="db_pil_wui_workflowTemplatesView"/>, für weitere
+        Informationen zu Workflow-Instanzen, siehe <xref linkend="db_pil_wui_workflowInstancesView"
+        />).</para>
+    <para>In der Ansicht <guilabel>Workflow-Aktivitäten</guilabel> können Sie die folgenden Aktionen
+        ausführen:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="display_workflowActivities"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_workflowActivityDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_workflowActivities"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="display_workflowActivities">
+        <title>Workflow-Aktivitäten anzeigen</title>
+        <para>Sie können eine Übersicht der vorhandenen Workflow-Aktivitäten im Arbeitsbereich der
+            Ansicht <guilabel>Workflow-Aktivitäten</guilabel> anzeigen.</para>
+        <mediaobject>
+            <alt>Screenshot Ansicht Workfllow-Aktivitäten</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_WorkflowActivitiesView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>In der Übersichtstabelle werden für jede Workflow-Aktivität standardmäßig die
+            folgenden Informationen angezeigt:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Der automatisch generierte eindeutige Bezeichner (laufende Nummer) der
+                        Workflow-Aktivität.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Prozess</guilabel></term>
+                <listitem>
+                    <para>Der Prozess mit dem die Workflow-Instanz (und damit auch die
+                        Workflow-Aktivität) verknüpft ist.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Status</guilabel></term>
+                <listitem>
+                    <para>Verarbeitungsstatus der Workflow-Aktivität (nicht identisch mit dem
+                        Verarbeitungsstatus der Workflow-Instanz).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Instanz</guilabel></term>
+                <listitem>
+                    <para>Eindeutiger Bezeichner der Workflow-Instanz, der die Workflow-Aktivität
+                        zugeordnet ist.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Vorlage</guilabel></term>
+                <listitem>
+                    <para>Eindeutiger Bezeichner der Workflow-Vorlage, mit der die Workflow-Instanz
+                        (und damit auch die Workflow-Aktivität) verknüpft ist.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Aktion</guilabel></term>
+                <listitem>
+                    <para>Eindeutiger Bezeichner der Aktion, die die Workflow-Aktivität ausführt
+                        (bzw. ausgeführt hat).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Job</guilabel></term>
+                <listitem>
+                    <para>Eindeutiger Bezeichner des mit der Workflow-Instzanz (bzw. der
+                        Workflow-Aktivität) verknüpften Jobs.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_workflowActivityDetails">
+        <title>Workflow-Aktivitäten Details anzeigen</title>
+        <para>Wenn Sie in der Übersichtstabelle eine Workflow-Aktivität auswählen, werden die
+            Informationen zur ausgewählten Workflow-Aktivität im Detailbereich angezeigt. Der
+            Detailbereich enthält aktuell die gleichen Informationen, wie die Übersichtstabellle.</para>        
+        <mediaobject>
+            <alt>Ansicht Workflow-Aktivitäten mit Details</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_WorkflowActivitiesViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>        
+    </sect1>
+    <sect1 xml:id="filter_workflowActivities">
+        <title>Workflow-Aktivitäten filtern</title>
+        <para>Mithilfe dieser Aktion können Sie die Übersicht der vorhandenen Workflow-Aktivitäten anhand der verfügbaren Spalten filtern.</para>
+        <para>Gehen Sie wie folgt vor, um die vorhandenen Workflow-Aktivitäten zu filtern und damit die Anzahl der
+            angezeigten Workflow-Aktivitäten zu reduzieren.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Workflow-Aktivitäten</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche
+                    <guibutton>Filter</guibutton>.</para>
+            </step>
+            <step>
+                <para>Sie können die vorhandenen Workflow-Aktivitäten anhand der ID (einfacher Filter) oder anhand
+                    anderer Parameter filtern (für weitere Informationen zu Filterkriterien, siehe <xref
+                        linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_jobActivitiesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="de-DE">
+    <title>Umgang mit Job-Aktivitäten</title>
+    <para>Die Ansicht <guilabel>Job-Aktivitäten</guilabel> zeigt die Aktivitäten für alle von
+            <productname>&dbpi;</productname> importierten und verarbeiteten Jobs. In der Ansicht
+            <guilabel>Job-Aktivitäten</guilabel> können Sie die folgenden Aktionen ausführen:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="display_jobActivities"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_jobActivity_details"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_jobActivities"/></para>
+        </listitem>
+
+    </itemizedlist>
+    <sect1 xml:id="display_jobActivities">
+        <?dbhtml filename="SearchJobActivitiesView.html" ?>
+        <title>Job-Aktivitäten anzeigen</title>
+        <para>Sie können eine Übersicht der Aktivitäten für die importierten bzw. verarbeiteten Jobs
+            in der Ansicht <guilabel>Job-Aktivitäten</guilabel> anzeigen.</para>
+        <mediaobject>
+            <alt>Screenshot Ansicht Job-Aktivitäten</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_JobActivitiesViewGen.png" width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>In der Übersichtstabelle werden für jeden Prozess standardmäßig die folgenden
+            Informationen angezeigt:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Der automatisch generierte eindeutige Bezeichner der Job-Aktivität
+                        (laufende Nummer).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Prozess</guilabel></term>
+                <listitem>
+                    <para>Der Prozess, dem der Job, und damit auch die Job-Aktivität, zugeordnet
+                        ist.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Originaljob</guilabel></term>
+                <listitem>
+                    <para>Eindeutiger Bezeichner des Ursprungsjobs (z.B. bei Merge-- und
+                        Split-Aktionen).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Job</guilabel></term>
+                <listitem>
+                    <para>Eindeutiger Bezeichner des Jobs, mit dem die Job-Aktivität verknüpft
+                        ist.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Aktion</guilabel></term>
+                <listitem>
+                    <para>Bezeichnung der Aktion.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Erstellt</guilabel></term>
+                <listitem>
+                    <para>Zeitstempel (Datum und Uhrzeit) des Zeitpunkts, zu dem die Aktion
+                        gespeichert wurde.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Kontext</guilabel></term>
+                <listitem>
+                    <para>Eindeutige Kontext-ID (UUID).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_jobActivity_details">
+        <title>Job-Aktivitäten Details anzeigen</title>
+        <para>Sie können die Detailinformationen zu einer Job-Aktivität im Detailbereich anzeigen
+            lassen. Der Detailbereich enthält aktuell die gleichen Informationen, wie die
+            Übersichtstabellle.</para>
+        <mediaobject>
+            <alt>Detailbereich</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_JobActivitiesViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    <sect1 xml:id="filter_jobs">
+        <title>Job-Aktivitäten filtern</title>
+        <para>Mithilfe dieser Aktion können Sie die Übersicht der vorhandenen Job-Aktivitäten anhand
+            der verfügbaren Spalten filtern.</para>
+        <para>Gehen Sie wie folgt vor, um die vorhandenen Job-Aktivitäten zu filtern und damit die
+            Anzahl der angezeigten Job--Aktivitäten zu reduzieren.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Job-Aktivitäten</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche
+                        <guibutton>Filter</guibutton>.</para>
+            </step>
+            <step>
+                <para>Sie können die vorhandenen Job-Aktivitäten anhand der ID (einfacher Filter)
+                    oder anhand anderer Parameter filtern (für weitere Informationen zu
+                    Filterkriterien, siehe <xref linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_mailPieceTrackingsView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Working With Mail Piece Trackings</title>
+    <para>The following sections describe how to<productname>&dbpi;</productname> relevant parameters for output media. The following actions are supported in the <guilabel>Mail Piece Trackings</guilabel> view:</para>
+    <itemizedlist><!--<listitem>
+            <para><xref linkend="create_mailPieceTracking"/></para>
+        </listitem>--><listitem>
+            <para><xref linkend="upload_mailPieceTrackings"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_mailPieceTrackings"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_mailPieceTrackingDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="edit_mailPieceTrackingDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_mailPieceTrackings"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_mailPieceTracking"/></para>
+        </listitem>
+    </itemizedlist><!--<sect1 xml:id="create_mailPieceTracking">
+        <?dbhtml filename="SearchMailPieceView.html" ?>
+        <title>Sendungsverfolgung definieren</title>
+        <para>Sie können einen neue Sendungsverfolgung definieren. Dabei können Sie die gewünschten
+            Eigenschaften für den neuen Eintrag direkt in der Übersichtstabelle
+            konfigurieren.</para>
+        <para>Gehen Sie wie folgt vor, um eine neue Sendungskonfiguration zu erstellen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Sendungsverfolgungen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Erstellen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Erstellen).</para>
+                <result>
+                    <para>In der Übersichtstabelle wird ein neuer Eintrag mit leeren Feldern
+                        erstellt. Das Feld <guilabel>ID</guilabel> wird automatisch gefüllt und kann
+                        nicht editiert werden.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Sendungs-ID</guilabel> die ID der Sendung an, für
+                    die die Sendungsverfolgung konfiguriert ist.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Senquenz-ID</guilabel> die gewünschte Sequenz-ID
+                    an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Tracking-Typ</guilabel> den gewünschten Wert
+                    an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Status</guilabel> den gewünschten Anfangsstatus
+                    für die Sendungsverfolgung an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Informationen</guilabel> bei Bedarf Bemerkungen
+                    oder eine kurze Beschreibung zur Sendungsverfolgung an.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um die neue Sendungsverfolgung zu
+                            speichern und den Editiermodus zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und die neue Sendungsverfolgung wird
+                                in der Übersichtstabelle angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um das Erstellen der
+                            Sendungsverfolgung abzubrechen und den Editiermodus zu beenden ohne die
+                            Sendungsverfolgung zu speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    --><sect1 xml:id="upload_mailPieceTrackings">
+        <title>Importing Mail Piece Trackings</title>
+        <para>If you want to create multiple mail piece trackings in one step, you can upload the desired values as a CSV file.</para>
+        <para>Proceed as follows to create multiple mail piece trackings in one step.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Mail Piece Trackings</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Upload</alt><imageobject>
+                            <imagedata fileref="images/btn_deploy.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Upload).</para>
+                <result>
+                    <para>The dialog <guilabel>Open</guilabel> opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>Select the desired CSV file from the directory tree.</para>
+            </step>
+            <step>
+                <para>Click <guibutton>Open</guibutton> to upload (import) the selected CSV file to the server.</para>
+                <result>
+                    <para>The entries in the CSV file are imported into the overview table of the configured mail piece trackings.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_mailPieceTrackings">
+        <title>Listing Mail Piece Trackings</title>
+        <para>You can display an overview of the configured mail piece trackings in the overview table of the <guilabel>Mail Piece Trackings</guilabel> view.</para>
+        <mediaobject><alt>Screenshot Mail Piece Trackings view</alt><imageobject>
+                <imagedata fileref="images/scr_MailPieceTrackingsView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>The overview table displays the following information for each configured mail piece tracking by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The unique identifier (sequential number) of the mail piece tracking.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Mail Piece ID</guilabel></term>
+                <listitem>
+                    <para>Reference to the mail piece for which tracking has been configured.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Sequence ID</guilabel></term>
+                <listitem>
+                    <para>Sequence ID</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Process ID</guilabel></term>
+                <listitem>
+                    <para>Reference to the process to which the mail piece tracking is linked.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Tracking Type</guilabel></term>
+                <listitem>
+                    <para>Specification of the user-defined tracking type for the mail piece tracking.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>State</guilabel></term>
+                <listitem>
+                    <para>Specifies the status of the (completed) tracking.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Information</guilabel></term>
+                <listitem>
+                    <para>Information about the referenced job (Job ID).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_mailPieceTrackingDetails">
+        <title>Displaying Mail Piece Tracking Details</title>
+        <para>You can display the details for a specific mail piece tracking in the details pane. Compared to the overview table the details pane contains more information.</para>
+        <mediaobject><alt>Mail Piece Trackings view with details pane</alt><imageobject>
+                <imagedata fileref="images/scr_MailPieceTrackingsViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>The following information is currently available in the details pane.</para>
+        <para>The overview table displays the following information for each configured mail piece tracking by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The unique identifier (sequential number) of the mail piece tracking.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Mail Piece ID</guilabel></term>
+                <listitem>
+                    <para>Reference to the mail piece for which tracking has been configured.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Sequence ID</guilabel></term>
+                <listitem>
+                    <para>Sequence ID</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Process ID</guilabel></term>
+                <listitem>
+                    <para>Reference to the process to which the mail piece tracking is linked.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Tracking Type</guilabel></term>
+                <listitem>
+                    <para>Specification of the user-defined tracking type for the mail piece tracking.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>State</guilabel></term>
+                <listitem>
+                    <para>Specifies the status of the (completed) tracking.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Information</guilabel></term>
+                <listitem>
+                    <para>Information about the referenced job (Job ID).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Tracking Date</guilabel></term>
+                <listitem>
+                    <para>Creation time of the mail piece tracking.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>User field 0-4</guilabel></term>
+                <listitem>
+                    <para>User-defined fields that can hold different contents.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="edit_mailPieceTrackingDetails">
+        <title>Modifying Mail Piece Tracking Properties</title>
+        <para>You can edit the properties of a mail piece tracking directly in the overview table.</para>
+        <para>Proceed as follows to modify the properties of an existing command:</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Mail Piece Trackings</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Double-click the desired row in the overview table.</para>
+                <result>
+                    <para>The entry switches to editing mode.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Mail Piece Tracking ID</guilabel> field, specify the ID of the mail piece for which tracking is configured.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Sequence ID</guilabel> field, enter the desired sequence ID.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Tracking Type</guilabel> field, specify the type of tracking you want to use for mail piece tracking.</para>
+            </step>
+            <step>
+                <para>Enter the desired new status for the mail piece tracking in the <guilabel>State</guilabel> field.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Information</guilabel> field, specify the information about the referenced job (the job ID).</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the changed ,mail piece tracking and exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the mail piece tracking is displayed with the new values in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel tracking editing and exit the editing mode without saving the changes.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_mailPieceTrackings">
+        <title>Modifying Multiple Mail Piece Trackings</title>
+        <para>You can edit selected values for multiple mail piece trackings in one step.</para>
+        <note>
+            <para>Please keep in mind that with this function, you define the same values for all selected mail piece trackings.</para>
+        </note>
+        <para>Proceed as follows to edit the properties of the selected mail piece trackings.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Mail Piece Trackings</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least two mail piece trackings from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the web interface, click <inlinemediaobject><alt>Icon Edit</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Edit).</para>
+                <result>
+                    <para>The <guilabel>Edit</guilabel> dialog opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>Tick the checkbox in front of each value you want to change for all selected mail piece trackings.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Mail Piece ID</guilabel> field, specify the ID of the mail piece for which the selected trackings are configured.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Sequence ID</guilabel> field, enter the desired sequence ID.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Tracking Type</guilabel> field, specify the type of tracking you want to use for all selected mail piece trackings.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>State</guilabel> field, specify the desired new status for the selected mail piece trackings.</para>
+                <note>
+                    <para>This field allows you to change the status of all selected mail piece trackings in one step.</para>
+                </note>
+            </step>
+            <step>
+                <para>In the <guilabel>Information</guilabel> field, specify the information about the referenced job (the job ID).</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <guibutton>OK</guibutton> to save the changed settings for all selected mail piece trackings and close the dialog.</para>
+                        <result>
+                            <para>The changed settings for the selected mail piece trackings are displayed in the overview table and in the details pane.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <guibutton>Cancel</guibutton> to close the dialog without changing the settings.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+
+    <sect1 xml:id="delete_mailPieceTracking">
+        <title>Deleting Mail Piece Trackings</title>
+        <para>Use this action to delete a single mail piece tracking or multiple mail piece trackings. Proceed as follows to delete existing mail piece trackings.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Mail Piece Trackings</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one mail piece tracking from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Delete</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Delete).</para>
+                <result>
+                    <para>The confirmation dialog <guilabel>Delete Mail Piece Trackings</guilabel> opens.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Mail Piece Trackings</guilabel>, click <guibutton>OK</guibutton> to delete the selected mail piece trackings.</para>
+                    </step>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Mail Piece Trackings</guilabel>, click <guibutton>Cancel</guibutton> to close the dialog <emphasis>without</emphasis> deleting the selected mail piece tracking(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>If the mail piece trackings have been successfully deleted, a success message is displayed.</para>
+                    <para>If the mail piece trackings could not be deleted, the corresponding error message is displayed.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

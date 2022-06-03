@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_triggersView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Working with Triggers</title>
+    <para>The following sections describe how to work with (hotfolder) triggers (for more information, see <xref linkend="db_pil_wui_hotfoldersView"/>) and timer tasks (for more information, see <xref linkend="db_pil_wui_timersView"/>). The following actions are supported in the <guilabel>Triggers</guilabel> view:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_trigger"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_triggers"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_triggerDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_trigger"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_triggers"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_triggers"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_trigger"><?dbhtml filename="SearchTriggersView.html" ?><title>Defining a Trigger</title>
+        <para>You can define a custom trigger. You can configure the desired properties directly in the overview table.</para>
+        <para>Proceed as follows to create a new trigger.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Triggers</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Create</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Create).</para>
+                <result>
+                    <para>A new entry with empty fields is created in the overview table. The <guilabel>ID</guilabel> field contains mandatory information and is therefore highlighted in red (marked as incorrect) while it does not contain a valid value.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Repetitions</guilabel> field, indicate how many times the trigger is to the executed. With the default value <code>-1</code>, the number of repeats is not limited (i.e. the trigger is executed an infinite number of times within the specified interval).</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Interval</guilabel> field, enter the time interval in milliseconds in which the trigger should be executed.</para>
+            </step>
+            <step>
+                <para>If required, enter a brief text about the trigger in the <guilabel>Comment</guilabel> field.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the new trigger and exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the new trigger is displayed in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel the creation of the trigger and exit the editing mode without saving the trigger.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_triggers">
+        <title>Listing Triggers</title>
+        <para>You can display an overview of the configured triggers in the workspace of the <guilabel>Triggers</guilabel> view.</para>
+        <mediaobject><alt>Screenshot Triggers view</alt><imageobject>
+                <imagedata fileref="images/scr_TriggersView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>The overview table displays the following information for each configured trigger  by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The (user defined) unique identifier of the trigger.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Repeats</guilabel></term>
+                <listitem>
+                    <para>Number of repeats. Specifies how many times the trigger is to the executed. With the default value <code>-1</code>, the number of repeats is not limited (i.e. the trigger is executed an infinite number of times within the specified interval).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Interval</guilabel></term>
+                <listitem>
+                    <para>The time interval in which the trigger is executed Specified in milliseconds.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Comment</guilabel></term>
+                <listitem>
+                    <para>You can add comments to document special features or usage of the trigger.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_triggerDetails">
+        <title>Displaying Trigger Details</title>
+        <para>You can display the details for a specific trigger in the details pane. Compared to the overview table, the details pane contains an additional information element.</para>
+        <mediaobject><alt>Triggers view with details pane</alt><imageobject>
+                <imagedata fileref="images/scr_TriggerViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>The following information is currently available in the details pane:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The (user defined) unique identifier of the trigger.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Type</guilabel></term>
+                <listitem>
+                    <para>Currently, only the value <code>triggers</code>  is supported.</para>
+
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Repeats</guilabel></term>
+                <listitem>
+                    <para>Number of repeats. Specifies how many times the trigger is to the executed. With the default value <code>-1</code>, the number of repeats is not limited (i.e. the trigger is executed an infinite number of times within the specified interval).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Interval</guilabel></term>
+                <listitem>
+                    <para>The time interval in which the trigger is executed Specified in milliseconds.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Comment</guilabel></term>
+                <listitem>
+                    <para>You can add comments to document special features or usage of the trigger.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="modify_trigger">
+        <title>Modifying a Trigger</title>
+        <para>You can edit the trigger properties.</para>
+        <note>
+            <para>Please keep in mind that you cannot use this action to modify the trigger ID (user-defined name of the trigger). You can modify the number of repeats, trigger interval and comment. To modify the trigger ID (name), create a new trigger with the desired name (see <xref linkend="create_trigger"/>).</para>
+        </note>
+        <para>Proceed as follows to edit the values of an existing trigger:</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Triggers</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Double-click the desired row in the overview table.</para>
+                <result>
+                    <para>The entry switches to editing mode.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Repeats</guilabel> field, specify a new value.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Interval</guilabel> field, enter the new time interval in milliseconds at which the trigger should be executed.</para>
+            </step>
+            <step>
+                <para>If required, enter a brief text about the trigger in the <guilabel>Comment</guilabel> field.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Save button</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Save) to save the trigger with the updated values and exit the editing mode.</para>
+                        <result>
+                            <para>The editing mode is terminated and the trigger is displayed with the updated values in the overview table.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <inlinemediaobject><alt>Cancel button</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Cancel) to cancel the trigger update and exit the editing mode without saving the changes.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_triggers">
+        <title>Modifying Multiple Triggers</title>
+        <para>You can edit selected values for multiple triggers in one step.</para>
+        <note>
+            <para>Please keep in mind that with this function, you define the same values for all selected triggers.</para>
+        </note>
+        <para>Proceed as follows to edit the properties of the selected triggers.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Triggers</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least two triggers from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the web interface, click <inlinemediaobject><alt>Icon Edit</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Edit).</para>
+                <result>
+                    <para>The <guilabel>Edit</guilabel> dialog opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>Tick the checkbox in front of each value you want to change for all selected triggers.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Repetitions</guilabel> field, indicate how many times the selected triggers are to be executed.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Interval</guilabel> field, specify the time interval in milliseconds in which the selected triggers are to be executed.</para>
+            </step>
+            <step>
+                <para>If required, enter a brief text about the selected triggers in the <guilabel>Comment</guilabel> field.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <guibutton>OK</guibutton> to save the changed settings for all selected triggers and close the dialog.</para>
+                        <result>
+                            <para>The changed settings for the selected triggers are displayed in the overview table and in the details pane.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <guibutton>Cancel</guibutton> to close the dialog without changing the settings.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_triggers">
+        <title>Deleting a Trigger</title>
+        <para>Use this action to delete a single trigger or multiple triggers. Proceed as follows to delete existing triggers.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Triggers</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one trigger from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Delete</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Delete).</para>
+                <result>
+                    <para>The confirmation dialog <guilabel>Delete Triggers</guilabel> opens.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Triggers</guilabel>, click <guibutton>OK</guibutton> to delete the selected trigger (or triggers).</para>
+                    </step>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Triggers</guilabel>, click <guibutton>Cancel</guibutton>  to close the dialog <emphasis>without</emphasis> deleting the selected trigger(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>If the triggers have been successfully deleted, a success message is displayed.</para>
+                    <para>If the triggers could not be deleted, the corresponding error message is displayed.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

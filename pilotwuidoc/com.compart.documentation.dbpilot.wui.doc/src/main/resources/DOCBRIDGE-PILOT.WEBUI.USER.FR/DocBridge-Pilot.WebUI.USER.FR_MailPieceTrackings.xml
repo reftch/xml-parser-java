@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_mailPieceTrackingsView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="fr-FR">
+    <title>Manipulation du suivi des envois</title>
+    <para>Les sections suivantes décrivent le travail avec les paramètres pertinents pour les médias de sortie pour <productname>&dbpi;</productname>. Dans l&apos;affichage <guilabel>Suivis des envois</guilabel>, vous pouvez exécuter les actions suivantes :</para>
+    <itemizedlist><!--<listitem>
+            <para><xref linkend="create_mailPieceTracking"/></para>
+        </listitem>--><listitem>
+            <para><xref linkend="upload_mailPieceTrackings"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_mailPieceTrackings"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_mailPieceTrackingDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="edit_mailPieceTrackingDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_mailPieceTrackings"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_mailPieceTracking"/></para>
+        </listitem>
+    </itemizedlist><!--<sect1 xml:id="create_mailPieceTracking">
+        <?dbhtml filename="SearchMailPieceView.html" ?>
+        <title>Sendungsverfolgung definieren</title>
+        <para>Sie können einen neue Sendungsverfolgung definieren. Dabei können Sie die gewünschten
+            Eigenschaften für den neuen Eintrag direkt in der Übersichtstabelle
+            konfigurieren.</para>
+        <para>Gehen Sie wie folgt vor, um eine neue Sendungskonfiguration zu erstellen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Sendungsverfolgungen</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Erstellen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Erstellen).</para>
+                <result>
+                    <para>In der Übersichtstabelle wird ein neuer Eintrag mit leeren Feldern
+                        erstellt. Das Feld <guilabel>ID</guilabel> wird automatisch gefüllt und kann
+                        nicht editiert werden.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Sendungs-ID</guilabel> die ID der Sendung an, für
+                    die die Sendungsverfolgung konfiguriert ist.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Senquenz-ID</guilabel> die gewünschte Sequenz-ID
+                    an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Tracking-Typ</guilabel> den gewünschten Wert
+                    an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Status</guilabel> den gewünschten Anfangsstatus
+                    für die Sendungsverfolgung an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Informationen</guilabel> bei Bedarf Bemerkungen
+                    oder eine kurze Beschreibung zur Sendungsverfolgung an.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um die neue Sendungsverfolgung zu
+                            speichern und den Editiermodus zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und die neue Sendungsverfolgung wird
+                                in der Übersichtstabelle angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um das Erstellen der
+                            Sendungsverfolgung abzubrechen und den Editiermodus zu beenden ohne die
+                            Sendungsverfolgung zu speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    --><sect1 xml:id="upload_mailPieceTrackings">
+        <title>Importer des suivis des envois</title>
+        <para>Si vous souhaitez créer plusieurs suivis des envois en une seule étape, vous pouvez télécharger les valeurs souhaitées vers un fichier CSV.</para>
+        <para>Procédez comme suit pour créer plusieurs suivis des envois en une seule étape.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Suivi des envois</guilabel>.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Télécharger vers</alt><imageobject>
+                            <imagedata fileref="images/btn_deploy.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Télécharger vers).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Ouvrir</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Sélectionnez le fichier CSV souhaité dans l&apos;arborescence de répertoires.</para>
+            </step>
+            <step>
+                <para>Cliquez sur <guibutton>Ouvrir</guibutton> pour télécharger (importer) le fichier CSV sélectionné vers le serveur.</para>
+                <result>
+                    <para>Les entrées du fichier CSV sont importées dans la table d&apos;aperçu des suivis des envois configurés.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_mailPieceTrackings">
+        <title>Affichage du suivi des envois</title>
+        <para>Vous pouvez afficher une vue globale des suivis des envois configurés dans la table d&apos;aperçu de l&apos;affichage <guilabel>Suivis des envois</guilabel>.</para>
+        <mediaobject><alt>Capture d&apos;écran Affichage Suivis des envois</alt><imageobject>
+                <imagedata fileref="images/scr_MailPieceTrackingsView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque suivi des envois configuré :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique (le numéro séquentiel) du suivi des envois.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>ID d’envoi</guilabel></term>
+                <listitem>
+                    <para>Référence à l&apos;envoi pour lequel le suivi des envois a été configuré.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>ID de séquence</guilabel></term>
+                <listitem>
+                    <para>ID de séquence</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>ID de processus</guilabel></term>
+                <listitem>
+                    <para>Référence au processus auquel le suivi des envois est lié.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Type de suivi</guilabel></term>
+                <listitem>
+                    <para>Précise le type de suivi défini par l&apos;utilisateur pour le suivi des envois.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>État</guilabel></term>
+                <listitem>
+                    <para>Indique l&apos;état du suivi des envois (terminé).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Informations</guilabel></term>
+                <listitem>
+                    <para>Informations sur le job lié (ID du job).</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_mailPieceTrackingDetails">
+        <title>Afficher les détails du suivi des envois</title>
+        <para>Vous pouvez afficher les informations détaillées concernant un suivi des envois dans le volet des détails. Par rapport à la table d&apos;aperçu, le volet des détails contient des informations supplémentaires.</para>
+        <mediaobject><alt>Affichage des suivis des envois avec le volet des détails</alt><imageobject>
+                <imagedata fileref="images/scr_MailPieceTrackingsViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <para>Les informations suivantes sont actuellement disponibles dans le volet des détails.</para>
+        <para>La table d&apos;aperçu affiche par défaut les informations suivantes pour chaque suivi des envois configuré :</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>L&apos;identificateur unique (le numéro séquentiel) du suivi des envois.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>ID d’envoi</guilabel></term>
+                <listitem>
+                    <para>Référence à l&apos;envoi pour lequel le suivi des envois a été configuré.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>ID de séquence</guilabel></term>
+                <listitem>
+                    <para>ID de séquence</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>ID de processus</guilabel></term>
+                <listitem>
+                    <para>Référence au processus auquel le suivi des envois est lié.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Type de suivi</guilabel></term>
+                <listitem>
+                    <para>Précise le type de suivi défini par l&apos;utilisateur pour le suivi des envois.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>État</guilabel></term>
+                <listitem>
+                    <para>Indique l&apos;état du suivi des envois (terminé).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Informations</guilabel></term>
+                <listitem>
+                    <para>Informations sur le job lié (ID du job).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Date de suivi</guilabel></term>
+                <listitem>
+                    <para>Heure de création du suivi des envois.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Champ personnalisé 0-4</guilabel></term>
+                <listitem>
+                    <para>Champs définis par l&apos;utilisateur qui peuvent contenir différents contenus.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="edit_mailPieceTrackingDetails">
+        <title>Éditer les propriétés du suivi des envois</title>
+        <para>Vous pouvez éditer les propriétés du suivi des envois directement dans la table d&apos;aperçu.</para>
+        <para>Procédez comme suit pour éditer le type d&apos;une commande existante :</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Suivi des envois</guilabel>.</para>
+            </step>
+            <step>
+                <para>Double-cliquez sur l&apos;entrée souhaitée dans la table d&apos;aperçu.</para>
+                <result>
+                    <para>L&apos;entrée passe en mode d&apos;édition.</para>
+                </result>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>ID d&apos;envoi</guilabel>, indiquez l&apos;ID de l&apos;envoi pour lequel le suivi des envois a été configuré.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>ID séquentiel</guilabel>, indiquez l&apos;ID séquentiel souhaité.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Type de suivi</guilabel>, indiquez le type de suivi que vous souhaitez utiliser pour le suivi des envois.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>État</guilabel>, indiquez le nouvel état souhaité du suivi des envois.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Informations</guilabel>, indiquez les informations sur le job lié (l&apos;ID du job).</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Enregistrer</alt><imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Enregistrer) pour enregistrer le suivi des envois modifié et quitter le mode d&apos;édition.</para>
+                        <result>
+                            <para>Le mode d&apos;édition est terminé et le suivi des envois est affiché avec les nouvelles valeurs dans la table d&apos;aperçu.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <inlinemediaobject><alt>bouton Annuler</alt><imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject></inlinemediaobject> (Annuler) pour annuler l&apos;édition du suivi des envois et quitter le mode d&apos;édition sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_mailPieceTrackings">
+        <title>Éditer plusieurs suivis des envois</title>
+        <para>Cette action vous permet d&apos;éditer des valeurs sélectionnées pour plusieurs suivis des envois en une seule étape.</para>
+        <note>
+            <para>Veuillez noter qu&apos;avec cette fonction, vous définissez les mêmes valeurs pour tous les suivis des envois sélectionnés.</para>
+        </note>
+        <para>Procédez comme suit pour éditer les propriétés des suivis des envois sélectionnés.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Suivi des envois</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins deux suivis des envois dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Éditer</alt><imageobject>
+                            <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                                scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Éditer).</para>
+                <result>
+                    <para>La boîte de dialogue <guilabel>Éditer</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <para>Cochez la case en face de chaque valeur que vous souhaitez modifier pour tous les suivis des envois sélectionnés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>ID d&apos;envoi</guilabel>, indiquez l&apos;ID de l&apos;envoi pour lequel les suivis des envois ont été configurés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>ID séquentiel</guilabel>, indiquez l&apos;ID séquentiel souhaité.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Type de suivi</guilabel>, indiquez le type de suivi que vous souhaitez utiliser pour tous les suivis des envois sélectionnés.</para>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>État</guilabel>, indiquez le nouvel état souhaité des suivis des envois sélectionnés.</para>
+                <note>
+                    <para>Ce champ vous permet de modifier le statut de tous les suivis des envois sélectionnés en une seule étape.</para>
+                </note>
+            </step>
+            <step>
+                <para>Dans le champ <guilabel>Informations</guilabel>, indiquez les informations sur le job lié (l&apos;ID du job).</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Cliquez sur <guibutton>Confirmer</guibutton> pour enregistrer les modifications affectant les suivis des envois sélectionnés et fermer la boîte de dialogue.</para>
+                        <result>
+                            <para>Les paramètres modifiés sont affichés pour les suivis des envois sélectionnés dans la table d&apos;aperçu et dans le volet des détails.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue sans enregistrer les modifications.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+
+    <sect1 xml:id="delete_mailPieceTracking">
+        <title>Supprimer des suivis des envois</title>
+        <para>Vous pouvez utiliser cette action pour supprimer un ou plusieurs suivi(s) des envois. Procédez comme suit pour supprimer des suivis des envois existants.</para>
+        <procedure>
+            <step>
+                <para>Basculez dans l&apos;affichage <guilabel>Suivi des envois</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sélectionnez au moins un suivi des envois dans la table d&apos;aperçu.</para>
+            </step>
+            <step>
+                <para>Dans la barre de navigation de l&apos;affichage, cliquez sur <inlinemediaobject><alt>bouton Supprimer</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Supprimer).</para>
+                <result>
+                    <para>La boîte de dialogue de confirmation <guilabel>Supprimer des suivis des envois</guilabel> s&apos;ouvre.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des suivis des envois</guilabel>, cliquez sur <guibutton>Ok</guibutton> pour supprimer le(s) suivi(s) sélectionné(s).</para>
+                    </step>
+                    <step>
+                        <para>Dans la boîte de dialogue de confirmation <guilabel>Supprimer des suivis des envois</guilabel>, cliquez sur <guibutton>Annuler</guibutton> pour fermer la boîte de dialogue <emphasis>sans</emphasis> supprimer le(s) suivi(s) sélectionné(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Si le(s) suivi(s) des envois a/ont été supprimé(s), un message de confirmation est émis.</para>
+                    <para>Si le(s) suivi(s) des envois n&apos;a/ont pas pu être supprimé(s), un message d&apos;erreur correspondant est émis.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

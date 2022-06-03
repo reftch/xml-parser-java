@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_directoriesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="de-DE">
+    <title>Umgang mit Verzeichnissen</title>
+    <para>Für die Verarbeitung von Jobs (für einen Prozess) können Sie unterschiedliche
+        Verzeichnisse definieren, aus denen Eingabedateien gelesen oder in die generierte
+        Ausgabedateien (abhängig vom Erfolg der Verarbeitung) geschrieben werden. Dabei wird dem
+        symbolischen Namen jeweils ein Verzeichnis im Dateisystem zugeordnet.</para>
+    <para>Die Ansicht <guilabel>Verzeichnisse</guilabel> zeigt die von
+            <productname>&dbpi;</productname> verwendeten Verzeichnisdefinitionen. In der Ansicht
+            <guilabel>Verzeichnisse</guilabel> können Sie die folgenden Aktionen ausführen:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_directory"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_directories"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_directoryDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_directory"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_directories"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="filter_directories"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_directories"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_directory">
+        <?dbhtml filename="SearchDirectoryView.html" ?>
+        <title>Verzeichnis erstellen</title>
+        <para>Sie können ein neues Verzeichnis erstellen. Dabei können Sie die gewünschten
+            Eigenschaften direkt in der Übersichtstabelle konfigurieren.</para>
+        <note>
+            <para>Bitte beachten Sie, dass Sie mit dieser Aktion kein neues Verzeichnis in Ihrem
+                Verzeichnissystem erstellen. Indem Sie den Pfad zu einem vorhandenen Verzeichnis
+                angeben, verknüpfen Sie das Verzeichnis mit dem angegebenen symbolischen Namen
+                (ID).</para>
+        </note>
+        <note>
+            <para>Wenn Sie Verzeichnisse definieren wollen, die für alle Prozesse
+                (Verarbeitungseinheiten) gelten sollen, können Sie diese Verzeichnisse für den
+                Prozess (die Verarbeitungseinheit) <guilabel>$SYSTEM</guilabel> erstellen.</para>
+        </note>
+        <note>
+            <para>Bitte beachten Sie beim Einrichten oder Ändern von Verzeichnisdefinitionen, dass
+                die Pfade den Konventionen des jeweiligen Server-Betriebssystems entsprechen
+                müssen.</para>
+        </note>
+        <para>Gehen Sie wie folgt vor, um eine neue Verzeichnis-Zuordnung zu erstellen.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Verzeichnisse</guilabel>.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Erstellen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Erstellen).</para>
+                <result>
+                    <para>In der Übersichtstabelle wird ein neuer Eintrag mit leeren Feldern
+                        erstellt. Das Feld <guilabel>Wert</guilabel> ist eine Pflichtangabe und
+                        daher rot hinterlegt (als fehlerhaft markiert), solange es keinen gültigen
+                        Eintrag enthält.</para>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>ID</guilabel> den gewünschten Namen für die neue
+                    Verzeichnis-Zuordnung an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Wert</guilabel> den Pfad zum gewünschten
+                    Verzeichnis als absoluten Pfad an. Verwenden Sie die für Ihr Betriebssystem
+                    gültige Schreibweise für den Pfad. Relative Pfade werden zwar theoretisch
+                    unterstützt, sind aber praktisch kaum verwendbar. Relative Pfade verwenden als
+                    Ursprungsverzeichnis das aktuelle Verzeichnis des laufenden
+                    Webcontainer-Prozesses. Dieses ist aber im Allgemeinen nicht bekannt bzw. nicht
+                    über die gesamte Laufzeit konstant.</para>
+                <note>
+                    <para>Der angegebene Verzeichnispfad kann sich aus variablen und festen
+                        Bestandteilen zusammensetzen.</para>
+                </note>
+                <indexterm>
+                    <primary>Verzeichnis</primary>
+                    <secondary>Pfad</secondary>
+                </indexterm>
+            </step>
+            <step>
+                <para>Wählen Sie im Feld <guilabel>Beschreibung</guilabel> bei Bedarf einen
+                    Kommentar oder eine kurze Beschreibung zum gewünschten Verzeichnis an
+                    (z.&nbsp;B. um den Verwendungszweck oder Besonderheiten zu
+                    dokumentieren).</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um die neue Verzeichnis-Zuordnung zu
+                            speichern und den Editiermodus zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und die neue Verzeichnis-Zuordnung
+                                wird in der Übersichtstabelle angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um das Erstellen der
+                            Verzeichnis-Zuordnung abzubrechen und den Editiermodus zu beenden ohne
+                            die Verzeichnis-Zuordnung zu speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+
+    </sect1>
+    <sect1 xml:id="display_directories">
+        <title>Verzeichnisse anzeigen</title>
+        <para>Sie können eine Übersicht der konfigurierten Verzeichnisse in der Übersichtstabelle
+            der Ansicht <guilabel>Verzeichnisse</guilabel> anzeigen.</para>
+        <mediaobject>
+            <alt>Screenshot Ansicht Verzeichnisse</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_DirectoryView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>In der Übersichtstabelle werden für jedes konfigurierte Verzeichnis standardmäßig die
+            folgenden Informationen angezeigt:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>Der eindeutige Bezeichner des Verzeichnisses.</para>
+                </listitem>
+            </varlistentry>
+            <!--<varlistentry>
+                <term><guilabel>Typ</guilabel></term>
+                <listitem>
+                    <para>Aktuell wird nur der Wert <guilabel>directories</guilabel>
+                        unterstützt.</para>
+                </listitem>
+            </varlistentry>-->
+            <varlistentry>
+                <term><guilabel>Wert</guilabel></term>
+                <listitem>
+                    <para>Angabe des Pfades, zum gewünschten Verzeichnis als absoluter Pfad.
+                        Verwenden Sie die für Ihr Betriebssystem gültige Schreibweise für den Pfad.
+                        Relative Pfade werden zwar theoretisch unterstützt, sind aber praktisch kaum
+                        verwendbar. Relative Pfade verwenden als Ursprungsverzeichnis das aktuelle
+                        Verzeichnis des laufenden Webcontainer-Prozesses. Dieses ist aber im
+                        Allgemeinen nicht bekannt bzw. nicht über die gesamte Laufzeit
+                        konstant.</para>
+                    <note>
+                        <para>Der angegebene Verzeichnispfad kann sich aus variablen und festen
+                            Bestandteilen zusammensetzen.</para>
+                    </note>
+                    <indexterm>
+                        <primary>Verzeichnis</primary>
+                        <secondary>Pfad</secondary>
+                    </indexterm>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Beschreibung</guilabel></term>
+                <listitem>
+                    <para>Optionale Beschreibung des Verzeichnisses. Sie können die Beschreibung
+                        verwenden, um Besonderheiten oder den Verwendungszweck zu
+                        dokumentieren.</para>
+                    <indexterm>
+                        <primary>Verzeichnis</primary>
+                        <secondary>Beschreibung</secondary>
+                    </indexterm>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="display_directoryDetails">
+        <title>Informationen zu einem Verzeichnis anzeigen</title>
+        <para>Sie können die Detailinformationen zu einem Verzeichnis im Detailbereich anzeigen
+            lassen. Aktuell enthält der Detailbereich die gleichen Informationen, wie die
+            Übersichtstabelle.</para>
+        <mediaobject>
+            <alt>Verborgene und sichtbare Bereiche für verknüpfte Elemente</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_DirectoriesViewDetails.png" align="left" width="15cm"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>        
+    </sect1>
+    <sect1 xml:id="modify_directory">
+        <title>Verzeichnis bearbeiten</title>
+        <para>Sie können die Eigenschaften einer Verzeichnis-Zuordnung bearbeiten.</para>
+        <note>
+            <para>Bitte beachten Sie, dass Sie die Verzeichnis-ID (den Namen) mit dieser Aktion
+                nicht ändern können. Wenn Sie die ID ändern wollen, erstellen Sie eine neue
+                Verzeichnis-Zuordnung mit dem gewünschten Namen (siehe <xref
+                    linkend="create_application"/>).</para>
+        </note>
+        <para>Gehen Sie wie folgt vor, um die Werte eines vorhandenen Verzeichnisses zu
+            bearbeiten:</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Verzeichnisse</guilabel>.</para>
+            </step>
+
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Bearbeiten Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_edit.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Bearbeiten).</para>
+                <result>
+                    <para>Der Eintrag wechselt in den Editiermodus.</para>
+                    <note>
+                        <para>Bitte beachten Sie, dass Sie die ID und den Typ des ausgewählten
+                            Verzeichnisses mit dieser Aktion nicht ändern können. Wenn Sie eine
+                            Verzeichnis-Zuordnung mit einer anderen ID benötigen, erstellen Sie eine
+                            neue Verzeichnis-Zuordnung (siehe <xref linkend="create_directory"
+                            />).</para>
+                    </note>
+                </result>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Wert</guilabel> den gewünschten neuen
+                    Verzeichnispfad an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Beschreibung</guilabel> bei Bedarf einen Kommentar
+                    oder eine kurze Beschreibung zum ausgewählten Verzeichnis an.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Speichern</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_save.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Speichern), um die Verzeichnis-Zuordnung mit den
+                            neuen Werten zu speichern und den Editiermodus zu beenden.</para>
+                        <result>
+                            <para>Der Editiermodus wird beendet und die Verzeichnis-Zuordnung wird
+                                mit den neuen Werten in der Übersichtstabelle angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <inlinemediaobject>
+                                <alt>Schaltfläche Abbrechen</alt>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_cancel.png" align="left"
+                                        format="PNG" scalefit="1"/>
+                                </imageobject>
+                            </inlinemediaobject> (Abbrechen), um das Bearbeiten der
+                            Verzeichnis-Zuordnung abzubrechen und den Editiermodus zu beenden ohne
+                            die Änderungen zu speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_directories">
+        <title>Mehrere Verzeichnisse bearbeiten</title>
+        <para>Mithilfe dieser Aktion können Sie ausgewählte Werte für mehrere Verzeichnisse in einem Schritt
+            bearbeiten.</para>
+        <note>
+            <para>Bitte beachten Sie, dass Sie mit dieser Funktion, die gleichen Werte für alle
+                ausgewählten Verzeichnisse definieren.</para>
+        </note>
+        <para>Gehen Sie wie folgt vor, um die Eigenschaften der ausgewählten Verzeichnisse zu
+            bearbeiten.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Verzeichnisse</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens zwei Verzeichnis-Einträge aus der Übersichtstabelle.</para>
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf die Schaltfläche <inlinemediaobject>
+                    <alt>Schaltfläche Bearbeiten</alt>
+                    <imageobject>
+                        <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                            scalefit="1"/>
+                    </imageobject>
+                </inlinemediaobject> (Bearbeiten).</para>
+                <result>
+                    <para>Das Dialogfenster <guilabel>Bearbeiten</guilabel> wird geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <para>Setzen Sie ein Häkchen in die Checkbox vor jedem Wert, den Sie für alle
+                    ausgewählten Verzeichnisse ändern wollen.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Wert</guilabel> den gewünschten neuen
+                    Verzeichnispfad an.</para>
+            </step>
+            <step>
+                <para>Geben Sie im Feld <guilabel>Beschreibung</guilabel> bei Bedarf einen Kommentar
+                    oder eine kurze Beschreibung zum ausgewählten Verzeichnis an.</para>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie auf <guibutton>Bestätigen</guibutton>, um die Änderungen
+                            für die ausgewählten Verzeichnisse zu speichern und das
+                            Dialogfenster zu schließen.</para>
+                        <result>
+                            <para>Die geänderten Einstellungen werden für die ausgewählten Verzeichnisse in
+                                der Übersichtstabelle und im Detailbereich angezeigt.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Klicken Sie auf <guibutton>Abbrechen</guibutton>, um das Dialogfenster
+                            zu schließen ohne die Änderungen zu speichern.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="filter_directories">
+        <title>Verzeichnisse filtern</title>
+        <para>Mithilfe dieser Aktion können Sie die Übersicht der vorhandenen Verzeichnisse
+            filtern.</para>
+        <para>Gehen Sie wie folgt vor, um die vorhandenen Verzeichnisse zu filtern und damit die
+            Anzahl der angezeigten Verzeichnisse zu reduzieren.</para>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Verzeichnisse</guilabel>.</para>
+            </step>
+            <step>
+                <para>Setzen Sie in der Navigationsleiste der Ansicht den Cursor in das Textfeld
+                        <guilabel>Filter</guilabel>.</para>
+            </step>
+            <step>
+                <para>Sie können die vorhandenen Verzeichnisse anhand der ID (einfacher Filter) oder
+                    anhand anderer Parameter filtern (für weitere Informationen zu Filterkriterien, siehe
+                        <xref linkend="db_pil_wui_filterSettings"/>).</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="delete_directories">
+        <title>Verzeichnisse löschen</title>
+        <para>Mithilfe dieser Aktion können Sie ein Verzeichnis oder mehrere Verzeichnisse löschen.
+            Gehen Sie wie folgt vor, um vorhandene Verzeichnisse zu löschen.</para>
+        <note>
+            <para>Bitte beachten Sie, dass Sie mit dieser Aktion nicht das physische Verzeichnis in
+                Ihrem Dateisystem löschen, sondern die Verknüpfung zwischen dem Verzeichnis und dem
+                logischen Namen.</para>
+        </note>
+        <procedure>
+            <step>
+                <para>Wechseln Sie in die Ansicht <guilabel>Verzeichnisse</guilabel>.</para>
+            </step>
+            <step>
+                <para>Wählen Sie mindestens ein Verzeichnis aus der Übersichtstabelle.</para>
+                <!--<note>
+                    <para>Bitte beachten Sie, dass die (standardmäßig erstellten) Verzeichnisse für
+                        den Standardprozess <guilabel>$SYSTEM</guilabel> nicht gelöscht werden
+                        können.</para>
+                </note>-->
+            </step>
+            <step>
+                <para>Klicken Sie in der Navigationsleiste der Ansicht auf <inlinemediaobject>
+                        <alt>Löschen Schaltfläche</alt>
+                        <imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject>
+                    </inlinemediaobject> (Löschen).</para>
+                <result>
+                    <para>Der Bestätigungsdialog <guilabel>Verzeichnisse löschen</guilabel> wird
+                        geöffnet.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Verzeichnisse
+                                löschen</guilabel> auf <guibutton>Ok</guibutton>, um das ausgewählte
+                            Verzeichnis (bzw. die ausgewählten Verzeichnisse) zu löschen.</para>
+                    </step>
+                    <step>
+                        <para>Klicken Sie im Bestätigungsdialog <guilabel>Verzeichnisse
+                                löschen</guilabel> auf <guibutton>Abbrechen</guibutton>, um das
+                            Dialogfenster zu schließen, <emphasis>ohne</emphasis> das ausgewählte
+                            Verzeichnis (bzw. die ausgewählten Verzeichnisse) zu löschen.</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>Wenn das Verzeichnisg (die Verzeichnisse) erfolgreich gelöscht wurde(n),
+                        wird eine Erfolgsmeldung ausgegeben.</para>
+                    <para>Wenn das Verzeichnis (die Verzeichnisse) nicht gelöscht werden konnte(n)
+                        wird eine entsprechende Fehlermeldung angezeigt.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

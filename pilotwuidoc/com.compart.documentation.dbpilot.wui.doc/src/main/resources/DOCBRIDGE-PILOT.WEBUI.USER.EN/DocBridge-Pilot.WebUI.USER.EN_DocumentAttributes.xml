@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<chapter xml:id="db_pil_wui_documentAttributesView" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Handling Document Attributes</title>
+    <para>The following sections describe how to work with document ttributes. The following actions are supported in the <guilabel>Document attributes</guilabel> view:</para>
+    <itemizedlist>
+        <listitem>
+            <para><xref linkend="create_documentAtributes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_documentAttributes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="display_documentAttributeDetails"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="modify_documentAttribute"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="multi_edit_documentAttributes"/></para>
+        </listitem>
+        <listitem>
+            <para><xref linkend="delete_documentAttributes"/></para>
+        </listitem>
+    </itemizedlist>
+    <sect1 xml:id="create_documentAtributes"><?dbhtml filename="SearchDocumentAttributesView.html" ?><title>Defining a Document Attribute</title>
+        <para>You can define a new document attribute. You can configure the desired properties in a separate dialog.</para>
+        <para>Proceed as follows to define a new document attribute.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Document attributes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Create</alt><imageobject>
+                            <imagedata fileref="images/btn_add.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Create).</para>
+                <result>
+                    <para>The <guilabel>Create Document Attribute</guilabel> dialog opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>In the <guilabel>Create Document Attribute</guilabel> dialog, enter the desired settings for the new document attribute.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Create Document Attribute</guilabel> dialog, click <guibutton>OK</guibutton> to create the document attribute with the specified settings.</para>
+                <result>
+                    <para>The dialog closes and the new document attribute is displayed in the list of configured document attributes.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="display_documentAttributes">
+        <title>Displaying Document Attributes</title>
+        <para>You can display an overview of the configured document attributes in the workspace of the <guilabel>Document attributes</guilabel> view.</para>
+        <mediaobject><alt>Screenshot Document Attributes</alt><imageobject>
+                <imagedata fileref="images/scr_documentAttributesView.png" width="14cm"/>
+            </imageobject>
+        </mediaobject>
+        <para>The overview table displays the following information for each configured document attribute by default:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The unique identifier of the document attribute.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Process</guilabel></term>
+                <listitem>
+                    <para>The process to which the document attribute is mapped.</para>                    
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Attribute Name</guilabel></term>
+                <listitem>
+                    <para>The name of the configured document attribute.</para>
+                </listitem>
+            </varlistentry>
+                    </variablelist>
+    </sect1>
+    <sect1 xml:id="display_documentAttributeDetails">
+        <title>Displaying Document Attribute Details</title>
+        <para>You can display the details for a specific document attribute in the details pane. The details pane contains the same scope of information as the overview table.</para><!--<mediaobject>
+            <alt>Ansicht Dokumentattribute mit Details</alt>
+            <imageobject>
+                <imagedata fileref="images/scr_documentTypeViewDetails.png" align="left"
+                    width="15cm" format="PNG"/>
+            </imageobject>
+        </mediaobject>--><para>The following information is currently available in the details pane:</para>
+        <variablelist>
+            <varlistentry>
+                <term><guilabel>ID</guilabel></term>
+                <listitem>
+                    <para>The unique identifier of the document attribute.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Process</guilabel></term>
+                <listitem>
+                    <para>The process to which the document attribute is mapped.</para>                    
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Attribute Name</guilabel></term>
+                <listitem>
+                    <para>The name of the configured document attribute.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </sect1>
+    <sect1 xml:id="modify_documentAttribute">
+        <title>Modifying a Document Attribute</title>
+        <para>You can edit the properties of a document attribute directly in the overview table.</para>
+        
+        <para>Proceed as follows to edit the values of an existing document type:</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Document attributes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Double-click the desired row in the overview table.</para>
+                <result>
+                    <para>The entry switches to editing mode.</para>
+                </result>
+            </step>
+            <step>
+                <para>Enter the desired values and click <inlinemediaobject><alt>Save Button</alt><imageobject>
+                            <imagedata fileref="images/btn_save.png" align="left" scalefit="1"
+                                format="PNG"/>
+                        </imageobject></inlinemediaobject>, to save the new values.</para>
+            </step>
+        </procedure>
+    </sect1>
+    <sect1 xml:id="multi_edit_documentAttributes">
+        <title>Modifying Multiple Document Attributes</title>
+        <para>You can edit selected values for multiple document attributes in one step.</para>
+        <note>
+            <para>Please keep in mind that with this function, you define the same values for all selected document attributes.</para>
+        </note>
+        <para>Proceed as follows to edit the settings of the selected document attributes.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Document attributes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least two document attributes from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the web interface, click <inlinemediaobject><alt>Icon Edit</alt><imageobject>
+                        <imagedata fileref="images/btn_edit.png" align="left" format="PNG"
+                            scalefit="1"/>
+                    </imageobject></inlinemediaobject> (Edit).</para>
+                <result>
+                    <para>The <guilabel>Edit</guilabel> dialog opens.</para>
+                </result>
+            </step>
+            <step>
+                <para>Tick the checkbox in front of each value you want to change for all selected document attributes.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Process</guilabel> field, specify the process to which you want to link the selected document attributes.</para>
+            </step>
+            <step>
+                <para>In the <guilabel>Attribute Name</guilabel> field, specify a new name for the selected document attributes, if required.</para>
+            </step>
+            
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>Click <guibutton>OK</guibutton> to save the changed settings for all selected document attributes and close the dialog.</para>
+                        <result>
+                            <para>The changed settings for the selected document attributes are displayed in the overview table and in the details pane.</para>
+                        </result>
+                    </step>
+                    <step>
+                        <para>Click <guibutton>Cancel</guibutton> to close the dialog without changing the settings.</para>
+                    </step>
+                </stepalternatives>
+            </step>
+        </procedure>
+    </sect1> 
+    <sect1 xml:id="delete_documentAttributes">
+        <title>Deleting Document Attributes</title>
+        <para>Use this action to delete a single document attribute or multiple document attributes. Proceed as follows to delete existing document attributes.</para>
+        <procedure>
+            <step>
+                <para>Switch to the <guilabel>Document attributes</guilabel> view.</para>
+            </step>
+            <step>
+                <para>Select at least one document attribute from the overview table.</para>
+            </step>
+            <step>
+                <para>In the navigation bar of the view, click <inlinemediaobject><alt>Button Delete</alt><imageobject>
+                            <imagedata fileref="images/btn_delete.png" scalefit="1"/>
+                        </imageobject></inlinemediaobject> (Delete).</para>
+                <result>
+                    <para>The confirmation dialog <guilabel>Delete Document Attributes</guilabel> opens.</para>
+                </result>
+            </step>
+            <step>
+                <stepalternatives>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Document Attributes</guilabel>, click <guibutton>OK</guibutton> to delete the selected document attribute (or document attributes).</para>
+                    </step>
+                    <step>
+                        <para>In the confirmation dialog <guilabel>Delete Document Attributes</guilabel>, click <guibutton>Cancel</guibutton> to close the dialog <emphasis>without</emphasis> deleting the selected document attribute(s).</para>
+                    </step>
+                </stepalternatives>
+                <result>
+                    <para>If the document attribute(s) have been successfully deleted, a success message is displayed.</para>
+                    <para>If the document attribute(s) could not be deleted, a corresponding error message is displayed.</para>
+                </result>
+            </step>
+        </procedure>
+    </sect1>
+</chapter>

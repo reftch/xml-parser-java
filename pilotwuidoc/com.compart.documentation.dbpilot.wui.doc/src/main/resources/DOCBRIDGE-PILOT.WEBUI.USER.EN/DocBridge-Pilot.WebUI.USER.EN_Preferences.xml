@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../../../../formatter/com.compart.documentation.formatter/resources/schematron/cpdocbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE book [
+<!ENTITY % compartentities SYSTEM "../../../../../../formatter/com.compart.documentation.formatter/resources/entities/entities.ent">
+%compartentities;
+]>
+<sect2 xml:id="db_pil_wui_preferences" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.1" xml:lang="en-US">
+    <title>Configuring Presentation Options for the Sidebar</title>
+    <para>Proceed as follows to adjust the representation of the sidebar:</para>
+    <procedure>
+        <step>
+            <indexterm>
+                <primary>sidebar</primary>
+                <secondary>configure behavior</secondary>
+                <see>modify sidebar</see>
+            </indexterm>
+            <indexterm>
+                <primary>sidebar</primary>
+                <secondary>modify</secondary>
+            </indexterm>
+            <para>In the title bar, click the Settings icon <inlinemediaobject><alt>Settings icon</alt><imageobject>
+                        <imagedata fileref="images/btn_preferences.png" align="left" scalefit="1"
+                            format="PNG"/>
+                    </imageobject></inlinemediaobject>.</para>
+            <result>
+                <para>The available settings for the sidebar are displayed in a separate dialog.</para>
+                <mediaobject><alt>Settings dialog</alt><imageobject>
+                        <imagedata fileref="images/dia_sidebarSettings.png" align="left"
+                            width="12cm" format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </result>
+        </step>
+        <step>
+            <para>Select the desired setting for the sidebar.</para>
+            <para>The following options are currently available:</para>
+            <variablelist>
+                <varlistentry>
+                    <term><guilabel>Complete</guilabel></term>
+                    <listitem>
+                        <para>With the default setting, the sidebar is displayed as an integral part of the user interface and is always fully visible.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Expandable</term>
+                    <listitem>
+                        <para>With the setting <guilabel>Expandable</guilabel>, only icons for the individual views are displayed without the corresponding labels. The sidebar is fully expanded when the mouse is moved over the visible area of the sidebar. If you move the mouse out of the sidebar, the sidebar will be collapsed. This setting provides a more space-saving alternative to full visibility of the sidebar.</para>                        
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><guilabel>Sticky</guilabel></term>
+                    <listitem>
+                        <para>With the setting <guilabel>Sticky</guilabel>, only the icons of the individual views are permanently displayed, without the corresponding labels. This setting provides a reduced (and thus the most space-saving) version of the sidebar and is intended for users who are already familiar with the <productname>&dbpi;</productname> web interface and no longer need labels to find their way around.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </step>
+        <step>
+            <para>Click <guibutton>OK</guibutton>, to close the dialog and apply the selected setting.</para>
+        </step>
+        <result>
+            <para>The setting for the sidebar is applied without restart.</para>
+        </result>
+    </procedure>
+</sect2>
