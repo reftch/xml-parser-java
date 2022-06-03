@@ -23,7 +23,7 @@ public class Parser {
 
     private static final Logger LOG = LoggerFactory.getLogger(Parser.class);
 
-    private static final String DIR = "pilotwuidoc/com.compart.documentation.dbpilot.wui.doc/src/main/resources/DOCBRIDGE-PILOT.WEBUI.USER.EN/";
+    private static final String DIR = "xml/com.compart.documentation.dbpilot.wui.doc/src/main/resources/DOCBRIDGE-PILOT.WEBUI.USER.EN/";
     private static final String OUTPUT_DIR = "target/markdown/";
 
     public static void main(String[] args) {
