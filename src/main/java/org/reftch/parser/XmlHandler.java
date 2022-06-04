@@ -12,12 +12,12 @@ public class XmlHandler extends DefaultHandler {
 
     private final static String NEW_LINE = "\n";
 
-    private StringBuilder markdown = new StringBuilder();
+    private final StringBuilder markdown = new StringBuilder();
 
     private XmlTag parentTag = XmlTag.Unknown;
     private XmlTag currentTag = XmlTag.Unknown;
 
-    private boolean isLogging = false;
+    private final boolean isLogging;
     private int depth = 1;
 
     public XmlHandler(boolean isLogging) {

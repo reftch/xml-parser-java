@@ -3,7 +3,6 @@ package org.reftch.utils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.Set;
 
 public class Utils {
@@ -14,16 +13,16 @@ public class Utils {
     }
 
     public static void saveFile(String fileName, String rows) throws IOException {
-        Writer fileWriter = new FileWriter(Utils.removeExtension(fileName) + ".md", false);
+        final var fileWriter = new FileWriter(Utils.removeExtension(fileName) + ".md", false);
         fileWriter.write(rows);
         fileWriter.close();
     }
 
     public static void traverseDirectory(final String pattern, final String directory, Set<File> files) {
         if (pattern != null && directory != null && files != null) {
-            var dir = new File(directory);
+            final var dir = new File(directory);
             if (dir.exists()) {
-                for (final File f : dir.listFiles()) {
+                for (final var f : dir.listFiles()) {
                     if (f.isDirectory()) {
                         traverseDirectory(pattern, f.getAbsolutePath(), files);
                     }
@@ -33,7 +32,6 @@ public class Utils {
                 }
             }
         }
-
     }
 
 }
