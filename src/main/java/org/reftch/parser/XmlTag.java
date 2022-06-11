@@ -1,7 +1,6 @@
 package org.reftch.parser;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 public enum XmlTag {
 
@@ -31,9 +30,11 @@ public enum XmlTag {
         return tag;
     }
 
-    public static Optional<XmlTag> get(String tag) {
-        return Arrays.stream(XmlTag.values())
+    public static XmlTag get(String tag) {
+        var optional = Arrays.stream(XmlTag.values())
                 .filter(e -> e.tag.equals(tag))
                 .findFirst();
+
+        return optional.orElse(XmlTag.Unknown);
     }
 }

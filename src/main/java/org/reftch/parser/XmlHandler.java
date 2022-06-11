@@ -27,56 +27,50 @@ public class XmlHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         var tag = XmlTag.get(qName);
-        if (tag.isPresent()) {
-            var presented = tag.get();
-            var line = switch (presented) {
-                case Title -> this.getTitle();
-                case Paragraph -> this.getParagraph();
-                case ImageData -> this.getImage(attributes);
-                case GuiLabel -> " *";
-                case GuiMenu -> " *";
-                case GuiSubMenu -> " *-> ";
-                case Note -> "\n::: tip";
-                case ItemizedList -> "\n";
-                case ProductName -> " **";
-                default -> "";
-            };
+        var line = switch (tag) {
+            case Title -> this.getTitle();
+            case Paragraph -> this.getParagraph();
+            case ImageData -> this.getImage(attributes);
+            case GuiLabel -> " *";
+            case GuiMenu -> " *";
+            case GuiSubMenu -> " *-> ";
+            case Note -> "\n::: tip";
+            case ItemizedList -> "\n";
+            case ProductName -> " **";
+            default -> "";
+        };
 
-            this.markdown.append(line);
-            if (this.isLogging) {
-                LOG.info(String.format("%1$" + this.depth + "s", "+" + qName));
-                this.depth += 4;
-            }
-            this.parentTag = this.currentTag;
-            this.currentTag = presented;
+        this.markdown.append(line);
+        if (this.isLogging) {
+            LOG.info(String.format("%1$" + this.depth + "s", "+" + qName));
+            this.depth += 4;
         }
+        this.parentTag = this.currentTag;
+        this.currentTag = tag;
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         var tag = XmlTag.get(qName);
-        if (tag.isPresent()) {
-            var presented = tag.get();
-            var line = switch (presented) {
-                case Title -> XmlHandler.NEW_LINE;
-                case Paragraph -> XmlHandler.NEW_LINE;
-                case GuiLabel -> "* ";
-                case GuiMenu -> "* ";
-                case GuiSubMenu -> "* ";
-                case Note -> ":::\n\n";
-                case ItemizedList -> "\n";
-                case ProductName -> "** ";
-                default -> "";
-            };
+        var line = switch (tag) {
+            case Title -> XmlHandler.NEW_LINE;
+            case Paragraph -> XmlHandler.NEW_LINE;
+            case GuiLabel -> "* ";
+            case GuiMenu -> "* ";
+            case GuiSubMenu -> "* ";
+            case Note -> ":::\n\n";
+            case ItemizedList -> "\n";
+            case ProductName -> "** ";
+            default -> "";
+        };
 
-            this.markdown.append(line);
-            if (this.isLogging) {
-                this.depth -= 4;
-                LOG.info(String.format("%1$" + this.depth + "s", "-" + qName));
-            }
-
-            this.currentTag = presented;
+        this.markdown.append(line);
+        if (this.isLogging) {
+            this.depth -= 4;
+            LOG.info(String.format("%1$" + this.depth + "s", "-" + qName));
         }
+
+        this.currentTag = tag;
     }
 
     @Override
